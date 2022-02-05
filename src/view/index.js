@@ -1,6 +1,12 @@
+/* eslint-disable import/prefer-default-export */
 // aqui exportaras las funciones que necesites
 
-export const myFunction = () => {
-  // aqui tu codigo
-  console.log('Hola mundo!');
+import login from './login';
+import nav from './nav';
+
+const components = {
+  login,
+  nav,
 };
+
+export { components };
