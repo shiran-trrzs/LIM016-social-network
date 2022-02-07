@@ -1,5 +1,5 @@
-const  templateNav = () => {
-    let htmlNav = `
+const templateNav = () => {
+  const htmlNav = `
         <li>
           <a href="#/"> Home </a>
         </li>
@@ -15,10 +15,9 @@ const  templateNav = () => {
         <li>
           <a href="#/logout"> Cerrar sesión </a>
         </li>
-      `
-    
-      const labelNav = document.createElement('nav')
-      labelNav.setAttribute('class', 'nav')
-      labelNav.innerHTML = htmlNav
+      `;
 
-}
+  const labelNav = document.createElement('nav');
+  labelNav.setAttribute('class', 'nav');
+  labelNav.innerHTML = htmlNav;
+};

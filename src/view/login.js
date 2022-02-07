@@ -1,5 +1,5 @@
 export default () => {
-    const viewHome = `
+  const viewHome = `
     <section>
         <h1 class='textLeft'> VIAJA PE </h1>
         <img></img>
@@ -21,8 +21,8 @@ export default () => {
         <p> ¿No tienes una cuenta? <a href=''> Únete </a> </p>
     </div>
     </section>
-`
-    const viewHomeDiv = document.createElement('div')
-    viewHomeDiv.innerHTML = viewHome;
-    return viewHomeDiv
-}
+`;
+  const viewHomeDiv = document.createElement('div');
+  viewHomeDiv.innerHTML = viewHome;
+  return viewHomeDiv;
+};
