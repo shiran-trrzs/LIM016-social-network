@@ -1,12 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 // aqui exportaras las funciones que necesites
 
-import login from './login';
-import nav from './nav';
+import Login from './login.js';
+import Nav from './nav.js';
+import Profile from './profile.js';
 
 const components = {
-  login,
-  nav,
+  login: Login,
+  nav: Nav,
+  profile: Profile,
 };
 
 export { components };

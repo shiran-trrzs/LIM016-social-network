@@ -1,21 +1,16 @@
-/* eslint-disable consistent-return */
-/* eslint-disable import/prefer-default-export */
-/* eslint-disable no-console */
+import { components } from '../view/index.js';
 
-import { components } from '../view/index';
-
-const changeView = (route) => {
-  const container = document.getElementById('container');
-  container.innerHTML = '';
+export const changeView = (route) => {
+  const main = document.getElementById('main');
+  main.innerHTML = '';
 
   switch (route) {
-    case '#/': { return container.appendChild(components.login()); }
-    case '#/profile': { return container.appendChild(components.nav()); }
+    case '#/login': { return main.appendChild(components.login()); }
+    case '#/home': { return main.appendChild(components.nav()); }
+    case '#/profile': { return main.appendChild(components.profile()); }
 
     default:
       break;
   }
   console.log(route);
 };
-
-export { changeView };

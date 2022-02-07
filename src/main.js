@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
-// Este es el punto de entrada de tu aplicacion
+import { changeView } from './viewController/router.js';
 
-import { changeView } from './viewController/router';
+console.log('Hello');
 
 const init = () => {
   changeView(window.location.hash);

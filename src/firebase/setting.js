@@ -1,6 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
-// eslint-disable-next-line import/no-unresolved
-
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js';
 
