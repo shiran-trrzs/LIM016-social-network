@@ -18,7 +18,7 @@ export default () => {
         <button type='submit'> Iniciar sesión </button>
         <button type='submit'> Continuar con Google </button>
         <img></img>
-        <p> ¿No tienes una cuenta? <a href=''> Únete </a> </p>
+        <p> ¿No tienes una cuenta? <a href='#/registration'> Únete </a> </p>
     </div>
     </section>`;
   const viewHomeDiv = document.createElement('div');
