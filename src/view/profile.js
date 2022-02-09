@@ -1,5 +1,5 @@
 export default () => {
-  const viewProfile = (birthdayUser, placeUser) => `
+    const viewProfile = (birthdayUser, placeUser) => `
     <section>
     <div class="containerUserProfile">
         <div class="userProfile">
@@ -33,7 +33,7 @@ export default () => {
     </section>
  `;
 
-  const viewProfileDiv = document.createElement('div');
-  viewProfileDiv.innerHTML = viewProfile;
-  return viewProfileDiv;
+    const viewProfileDiv = document.createElement('div');
+    viewProfileDiv.innerHTML = viewProfile;
+    return viewProfileDiv;
 };

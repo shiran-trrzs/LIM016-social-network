@@ -1,5 +1,5 @@
 export default () => {
-  const viewHome = `
+    const viewHome = `
     <section>
         <p> Agregar contacto </p>
         <img src="../img/dawson.png"> <p> Dawson Leery </p>
@@ -22,7 +22,7 @@ export default () => {
         </form>
       </section>`;
 
-  const viewHomeDiv = document.createElement('div');
-  viewHomeDiv.innerHTML = viewHome;
-  return viewHomeDiv;
+    const viewHomeDiv = document.createElement('div');
+    viewHomeDiv.innerHTML = viewHome;
+    return viewHomeDiv;
 };

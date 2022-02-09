@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 export default () => {
-  const viewPost = (urlPhoto, userName, datePost, contentPost) => `
+    const viewPost = (urlPhoto, userName, datePost, contentPost) => `
     <section class="postTimeline">
         <div>
             <img class="avatarProfile" src="${urlPhoto}">
@@ -20,7 +20,7 @@ export default () => {
         </div>
     </section>`;
 
-  const viewPostDiv = document.createElement('div');
-  viewPostDiv.innerHTML = viewPost;
-  return viewPostDiv;
+    const viewPostDiv = document.createElement('div');
+    viewPostDiv.innerHTML = viewPost;
+    return viewPostDiv;
 };

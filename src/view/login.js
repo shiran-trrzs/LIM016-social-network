@@ -1,5 +1,5 @@
 export default () => {
-  const viewLogin = `
+    const viewLogin = `
     <section>
         <h1 class='textLeft'> VIAJA PE </h1>
         <img src='../img/airplane.png'>
@@ -21,7 +21,7 @@ export default () => {
     </div>
     </section>`;
 
-  const viewLoginDiv = document.createElement('div');
-  viewLoginDiv.innerHTML = viewLogin;
-  return viewLoginDiv;
+    const viewLoginDiv = document.createElement('div');
+    viewLoginDiv.innerHTML = viewLogin;
+    return viewLoginDiv;
 };
