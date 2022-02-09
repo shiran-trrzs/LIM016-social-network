@@ -1,12 +1,5 @@
 export default () => {
   const viewHome = `
-    <nav>
-        <img src="../img/home_icon.png">
-        <img src="../img/profile_icon.png">
-        <img src="../img/setting_icon.png">
-        <img src="../img/group_icon.png">
-        <img src="../img/logout_icon.png"> 
-    </nav> 
     <section>
         <p> Agregar contacto </p>
         <img src="../img/dawson.png"> <p> Dawson Leery </p>

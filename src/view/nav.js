@@ -1,21 +1,12 @@
 export default () => {
   const templateNav = `
-        <li>
-          <a href="#/"> Home </a>
-        </li>
-        <li>
-          <a href="#/profile"> Perfil </a>
-        </li>
-        <li>
-          <a href="#/favorites"> Favoritos </a>
-        </li>
-        <li>
-          <a href="#/setting"> Configuración </a>
-        </li>
-        <li>
-          <a href="#/logout"> Cerrar sesión </a>
-        </li>
-      `;
+    <nav>
+        <img src="../img/home_icon.png">
+        <img src="../img/profile_icon.png">
+        <img src="../img/setting_icon.png">
+        <img src="../img/group_icon.png">
+        <img src="../img/logout_icon.png"> 
+    </nav>`;
 
   const labelNav = document.createElement('nav');
   labelNav.setAttribute('class', 'nav');
