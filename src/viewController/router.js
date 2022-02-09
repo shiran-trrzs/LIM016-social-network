@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { components } from '../view/index.js';
 
 export const changeView = (route) => {
@@ -5,6 +6,9 @@ export const changeView = (route) => {
   main.innerHTML = '';
 
   switch (route) {
+    case '':
+    case '#':
+    case '#/':
     case '#/login': { return main.appendChild(components.login()); }
     case '#/home': { return main.appendChild(components.nav()); }
     case '#/profile': { return main.appendChild(components.profile()); }
