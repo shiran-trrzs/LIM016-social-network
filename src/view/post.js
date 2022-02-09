@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 export default () => {
-  const viewPost = `
+  const viewPost = (urlPhoto, userName, datePost, contentPost) => `
     <section class="postTimeline">
         <div>
             <img class="avatarProfile" src="${urlPhoto}">
