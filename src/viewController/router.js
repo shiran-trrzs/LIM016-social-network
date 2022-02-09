@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-console */
 /* eslint-disable import/prefer-default-export */
 import { components } from '../view/index.js';
 
