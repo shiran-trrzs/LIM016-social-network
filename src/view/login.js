@@ -20,7 +20,7 @@ export default () => {
         <p> ¿No tienes una cuenta? <a href=''> Únete </a> </p>
     </div>
     </section>`;
-    
+
   const viewLoginDiv = document.createElement('div');
   viewLoginDiv.innerHTML = viewLogin;
   return viewLoginDiv;

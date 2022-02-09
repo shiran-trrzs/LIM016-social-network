@@ -1,5 +1,5 @@
 export default () => {
-    const viewHome = `
+  const viewHome = `
     <nav>
         <img src="../img/home_icon.png">
         <img src="../img/profile_icon.png">
