@@ -24,12 +24,12 @@ export default () => {
 
     <section>
     <p><b> Amigos </b></p>
-    <img src="./img/dawson.png"> <p> Dawson Leery </p>
-    <img src="./img/mimi.png"> <p> Mimi Ortega </p>
-    <img src="./img/katy.png"> <p> Katy Dibiasky </p>
-    <img src="./img/nico.png"> <p> Nico Traveler </p>
-    <img src="./img/leti.png"> <p> Leti Dev </p>
-    <img src="./img/airplane_home.png"> <p> VIAJA PE </p>
+    <img src="../img/dawson.png"> <p> Dawson Leery </p>
+    <img src="../img/mimi.png"> <p> Mimi Ortega </p>
+    <img src="../img/katy.png"> <p> Katy Dibiasky </p>
+    <img src="../img/nico.png"> <p> Nico Traveler </p>
+    <img src="../img/leti.png"> <p> Leti Dev </p>
+    <img src="../img/airplane_home.png"> <p> VIAJA PE </p>
     </section>
  `;
 
