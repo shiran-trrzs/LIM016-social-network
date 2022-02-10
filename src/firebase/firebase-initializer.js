@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable import/no-unresolved */
-// Import the functions you need from the SDKs you need
+
+// Importar las funciones necesarias de los SDK
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js';
 
 import {
@@ -9,11 +10,14 @@ import {
     GoogleAuthProvider,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
-// import {} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
+import {
+    getFirestore,
+    collection
+} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
-// import {} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
+import { } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
-// Your web app's Firebase configuration
+// La configuración de Firebase de nuestra app web
 const firebaseConfig = {
     apiKey: 'AIzaSyD3ISB7LRfoDpJsq7yZIreT3Xxy1Ywy28s',
     authDomain: 'viajape-f5cf8.firebaseapp.com',
@@ -23,11 +27,16 @@ const firebaseConfig = {
     appId: '1:80794715048:web:2871366e9ed2561d62d39d',
 };
 
-// Initialize Firebase
+// Inicializar Firebase
 const app = initializeApp(firebaseConfig);
-// Inicializa autenticación
+
+// Inicializar Autenticación
 const auth = getAuth(app);
 
+// Inicializar Firestore
+const db = getFirestore(app);
+
+// Establecer proveedor
 const providerGoogle = new GoogleAuthProvider();
 
 export {
@@ -36,4 +45,5 @@ export {
     app,
     auth,
     providerGoogle,
+    db
 };
