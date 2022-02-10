@@ -1,7 +1,8 @@
-import { signUp, emailVerification } from "../firebase/functionsAuth.js";
+import { signUp } from '../firebase/firebase-auth.js';
 
-export default () => {
-  const viewFormRegistration = `
+// Formulario de registro
+export const viewFormRegistration = () => {
+  const formRegistration = `
 
     <form id = 'formRegistration'>
 
@@ -24,10 +25,11 @@ export default () => {
     
     </form>`;
 
-  const viewFormRegistrationDiv = document.createElement("div");
-  viewFormRegistrationDiv.innerHTML = viewFormRegistration;
-  return viewFormRegistrationDiv;
+  return formRegistration;
 };
 
-//Función para el registro por correo electrónico
-export const singUpEmail = ()
+// Registro por correo y contraseña
+export const emailRegister = (selectorForm, containerForm) => {
+  const selectTypeRegister = document.getElementById(selectorForm);
+  selectTypeRegister.addEventListener
+}
