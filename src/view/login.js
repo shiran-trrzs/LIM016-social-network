@@ -26,6 +26,8 @@ export default () => {
     const viewLoginDiv = document.createElement('div');
     viewLoginDiv.innerHTML = viewLogin;
     viewLoginDiv.querySelector('#btnGoogle').addEventListener('click', signInWithGoogle);
-    viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', signInWithEmail);
+    const email = viewLoginDiv.querySelector('#email');
+    const password = viewLoginDiv.querySelector('#password');
+    viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', () => signInWithEmail(email.value, password.value));
     return viewLoginDiv;
 };

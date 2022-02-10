@@ -8,14 +8,12 @@ import {
     getAuth,
     signInWithPopup,
     GoogleAuthProvider,
+    signInWithEmailAndPassword,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
-import {
-    getFirestore,
-    collection
-} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
+// import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
-import { } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
+// import { } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 // La configuración de Firebase de nuestra app web
 const firebaseConfig = {
@@ -34,7 +32,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Inicializar Firestore
-const db = getFirestore(app);
+// const db = getFirestore(app);
 
 // Establecer proveedor
 const providerGoogle = new GoogleAuthProvider();
@@ -45,5 +43,5 @@ export {
     app,
     auth,
     providerGoogle,
-    db
+    signInWithEmailAndPassword,
 };

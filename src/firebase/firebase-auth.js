@@ -9,6 +9,9 @@ import {
     providerGoogle,
 } from './firebase-initializer.js';
 
+// Crear cuenta con correo y contraseña
+// export const createAccount = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+
 // Iniciar sesion con Google
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
