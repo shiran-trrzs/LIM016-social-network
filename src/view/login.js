@@ -1,3 +1,5 @@
+import { signInWithGoogle } from '../firebase/firebase-auth.js';
+
 export default () => {
     const viewLogin = `
     <section>
@@ -16,12 +18,13 @@ export default () => {
   
         <a href=''> Olvidé mi contraseña </a>
         <button type='submit'> Iniciar sesión </button>
-        <img src='../img/google_icon.png'><button type='submit'> Continuar con Google </button>
+        <img src='../img/google_icon.png'><button type='submit' id="btnGoogle"> Continuar con Google </button>
         <p> ¿No tienes una cuenta? <a href=''> Únete </a> </p>
     </div>
     </section>`;
 
     const viewLoginDiv = document.createElement('div');
     viewLoginDiv.innerHTML = viewLogin;
+    viewLoginDiv.querySelector('#btnGoogle').addEventListener('click', signInWithGoogle);
     return viewLoginDiv;
 };
