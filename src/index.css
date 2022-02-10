@@ -1,0 +1,7 @@
+:root {
+	--boton-color: rgb(240, 96, 48);
+	--color-transparent: rgba(181, 90, 39, 0, 16);
+	--background-gris: rgba(245, 245, 245, 1);
+	--background-white: rgba(255, 255, 255, 1);
+	--color-icono: rgba(0, 0, 0, 0, 25);
+}
