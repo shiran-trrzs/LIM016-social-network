@@ -12,7 +12,7 @@ export const changeView = (route) => {
     case '#':
     case '#/':
     case '#/login': { return main.appendChild(components.login()); }
-    case '#/home': { return main.appendChild(components.nav()); }
+    case '#/home': { return main.appendChild(components.home()); }
     case '#/profile': { return main.appendChild(components.profile()); }
 
     default:
