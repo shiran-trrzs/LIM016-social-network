@@ -15,7 +15,11 @@ import {
 // Iniciar sesion con Google
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
-        console.log(res);
+        window.location.hash = '#/home';
+        console.log('iniciaste sesión');
+    })
+    .catch((rej) => {
+        console.log(rej);
     });
 
 // Iniciar sesion con correo y contraseña
