@@ -13,11 +13,11 @@ export default () => {
         <h2 class='textRight'> Lo que está pasando ahora </h2>
     </div>
     <div id='loginContainer'>
-        <img src='../img/mail.png'><input type='email' class='loginBox' id='email' placeholder='Correo electrónico'> </input> 
-        <img src='../img/password.png'><input type='password' class='loginBox' id='password' placeholder='Contraseña'></input>
+        <i class="fa-solid fa-envelope"> <input type='email' class='loginBox' id='email' placeholder='Correo electrónico'> </input> </i> 
+        <i class="fa-solid fa-lock"></i> <input type='password' class='loginBox' id='password' placeholder='Contraseña'></input> </i>
   
         <a href=''> Olvidé mi contraseña </a>
-        <button type='submit'> Iniciar sesión </button>
+        <button type='submit' id="btnLogIn"> Iniciar sesión </button>
         <img src='../img/google_icon.png'><button type='submit' id="btnGoogle"> Continuar con Google </button>
         <p> ¿No tienes una cuenta? <a href=''> Únete </a> </p>
     </div>

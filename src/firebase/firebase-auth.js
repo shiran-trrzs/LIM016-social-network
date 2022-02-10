@@ -5,12 +5,10 @@ import {
     getAuth,
     signInWithPopup,
     auth,
-    provider,
+    providerGoogle,
 } from './firebase-initializer.js';
 
-export const signInWithGoogle = () => signInWithPopup(auth, provider)
+export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
         console.log(res);
     });
-
-   

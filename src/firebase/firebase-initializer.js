@@ -28,12 +28,12 @@ const app = initializeApp(firebaseConfig);
 // Inicializa autenticación
 const auth = getAuth(app);
 
-const provider = new GoogleAuthProvider();
+const providerGoogle = new GoogleAuthProvider();
 
 export {
     getAuth,
     signInWithPopup,
     app,
     auth,
-    provider,
+    providerGoogle,
 };

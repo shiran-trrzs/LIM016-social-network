@@ -9,7 +9,7 @@ export const viewFormRegistration = () => {
           <img></img>
           <input type="checkbox" class="checkterms" id="checkterms" </input><label>Acepto los términos 
           y condiciones de las Polìticas de Privacidad.</label>
-          <button type='submit'> Registrarse </button>
+          <button type='submit' id='btnRegister'> Registrarse </button>
           <img></img>
           <p> ¿Ya tienes una cuenta? <a href='#/login'> Iniciar sesión </a> </p>
       
