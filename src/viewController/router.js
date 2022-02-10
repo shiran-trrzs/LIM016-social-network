@@ -4,10 +4,10 @@
 import { components } from '../view/index.js';
 
 export const changeView = (route) => {
-  const main = document.getElementById('main');
-  main.innerHTML = '';
+    const main = document.getElementById('main');
+    main.innerHTML = '';
 
-  switch (route) {
+    switch (route) {
     case '':
     case '#':
     case '#/':
@@ -16,7 +16,7 @@ export const changeView = (route) => {
     case '#/profile': { return main.appendChild(components.profile()); }
 
     default:
-      break;
-  }
-  console.log(route);
+        break;
+    }
+    console.log(route);
 };
