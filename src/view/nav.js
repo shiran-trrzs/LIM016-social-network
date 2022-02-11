@@ -1,5 +1,5 @@
 export default () => {
-    const templateNav = `
+  const templateNav = `
     <nav>
         <img src="../img/home_icon.png">
         <img src="../img/profile_icon.png">
@@ -8,8 +8,8 @@ export default () => {
         <img src="../img/logout_icon.png"> 
     </nav>`;
 
-    const labelNav = document.createElement('nav');
-    labelNav.setAttribute('class', 'nav');
-    labelNav.innerHTML = templateNav;
-    return labelNav;
+  const labelNav = document.createElement('nav');
+  labelNav.setAttribute('class', 'nav');
+  labelNav.innerHTML = templateNav;
+  return labelNav;
 };

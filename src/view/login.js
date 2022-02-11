@@ -1,4 +1,4 @@
-import { signInWithGoogle } from '../firebase/firebase-auth.js';
+import { signInWithGoogle, signInWithEmail } from '../firebase/firebase-auth.js';
 
 export default () => {
     const viewLogin = `
@@ -26,5 +26,8 @@ export default () => {
     const viewLoginDiv = document.createElement('div');
     viewLoginDiv.innerHTML = viewLogin;
     viewLoginDiv.querySelector('#btnGoogle').addEventListener('click', signInWithGoogle);
+    const email = viewLoginDiv.querySelector('#email');
+    const password = viewLoginDiv.querySelector('#password');
+    viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', () => signInWithEmail(email.value, password.value));
     return viewLoginDiv;
 };
