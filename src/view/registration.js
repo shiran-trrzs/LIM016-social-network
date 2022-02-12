@@ -1,7 +1,4 @@
-import {
-    auth,
-    createUserWithEmailAndPassword,
-} from '../firebase/firebase-auth.js';
+import { emailMessage, signUp } from '../firebase/firebase-auth.js';
 
 export default () => {
     const viewRegistration = `
@@ -25,18 +22,23 @@ export default () => {
     const signupForm = viewRegistrationDiv.querySelector('#formRegistration');
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault(); // previene que se envíe y borre automaticamente
-        const signupUser = viewRegistrationDiv.querySelector('#signup-user').value;
         const email = viewRegistrationDiv.querySelector('#signup-email').value;
         const password = viewRegistrationDiv.querySelector('#signup-password').value;
-        createUserWithEmailAndPassword(auth, email, password)
+        signUp(email, password)
             .then((userCredential) => {
                 signupForm.reset();// limpiar automáticamente campos del formulario
                 console.log('sign up');
                 // Signed in
                 const user = userCredential.user;
-                alert('Usuario creado con éxito');
                 console.log(userCredential);
 
+                emailMessage()
+                    .then(() => {
+                        alert('Verifica tu bandeja de entrada para verificar tu cuenta');
+                        window.location.hash = '#/';
+                        // Email verification sent!
+                        // ...
+                    });
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -44,6 +46,5 @@ export default () => {
                 // ..
             });
     });
-
     return viewRegistrationDiv;
 };

@@ -11,18 +11,11 @@ import {
     sendEmailVerification,
 } from './firebase-initializer.js';
 
-export {
-    auth,
-    createUserWithEmailAndPassword,
-};
+// registrar usuario con correo y contraseña
+export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
 // enviar email de verificacion para creación de cuenta por correo
-export const emailMessage = () => sendEmailVerification(auth.currentUser)
-    .then(() => {
-        // Email verification sent!
-        // ...
-    });
-
+export const emailMessage = () => sendEmailVerification(auth.currentUser);
 // Iniciar sesion con Google
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
