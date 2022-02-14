@@ -22,7 +22,6 @@ export const emailMessage = () => sendEmailVerification(auth.currentUser);
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
         window.location.hash = '#/home';
-
         const user = res.user;
         const userName = user.displayName;
         const userPhoto = user.photoURL;
