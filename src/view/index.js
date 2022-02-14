@@ -8,11 +8,11 @@ import Home from './home.js';
 import Registration from './registration.js';
 
 const components = {
-  login: Login,
-  nav: Nav,
-  profile: Profile,
-  home: Home,
-  registration: Registration,
+    login: Login,
+    nav: Nav,
+    profile: Profile,
+    home: Home,
+    registration: Registration,
 
 };
 
