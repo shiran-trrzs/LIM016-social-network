@@ -13,6 +13,7 @@ const components = {
   profile: Profile,
   home: Home,
   registration: Registration,
+
 };
 
 export { components };

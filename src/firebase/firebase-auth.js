@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable import/named */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -21,9 +22,17 @@ export const emailMessage = () => sendEmailVerification(auth.currentUser);
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
         window.location.hash = '#/home';
-        console.log('iniciaste sesión');
+
+        const user = res.user;
+        const userName = user.displayName;
+        const userPhoto = user.photoURL;
+        const userId = user.uid;
+        console.log(user);
     })
     .catch((rej) => {
+        const errorCode = rej.code;
+        const errorMessage = rej.message;
+        const email = rej.email; // El email está siendo usado
         console.log(rej);
     });
 
