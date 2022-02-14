@@ -10,6 +10,7 @@ import {
     GoogleAuthProvider,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
+    sendEmailVerification,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
 // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
@@ -45,4 +46,6 @@ export {
     auth,
     providerGoogle,
     signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    sendEmailVerification,
 };
