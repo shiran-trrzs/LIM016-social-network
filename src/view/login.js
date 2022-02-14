@@ -19,7 +19,7 @@ export default () => {
         <a href=''> Olvidé mi contraseña </a>
         <button type='submit' id="btnLogIn"> Iniciar sesión </button>
         <img src='../img/google_icon.png'><button type='submit' id="btnGoogle"> Continuar con Google </button>
-        <p> ¿No tienes una cuenta? <a href=''> Únete </a> </p>
+        <p> ¿No tienes una cuenta? <a href='#/registration'> Únete </a> </p>
     </div>
     </section>`;
 

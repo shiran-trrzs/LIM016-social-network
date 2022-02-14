@@ -36,6 +36,11 @@ const auth = getAuth(app);
 // Inicializar Firestore
 // const db = getFirestore(app);
 
+/*
+// Inicializar firebase
+const database = firebase.database();
+*/
+
 // Establecer proveedor
 const providerGoogle = new GoogleAuthProvider();
 
@@ -46,6 +51,6 @@ export {
     auth,
     providerGoogle,
     signInWithEmailAndPassword,
-    GoogleAuthProvider,
+    createUserWithEmailAndPassword,
     sendEmailVerification,
 };

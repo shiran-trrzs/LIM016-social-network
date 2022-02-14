@@ -8,11 +8,15 @@ import {
     signInWithPopup,
     auth,
     providerGoogle,
+    createUserWithEmailAndPassword,
     sendEmailVerification,
 } from './firebase-initializer.js';
 
-// Crear cuenta con correo y contraseña
-// export const createAccount = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+// registrar usuario con correo y contraseña
+export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
+
+// enviar email de verificacion para creación de cuenta por correo
+export const emailMessage = () => sendEmailVerification(auth.currentUser);
 
 // Iniciar sesion con Google
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
@@ -36,5 +40,7 @@ export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
 export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user;
+        window.location.hash = '#/home';
+        console.log('iniciaste sesión con email');
         console.log(user);
     });
