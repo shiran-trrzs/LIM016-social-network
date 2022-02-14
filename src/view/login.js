@@ -21,7 +21,7 @@ export default () => {
             <img class="imgGoogle" src="../img/google_icon.png" />
             <span>Continuar con Google</span> 
             </button>
-            <p class="text">¿No tienes una cuenta? <a class="text bold" href=""> Únete </a> </p>
+            <p class="text">¿No tienes una cuenta? <a class="text bold" href="#/registration"> Únete </a> </p>
         </section>
 
     </div>`;
