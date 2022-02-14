@@ -3,13 +3,13 @@ import { emailMessage, signUp } from '../firebase/firebase-auth.js';
 export default () => {
     const viewRegistration = `
       <form id = 'formRegistration'>
-          <input type='text' class='registerInput' id='signup-user' placeholder='Nombre de usuario'> </input>
+          <input type='text' class='registerInput' id='signup-user' placeholder='Nombre de usuario' required> </input>
           <img></img>
-          <input type='email' class='registerInput' id='signup-email' placeholder='Correo electrónico'></input>
+          <input type='email' class='registerInput' id='signup-email' placeholder='Correo electrónico' required></input>
           <img></img>
-          <input type='password' class='registerInput' id='signup-password' placeholder='Contraseña'></input>
+          <input type='password' class='registerInput' id='signup-password' placeholder='Contraseña' required></input>
           <img></img>
-          <input type="checkbox" class="checkTerms" id="checkTerms" </input><label>Acepto los términos 
+          <input type="checkbox" class="checkTerms" id="checkTerms" required </input><label>Acepto los términos 
           y condiciones de las Polìticas de Privacidad.</label>
           <button type='submit' id='btnRegister'> Registrarse </button>
           <img></img>

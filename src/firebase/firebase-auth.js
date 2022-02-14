@@ -16,6 +16,7 @@ export const signUp = (email, password) => createUserWithEmailAndPassword(auth, 
 
 // enviar email de verificacion para creación de cuenta por correo
 export const emailMessage = () => sendEmailVerification(auth.currentUser);
+
 // Iniciar sesion con Google
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
@@ -30,5 +31,7 @@ export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
 export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user;
+        window.location.hash = '#/home';
+        console.log('iniciaste sesión con email');
         console.log(user);
     });
