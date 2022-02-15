@@ -22,7 +22,7 @@ export default () => {
             <div id="buttons">
                 <button type="submit" class="btn" id="btnLogIn"> Iniciar sesión </button>
                 <button type="submit" class="btn" id="btnGoogle"> 
-                    <img class="imgGoogle" src="../img/google_icon.png" />
+                    <i class="fa-brands fa-google"></i>
                     <span>Continuar con Google</span> 
                 </button>
                 <p class="text">¿No tienes una cuenta? <a class="text bold" href="#/registration"> Únete </a> </p>

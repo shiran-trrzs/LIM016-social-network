@@ -67,7 +67,7 @@
 
 /* Estilo a las cajas de texto */
 input {
-	width: 60vw;
+	width: 65vw;
 	height: 5vh;
 
 	background: rgba(255, 248, 248, 0.21);
@@ -103,7 +103,7 @@ input:focus {
 
 /* Estilo a todos los botones */
 .btn {
-	width: 60vw;
+	width: 65vw;
 	min-height: 5vh;
 
 	background: var(--boton-color);
