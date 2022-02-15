@@ -40,11 +40,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const authUid = firebase.auth;
 
-// Inicializar Firestore
-// const db = getFirestore(app);
-
 // Inicializar firebase
-const database = getFirestore(app);
+const db = getFirestore(app);
 
 // Establecer proveedor
 const providerGoogle = new GoogleAuthProvider();

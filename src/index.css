@@ -10,73 +10,68 @@
 #viewLog {
 	background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1');
 	background-size: cover;
-	width: 100%;
-	height: 100%;
-	/* background-color: #86353535;
-	backdrop-filter: blur(12px);
-	-webkit-backdrop-filter: blur(12px); */
-}
-
-/* Fondo semitransparente anaranjado */
-.page {
 	width: 100vw;
 	height: 100vh;
-	background: rgba(113, 58, 42, 0.45);
 }
 
-/* Secciones */
-#socialNetwork {
+/* Seccion 1 */
+#principalView1 {
 	width: 100vw;
-	height: 40%;
+	height: 40vh;
+	background: rgba(113, 58, 42, 0.45);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-}
-
-#formSection {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	margin-top: 35px;
-}
-
-#buttons {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-
-	margin-top: 40px;
 }
 
 /* Estilo al nombre */
-.textLeft {
+.nameSocialNetwork {
 	width: auto;
 	font-style: normal;
 	font-weight: 600;
 	font-size: 13vw;
 	text-align: center;
-
 	color: #ffffff;
-
 	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	margin-top: 70px;
 }
 
-/* Estilo al logo */
-.logo {
-	margin-top: auto;
+/* Estilo al logo 1 */
+.logo1 {
 	width: 100px;
-	height: 60px;
+	height: 75px;
+}
+
+/* Seccion 2 */
+#principalView2 {
+	width: 100vw;
+	height: 60vh;
+	background: rgba(113, 58, 42, 0.45);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Division ocultar logo 2 y slogan */
+.hidden {
+	display: none;
+}
+
+/* Division de formulario */
+#formSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 30px;
 }
 
 /* Estilo a las cajas de texto */
 input {
-	width: 60vw;
+	width: 65vw;
 	height: 5vh;
 
 	background: rgba(255, 248, 248, 0.21);
 	backdrop-filter: blur(4px);
-	/* Note: backdrop-filter has minimal browser support */
 
 	border-radius: 30px;
 	border-style: none;
@@ -89,6 +84,7 @@ input {
 input::placeholder {
 	font-family: FontAwesome, 'Open Sans', Verdana, sans-serif;
 	font-weight: normal;
+	color: white;
 }
 
 /* Quitarle borde al seleccionar una caja de texto */
@@ -96,9 +92,18 @@ input:focus {
 	outline: none;
 }
 
+/* Division de botones */
+#buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	margin-top: 40px;
+}
+
 /* Estilo a todos los botones */
 .btn {
-	width: 45vw;
+	width: 65vw;
 	min-height: 5vh;
 
 	background: var(--boton-color);
@@ -110,6 +115,7 @@ input:focus {
 	color: white;
 	margin: 5px;
 	text-align: center;
+	font-size: 20px;
 }
 
 /* Alineacion a la imagen de Google */
@@ -122,11 +128,6 @@ span {
 	vertical-align: middle;
 }
 
-/* Estilo a todos los placeholder */
-::placeholder {
-	color: white;
-}
-
 /* Estilo a todos los textos */
 .text {
 	color: white;
@@ -135,4 +136,70 @@ span {
 /* Negrita */
 .bold {
 	font-weight: bold;
+}
+
+/* Media Query */
+@media (min-width: 600px) {
+	/* Fondo de login */
+	#viewLog {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* Seccion 1 */
+	#principalView1 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+	}
+
+	/* Estilo al nombre */
+	.nameSocialNetwork {
+		font-size: 5vw;
+		margin-top: 0px;
+	}
+
+	/* Tamaño al logo 1 */
+	.logo1 {
+		width: 130px;
+		height: 95px;
+	}
+
+	/* Seccion 2 */
+	#principalView2 {
+		width: 50vw;
+		height: 100vh;
+		background: rgba(0, 0, 0, 0.65);
+		justify-content: center;
+	}
+
+	/* Division mostrar logo 2 y Slogan */
+	.hidden {
+		display: block;
+		width: 35vw;
+	}
+
+	/* Tamaño al logo 2 */
+	.logo2 {
+		width: 55px;
+		height: 40px;
+	}
+
+	/* Tamaño de Slogan  */
+	.slogan {
+		font-size: 40px;
+	}
+
+	/* Ancho de las cajas de texto */
+	input {
+		width: 25vw;
+	}
+
+	/* Ancho de los botones */
+	.btn {
+		width: 25vw;
+		font-size: 20px;
+	}
 }
