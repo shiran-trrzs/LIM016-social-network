@@ -1,4 +1,13 @@
 import { emailMessage, signUp } from '../firebase/firebase-auth.js';
+import { database, doc, setDoc } from '../firebase/firebase-initializer.js';
+
+// Agregando a la sección de usuarios
+async function createUser (name, email, uid, photo) {
+    await setDoc(doc(database, 'users', uid), {
+        name,
+        
+    })
+}
 
 export default () => {
     const viewRegistration = `
@@ -20,10 +29,14 @@ export default () => {
     const viewRegistrationDiv = document.createElement('div');
     viewRegistrationDiv.innerHTML = viewRegistration;
     const signupForm = viewRegistrationDiv.querySelector('#formRegistration');
+
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault(); // previene que se envíe y borre automaticamente
+
+        // capturando los campos de entrada
         const email = viewRegistrationDiv.querySelector('#signup-email').value;
         const password = viewRegistrationDiv.querySelector('#signup-password').value;
+
         signUp(email, password)
             .then((userCredential) => {
                 signupForm.reset();// limpiar automáticamente campos del formulario
@@ -31,6 +44,18 @@ export default () => {
                 // Signed in
                 const user = userCredential.user;
                 console.log(userCredential);
+
+                // Guardando datos del usuario
+                let databaseRef = database.ref()
+
+                // creando data de usuario
+                let userData = {
+                    email: email,
+                    lastLogin: Date.now(),
+                };
+
+                databaseRef.child('users/' + userX.uid).set(userData);
+
 
                 emailMessage()
                     .then(() => {
@@ -43,7 +68,10 @@ export default () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                // ..
+                if (password < 6) {
+                    alert ('La contraseña debe contener al menos 6 dígitos');
+                }
+                alert(errorMessage);
             });
     });
     return viewRegistrationDiv;

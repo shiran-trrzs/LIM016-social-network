@@ -13,6 +13,12 @@ import {
     sendEmailVerification,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
+import {
+    getFirestore,
+    doc,
+    setDoc,
+} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
+
 // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
 // import { } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
@@ -32,25 +38,33 @@ const app = initializeApp(firebaseConfig);
 
 // Inicializar Autenticación
 const auth = getAuth(app);
+const authUid = firebase.auth;
 
 // Inicializar Firestore
 // const db = getFirestore(app);
 
-/*
 // Inicializar firebase
-const database = firebase.database();
-*/
+const database = getFirestore(app);
 
 // Establecer proveedor
 const providerGoogle = new GoogleAuthProvider();
 
+// autenticación
 export {
     getAuth,
     signInWithPopup,
     app,
     auth,
+    authUid,
     providerGoogle,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
+};
+
+// firestore
+export {
+    database,
+    doc,
+    setDoc,
 };
