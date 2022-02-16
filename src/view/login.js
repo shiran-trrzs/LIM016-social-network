@@ -1,4 +1,4 @@
-import { signInWithGoogle, signInWithEmail } from '../firebase/firebase-auth.js';
+import { signInWithGoogle, signInWithEmail, changePassword } from '../firebase/firebase-auth.js';
 
 export default () => {
     const viewLogin = `
@@ -16,7 +16,7 @@ export default () => {
             <div id="formSection">
                 <input type="email" class="loginBox" id="email" placeholder=" &#xf0e0; Correo electronico"/>
                 <input type="password" class="loginBox" id="password" placeholder=" &#xf084; Contraseña" />
-                <a class="text" href=""> Olvidé mi contraseña </a>
+                <a class="text forgetPasswordLink"> Olvidé mi contraseña </a>
             </div>
 
             <div id="buttons">
@@ -29,12 +29,31 @@ export default () => {
             </div>
         </section>`;
 
+    // Funcion iniciar sesion
+    const functionLoginIn = () => {
+        const email = document.querySelector('#email').value;
+        const password = document.querySelector('#password').value;
+        signInWithEmail(email, password);
+    };
+
+    // Funcion olvide contraseña
+    const functionForgetPassword = () => {
+        const email = document.querySelector('#email').value;
+        changePassword(email);
+    };
+
     const viewLoginDiv = document.createElement('div');
     viewLoginDiv.setAttribute('id', 'viewLog');
     viewLoginDiv.innerHTML = viewLogin;
+
+    // Funcionalidad al boton de "Continuar con Google"
     viewLoginDiv.querySelector('#btnGoogle').addEventListener('click', signInWithGoogle);
-    const email = viewLoginDiv.querySelector('#email');
-    const password = viewLoginDiv.querySelector('#password');
-    viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', () => signInWithEmail(email.value, password.value));
+
+    // Funcionalidad al boton de "Iniciar sesion"
+    viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', functionLoginIn);
+
+    // Funcionalidad al enlace "Olvide mi contraseña"
+    viewLoginDiv.querySelector('.forgetPasswordLink').addEventListener('click', functionForgetPassword);
+
     return viewLoginDiv;
 };
