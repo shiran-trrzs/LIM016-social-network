@@ -1,9 +1,10 @@
+/* Variables de colores usados */
 :root {
 	--brown-transparent-background: rgba(113, 58, 42, 0.45);
 	--black-transparent-background: rgba(0, 0, 0, 0.65);
 	--letter-color: rgba(255, 255, 255, 1);
 	--letter-shadow-color: rgba(0, 0, 0, 0.25);
-	--error-message-color: rgb(240, 96, 48);
+	--error-message-color: rgba(255, 255, 255, 1);
 	--buttons-color: rgb(240, 96, 48);
 	--inputs-color: rgba(255, 248, 248, 0.21);
 }
@@ -13,9 +14,9 @@ body {
 	margin: 0px;
 }
 
+/* ---------------------------------- Vista login ---------------------------------- */
 /* Fondo de login */
-#viewLog,
-#viewForgetPassword {
+#viewLog {
 	background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1');
 	background-size: cover;
 	width: 100vw;
@@ -97,9 +98,9 @@ input:focus {
 	outline: none;
 }
 
-/* Mensaje de respuesta al dar click a enlace de "Olvide mi contraseña" */
-.errorMessage {
-	color: var(--error-message-color);
+/* Espacio superior a enlace "Olvide mi contraseña" */
+.forgetPasswordLink {
+	padding-top: 15px;
 }
 
 /* Division de botones */
@@ -149,7 +150,22 @@ span {
 	font-weight: bold;
 }
 
-/* Vista password - division mensaje de respuesta */
+/* ---------------------------------- Vista password ---------------------------------- */
+/* Fondo de Password */
+#viewForgetPassword {
+	background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1');
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+}
+
+/* Fondo transparente negro a seccion 1 y 2 */
+#viewForgetPassword #principalView1,
+#viewForgetPassword #principalView2 {
+	background: var(--black-transparent-background);
+}
+
+/* Division mensaje de respuesta */
 #replyMessage {
 	display: flex;
 	flex-direction: column;
@@ -161,15 +177,27 @@ span {
 #message {
 	color: var(--error-message-color);
 	font-size: 20px;
-	font-weight: bold;
 	padding-bottom: 25px;
+	text-align: center;
+	width: 80vw;
 }
 
-/* Media Query para pantallas a partir de 600px */
+/* Estilo a input de correo electronico */
+#emailChangePassword {
+	color: var(--letter-color);
+	font-size: 20px;
+}
+
+/* Estilo al placeholder del input de correo electronico */
+#emailChangePassword::placeholder {
+	font-size: 16px;
+}
+
+/* ---------------------------------- Media Query para pantallas a partir de 600px ---------------------------------- */
 @media (min-width: 600px) {
-	/* Fondo de login */
-	#viewLog,
-	#viewForgetPassword {
+	/* ---------------------------------- Vista login ---------------------------------- */
+	/* Tamaño de vista login */
+	#viewLog {
 		width: 100vw;
 		height: 100vh;
 		display: flex;
@@ -215,7 +243,7 @@ span {
 		height: 40px;
 	}
 
-	/* Tamaño de Slogan  */
+	/* Tamaño de Slogan */
 	.slogan {
 		font-size: 40px;
 	}
@@ -228,5 +256,46 @@ span {
 	/* Ancho de los botones */
 	.btn {
 		width: 25vw;
+	}
+
+	/* ---------------------------------- Vista password ---------------------------------- */
+	/* Tamaño de vista Password */
+	#viewForgetPassword {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* Seccion 1 */
+	#viewForgetPassword #principalView1 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+		background: var(--brown-transparent-background);
+	}
+
+	/* Estilo al nombre */
+	.nameSocialNetwork {
+		font-size: 5vw;
+		margin-top: 0px;
+	}
+
+	/* Tamaño al logo 1 */
+	.logo1 {
+		width: 130px;
+		height: 95px;
+	}
+
+	/* Seccion 2 */
+	#principalView2 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+	}
+
+	/* Tamaño al mensaje de respuesta */
+	#message {
+		width: 40vw;
 	}
 }

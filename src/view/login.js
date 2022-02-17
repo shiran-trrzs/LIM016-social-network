@@ -1,4 +1,4 @@
-import { signInWithGoogle, signInWithEmail, changePassword } from '../firebase/firebase-auth.js';
+import { signInWithGoogle, signInWithEmail } from '../firebase/firebase-auth.js';
 
 export default () => {
     const viewLogin = `
@@ -14,8 +14,8 @@ export default () => {
             </div>
             
             <div id="formSection">
-                <input type="email" class="loginBox" id="email" placeholder=" &#xf0e0; Correo electronico"/>
-                <input type="password" class="loginBox" id="password" placeholder=" &#xf084; Contraseña" />
+                <input type="email" class="loginBox" id="email" placeholder=" &#xf0e0;  Correo electronico"/>
+                <input type="password" class="loginBox" id="password" placeholder=" &#xf084;  Contraseña" />
                 <a class="text forgetPasswordLink" href="#/password"> Olvidé mi contraseña </a>
             </div>
 
@@ -36,12 +36,6 @@ export default () => {
         signInWithEmail(email, password);
     };
 
-    // Funcion olvide contraseña
-    const functionForgetPassword = () => {
-        const email = document.querySelector('#email').value;
-        changePassword(email);
-    };
-
     const viewLoginDiv = document.createElement('div');
     viewLoginDiv.setAttribute('id', 'viewLog');
     viewLoginDiv.innerHTML = viewLogin;
@@ -51,9 +45,6 @@ export default () => {
 
     // Funcionalidad al boton de "Iniciar sesion"
     viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', functionLoginIn);
-
-    // Funcionalidad al enlace "Olvide mi contraseña"
-    //viewLoginDiv.querySelector('.forgetPasswordLink').addEventListener('click', window.location.hash = '#/password');
 
     return viewLoginDiv;
 };

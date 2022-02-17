@@ -46,9 +46,4 @@ export const signInWithEmail = (email, password) => signInWithEmailAndPassword(a
     });
 
 // Modificar contraseña
-export const changePassword = (email) => sendPasswordResetEmail(auth, email)
-    .then(() => {
-        window.location.hash = '#/password';
-        console.log('Se envio correo');
-    })
-    .catch((error) => console.log(error.code));
+export const changePassword = (email) => sendPasswordResetEmail(auth, email);
