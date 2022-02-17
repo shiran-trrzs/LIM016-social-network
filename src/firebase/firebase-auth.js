@@ -22,7 +22,7 @@ export const emailMessage = () => sendEmailVerification(auth.currentUser);
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
         const user = res.user;
-        window.localStorage.setItem('user', JSON.stringify(user));
+        // window.localStorage.setItem('user', JSON.stringify(user));
         window.location.hash = '#/home';
     })
     .catch((rej) => {

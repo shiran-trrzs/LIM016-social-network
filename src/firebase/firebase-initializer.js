@@ -13,9 +13,17 @@ import {
     sendEmailVerification,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
-// import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
+// import {  } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
-// import { } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    addDoc,
+    collection,
+    where,
+    query,
+} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 // La configuración de Firebase de nuestra app web
 const firebaseConfig = {
@@ -34,7 +42,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Inicializar Firestore
-// const db = getFirestore(app);
+const db = getFirestore(app);
 
 /*
 // Inicializar firebase
@@ -53,4 +61,11 @@ export {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
+    db,
+    doc,
+    setDoc,
+    addDoc,
+    collection,
+    where,
+    query,
 };
