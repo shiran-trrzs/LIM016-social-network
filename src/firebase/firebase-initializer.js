@@ -49,10 +49,10 @@ const db = getFirestore(app);
 // Inicializar firebase
 const database = firebase.database();
 */
-
 // Establecer proveedor
 const providerGoogle = new GoogleAuthProvider();
 
+// autenticación
 export {
     getAuth,
     signInWithPopup,
