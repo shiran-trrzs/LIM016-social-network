@@ -1,11 +1,20 @@
+/* Variables de colores usados */
 :root {
-	--boton-color: rgb(240, 96, 48);
-	--color-transparent: rgba(181, 90, 39, 0, 16);
-	--background-gris: rgba(245, 245, 245, 1);
-	--background-white: rgba(255, 255, 255, 1);
-	--color-icono: rgba(0, 0, 0, 0, 25);
+	--brown-transparent-background: rgba(113, 58, 42, 0.45);
+	--black-transparent-background: rgba(0, 0, 0, 0.65);
+	--letter-color: rgba(255, 255, 255, 1);
+	--letter-shadow-color: rgba(0, 0, 0, 0.25);
+	--error-message-color: rgba(255, 255, 255, 1);
+	--buttons-color: rgb(240, 96, 48);
+	--inputs-color: rgba(255, 248, 248, 0.21);
 }
 
+/* Quitarle el margen que viene por defecto en el body */
+body {
+	margin: 0px;
+}
+
+/* ---------------------------------- Vista login ---------------------------------- */
 /* Fondo de login */
 #viewLog {
 	background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1');
@@ -18,7 +27,7 @@
 #principalView1 {
 	width: 100vw;
 	height: 40vh;
-	background: rgba(113, 58, 42, 0.45);
+	background: var(--brown-transparent-background);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -31,8 +40,8 @@
 	font-weight: 600;
 	font-size: 13vw;
 	text-align: center;
-	color: #ffffff;
-	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	color: var(--letter-color);
+	text-shadow: 0px 4px 4px --letter-shadow-color;
 	margin-top: 70px;
 }
 
@@ -46,7 +55,7 @@
 #principalView2 {
 	width: 100vw;
 	height: 60vh;
-	background: rgba(113, 58, 42, 0.45);
+	background: var(--brown-transparent-background);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -69,13 +78,10 @@
 input {
 	width: 65vw;
 	height: 5vh;
-
-	background: rgba(255, 248, 248, 0.21);
+	background: var(--inputs-color);
 	backdrop-filter: blur(4px);
-
 	border-radius: 30px;
 	border-style: none;
-
 	text-align: center;
 	margin: 5px;
 }
@@ -84,7 +90,7 @@ input {
 input::placeholder {
 	font-family: FontAwesome, 'Open Sans', Verdana, sans-serif;
 	font-weight: normal;
-	color: white;
+	color: var(--letter-color);
 }
 
 /* Quitarle borde al seleccionar una caja de texto */
@@ -92,12 +98,16 @@ input:focus {
 	outline: none;
 }
 
+/* Espacio superior a enlace "Olvide mi contraseña" */
+.forgetPasswordLink {
+	padding-top: 15px;
+}
+
 /* Division de botones */
 #buttons {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-
 	margin-top: 40px;
 }
 
@@ -105,17 +115,19 @@ input:focus {
 .btn {
 	width: 65vw;
 	min-height: 5vh;
-
-	background: var(--boton-color);
+	background: var(--buttons-color);
 	border-radius: 30px;
 	border-style: none;
-
 	text-align: center;
-
-	color: white;
+	color: var(--letter-color);
 	margin: 5px;
 	text-align: center;
 	font-size: 20px;
+}
+
+/* Cambiar de puntero al posicionarse en los botones  */
+.btn:hover {
+	cursor: pointer;
 }
 
 /* Alineacion a la imagen de Google */
@@ -130,7 +142,7 @@ span {
 
 /* Estilo a todos los textos */
 .text {
-	color: white;
+	color: var(--letter-color);
 }
 
 /* Negrita */
@@ -138,9 +150,53 @@ span {
 	font-weight: bold;
 }
 
-/* Media Query */
+/* ---------------------------------- Vista password ---------------------------------- */
+/* Fondo de Password */
+#viewForgetPassword {
+	background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1');
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+}
+
+/* Fondo transparente negro a seccion 1 y 2 */
+#viewForgetPassword #principalView1,
+#viewForgetPassword #principalView2 {
+	background: var(--black-transparent-background);
+}
+
+/* Division mensaje de respuesta */
+#replyMessage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 30px;
+}
+
+/* Color al mensaje de respuesta */
+#message {
+	color: var(--error-message-color);
+	font-size: 20px;
+	padding-bottom: 25px;
+	text-align: center;
+	width: 80vw;
+}
+
+/* Estilo a input de correo electronico */
+#emailChangePassword {
+	color: var(--letter-color);
+	font-size: 20px;
+}
+
+/* Estilo al placeholder del input de correo electronico */
+#emailChangePassword::placeholder {
+	font-size: 16px;
+}
+
+/* ---------------------------------- Media Query para pantallas a partir de 600px ---------------------------------- */
 @media (min-width: 600px) {
-	/* Fondo de login */
+	/* ---------------------------------- Vista login ---------------------------------- */
+	/* Tamaño de vista login */
 	#viewLog {
 		width: 100vw;
 		height: 100vh;
@@ -171,7 +227,7 @@ span {
 	#principalView2 {
 		width: 50vw;
 		height: 100vh;
-		background: rgba(0, 0, 0, 0.65);
+		background: var(--black-transparent-background);
 		justify-content: center;
 	}
 
@@ -187,7 +243,7 @@ span {
 		height: 40px;
 	}
 
-	/* Tamaño de Slogan  */
+	/* Tamaño de Slogan */
 	.slogan {
 		font-size: 40px;
 	}
@@ -200,6 +256,46 @@ span {
 	/* Ancho de los botones */
 	.btn {
 		width: 25vw;
-		font-size: 20px;
+	}
+
+	/* ---------------------------------- Vista password ---------------------------------- */
+	/* Tamaño de vista Password */
+	#viewForgetPassword {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* Seccion 1 */
+	#viewForgetPassword #principalView1 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+		background: var(--brown-transparent-background);
+	}
+
+	/* Estilo al nombre */
+	.nameSocialNetwork {
+		font-size: 5vw;
+		margin-top: 0px;
+	}
+
+	/* Tamaño al logo 1 */
+	.logo1 {
+		width: 130px;
+		height: 95px;
+	}
+
+	/* Seccion 2 */
+	#principalView2 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+	}
+
+	/* Tamaño al mensaje de respuesta */
+	#message {
+		width: 40vw;
 	}
 }
