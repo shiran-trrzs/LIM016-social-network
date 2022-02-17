@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
@@ -66,6 +67,8 @@ export default () => {
                         alert('Verifica tu bandeja de entrada para verificar tu cuenta');
                         window.location.hash = '#/';
                         // Email verification sent!
+
+                        addUserInfo(user.uid, signUpUser.value, email.value);
                     });
             })
             .catch((error) => {
