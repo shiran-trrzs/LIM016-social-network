@@ -29,44 +29,31 @@ export default () => {
     viewRegistrationDiv.innerHTML = viewRegistration;
     const signupForm = viewRegistrationDiv.querySelector('#formRegistration');
 
+    // capturando los campos de entrada
     const signUpUser = viewRegistrationDiv.querySelector('#signUp-user');
-    const signUpUserErrorMessage = viewRegistrationDiv.querySelector('#signUpUserErrorMessage');
-    const userRegex = /^[a-zA-Z0-9\_\-]{2,10}$/;
+    const email = viewRegistrationDiv.querySelector('#signUp-email');
+    const password = viewRegistrationDiv.querySelector('#signUp-password');
 
-    // Mensajes de validación de campos
+    // capturando mensajes de error
+    const signUpUserErrorMessage = viewRegistrationDiv.querySelector('#signUpUserErrorMessage');
+    const emailErrorMessage = viewRegistrationDiv.querySelector('#emailErrorMessage');
+    const passwordErrorMessage = viewRegistrationDiv.querySelector('#passwordErrorMessage');
+    const userRegex = /^[a-zA-Z0-9\_\-]{2,10}$/;
+    const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;    
+
+    // Mensajes de validación de campo de nombre de usuario
     function parametersUserInput() {
         if (userRegex.test(signUpUser.value)) {
-            signUpUserErrorMessage.innerHTML = 'Usuario válido';
+            signUpUserErrorMessage.innerHTML = '';
         } else {
             signUpUserErrorMessage.innerHTML = 'El usuario debe tener de 2 a 10 dígitos y solo puede contener números, letras y guion bajo';
         }
     }
     signUpUser.addEventListener('input', parametersUserInput);
-    /*
-        function parametersEmailInput() {
-            if (emailRegex.test(email)) {
-                signUpUserErrorMessage.innerHTML = 'Correo válido';
-            } else {
-                signUpUserErrorMessage.innerHTML = 'Ingrese un correo válido';
-            }
-        }
-    
-        signUpUser.addEventListener('input', parametersUserInput);
-    */
+
     signupForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // previene que se envíe y borre automaticamente
-
-        // capturando los campos de entrada
-        const email = viewRegistrationDiv.querySelector('#signUp-email').value;
-        const password = viewRegistrationDiv.querySelector('#signUp-password').value;
-
-        // capturando mensajes de error
-        const emailErrorMessage = viewRegistrationDiv.querySelector('#emailErrorMessage');
-        const passwordErrorMessage = viewRegistrationDiv.querySelector('#passwordErrorMessage');
-
-        const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-
-        signUp(email, password)
+        e.preventDefault(); // previene que se envíe y borre automaticamente 
+        signUp(email.value, password.value)
             .then((userCredential) => {
                 viewRegistrationDiv.querySelector('#signUp-user').value = '';
 
@@ -79,19 +66,19 @@ export default () => {
                         alert('Verifica tu bandeja de entrada para verificar tu cuenta');
                         window.location.hash = '#/';
                         // Email verification sent!
-                        signupForm.reset();// limpiar automáticamente campos del formulario
                     });
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
 
-                if (!emailRegex.test(email)) {
+                if (!emailRegex.test(email.value)) {
                     emailErrorMessage.innerHTML = 'Ingrese un correo válido';
                 }
                 passwordErrorMessage.innerHTML = 'La contraseña debe contener al menos 6 dígitos';
                 // alert(errorMessage);
             });
+        signupForm.reset();// limpiar automáticamente campos del formulario  
     });
     return viewRegistrationDiv;
 };

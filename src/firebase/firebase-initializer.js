@@ -11,7 +11,7 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
-    onAuthStateChanged,
+    sendPasswordResetEmail,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
 // import {  } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
@@ -47,7 +47,7 @@ const db = getFirestore(app);
 
 /*
 // Inicializar firebase
-const db = getFirestore(app);
+const database = firebase.database();
 */
 // Establecer proveedor
 const providerGoogle = new GoogleAuthProvider();
@@ -62,5 +62,12 @@ export {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
-    onAuthStateChanged,
+    db,
+    doc,
+    setDoc,
+    addDoc,
+    collection,
+    where,
+    query,
+    sendPasswordResetEmail,
 };

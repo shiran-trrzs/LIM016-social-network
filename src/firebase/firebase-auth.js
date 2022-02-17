@@ -10,7 +10,7 @@ import {
     providerGoogle,
     createUserWithEmailAndPassword,
     sendEmailVerification,
-    onAuthStateChanged,
+    sendPasswordResetEmail,
 } from './firebase-initializer.js';
 
 // Registrar usuario con correo y contraseña
@@ -42,26 +42,5 @@ export const signInWithEmail = (email, password) => signInWithEmailAndPassword(a
         // console.log(user);
     });
 
-// cerrar sesión
-export const authSignOut = (auth) => signOut(auth);
-
-// observador
-onAuthStateChanged(auth, (user) => {
-    if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const email = user.email;
-        const emailVerified = user.emailVerified;
-        const uid = user.uid;
-        let textoVerificado = '';
-        if (emailVerified === false) {
-            textoVerificado = 'Email no verificado';
-        } else {
-            textoVerificado = 'email verificado';
-        }
-        // ...
-    } else {
-        // User is signed out
-        // ...
-    }
-});
+// Modificar contraseña
+export const changePassword = (email) => sendPasswordResetEmail(auth, email);
