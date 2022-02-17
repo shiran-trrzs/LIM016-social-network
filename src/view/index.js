@@ -6,6 +6,7 @@ import Nav from './nav.js';
 import Profile from './profile.js';
 import Home from './home.js';
 import Registration from './registration.js';
+import Password from './password.js';
 
 const components = {
     login: Login,
@@ -13,7 +14,7 @@ const components = {
     profile: Profile,
     home: Home,
     registration: Registration,
-
+    password: Password,
 };
 
 export { components };

@@ -11,13 +11,20 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
-    signOut,
     onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
-// import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
+// import {  } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
-// import { } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    addDoc,
+    collection,
+    where,
+    query,
+} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 // La configuración de Firebase de nuestra app web
 const firebaseConfig = {
@@ -34,6 +41,10 @@ const app = initializeApp(firebaseConfig);
 
 // Inicializar Autenticación
 const auth = getAuth(app);
+
+// Inicializar Firestore
+const db = getFirestore(app);
+
 /*
 // Inicializar firebase
 const db = getFirestore(app);
@@ -51,6 +62,5 @@ export {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
-    signOut,
     onAuthStateChanged,
 };

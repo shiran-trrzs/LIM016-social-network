@@ -14,9 +14,9 @@ export default () => {
             </div>
             
             <div id="formSection">
-                <input type="email" class="loginBox" id="email" placeholder=" &#xf0e0; Correo electronico"/>
-                <input type="password" class="loginBox" id="password" placeholder=" &#xf084; Contraseña" />
-                <a class="text" href=""> Olvidé mi contraseña </a>
+                <input type="email" class="loginBox" id="email" placeholder=" &#xf0e0;  Correo electronico"/>
+                <input type="password" class="loginBox" id="password" placeholder=" &#xf084;  Contraseña" />
+                <a class="text forgetPasswordLink" href="#/password"> Olvidé mi contraseña </a>
             </div>
 
             <div id="buttons">
@@ -29,12 +29,22 @@ export default () => {
             </div>
         </section>`;
 
+    // Funcion iniciar sesion
+    const functionLoginIn = () => {
+        const email = document.querySelector('#email').value;
+        const password = document.querySelector('#password').value;
+        signInWithEmail(email, password);
+    };
+
     const viewLoginDiv = document.createElement('div');
     viewLoginDiv.setAttribute('id', 'viewLog');
     viewLoginDiv.innerHTML = viewLogin;
+
+    // Funcionalidad al boton de "Continuar con Google"
     viewLoginDiv.querySelector('#btnGoogle').addEventListener('click', signInWithGoogle);
-    const email = viewLoginDiv.querySelector('#email');
-    const password = viewLoginDiv.querySelector('#password');
-    viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', () => signInWithEmail(email.value, password.value));
+
+    // Funcionalidad al boton de "Iniciar sesion"
+    viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', functionLoginIn);
+
     return viewLoginDiv;
 };

@@ -1,4 +1,9 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
 import { emailMessage, signUp } from '../firebase/firebase-auth.js';
+import { addUserInfo } from '../firebase/firebase-data.js';
 
 export default () => {
     const viewRegistration = `
@@ -67,7 +72,7 @@ export default () => {
 
                 // Signed in
                 const user = userCredential.user;
-                console.log('sign up');
+                console.log(user);
 
                 emailMessage()
                     .then(() => {

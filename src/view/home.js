@@ -1,4 +1,9 @@
+/* eslint-disable no-console */
+import { auth } from '../firebase/firebase-initializer.js';
+
 export default () => {
+    const user = auth.currentUser; // Contiene toda la info del usuario
+    console.log(user);
     const viewHome = `
     <section>
         <p> Agregar contacto </p>
@@ -10,7 +15,8 @@ export default () => {
         <img src="../img/airplane_home.png"> <p> VIAJA PE </p>
     </section>
     <section>
-        <h2> Dev viajera </h2>
+        <h2> ${user.displayName} </h2>
+        <img src= "${user.photoURL}">
         <p> Me gusta viajar </p>
         <form class="postTextBox">
             <textarea class="inputPublish" placeholder="¿Qué estás pensando?"> </textarea>
