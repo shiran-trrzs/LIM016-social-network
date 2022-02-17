@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
 import { emailMessage, signUp } from '../firebase/firebase-auth.js';
 
 export default () => {
