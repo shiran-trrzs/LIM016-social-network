@@ -16,7 +16,7 @@ export default () => {
             <div id="formSection">
                 <input type="email" class="loginBox" id="email" placeholder=" &#xf0e0; Correo electronico"/>
                 <input type="password" class="loginBox" id="password" placeholder=" &#xf084; Contraseña" />
-                <a class="text forgetPasswordLink"> Olvidé mi contraseña </a>
+                <a class="text forgetPasswordLink" href="#/password"> Olvidé mi contraseña </a>
             </div>
 
             <div id="buttons">
@@ -53,7 +53,7 @@ export default () => {
     viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', functionLoginIn);
 
     // Funcionalidad al enlace "Olvide mi contraseña"
-    viewLoginDiv.querySelector('.forgetPasswordLink').addEventListener('click', functionForgetPassword);
+    //viewLoginDiv.querySelector('.forgetPasswordLink').addEventListener('click', window.location.hash = '#/password');
 
     return viewLoginDiv;
 };
