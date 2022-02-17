@@ -28,6 +28,7 @@ export default () => {
 
     const viewRegistrationDiv = document.createElement('div');
     viewRegistrationDiv.innerHTML = viewRegistration;
+    viewRegistrationDiv.setAttribute('id', 'viewRegistration');
     const signupForm = viewRegistrationDiv.querySelector('#formRegistration');
 
     // capturando los campos de entrada
