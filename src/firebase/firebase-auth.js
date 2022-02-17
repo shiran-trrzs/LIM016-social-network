@@ -21,12 +21,9 @@ export const emailMessage = () => sendEmailVerification(auth.currentUser);
 // Iniciar sesion con Google
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
-        window.location.hash = '#/home';
         const user = res.user;
-        const userName = user.displayName;
-        const userPhoto = user.photoURL;
-        const userId = user.uid;
-        console.log(user);
+        window.localStorage.setItem('user', JSON.stringify(user));
+        window.location.hash = '#/home';
     })
     .catch((rej) => {
         const errorCode = rej.code;
@@ -38,8 +35,8 @@ export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
 // Iniciar sesion con correo y contraseña
 export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-        const user = userCredential.user;
+        // const user = userCredential.user;
         window.location.hash = '#/home';
         console.log('iniciaste sesión con email');
-        console.log(user);
+        // console.log(user);
     });
