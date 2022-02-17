@@ -11,13 +11,9 @@ import {
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
+    signOut,
+    onAuthStateChanged,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
-
-import {
-    getFirestore,
-    doc,
-    setDoc,
-} from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 // import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
 
@@ -38,11 +34,10 @@ const app = initializeApp(firebaseConfig);
 
 // Inicializar Autenticación
 const auth = getAuth(app);
-const authUid = firebase.auth;
-
+/*
 // Inicializar firebase
 const db = getFirestore(app);
-
+*/
 // Establecer proveedor
 const providerGoogle = new GoogleAuthProvider();
 
@@ -52,16 +47,10 @@ export {
     signInWithPopup,
     app,
     auth,
-    authUid,
     providerGoogle,
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
     sendEmailVerification,
-};
-
-// firestore
-export {
-    database,
-    doc,
-    setDoc,
+    signOut,
+    onAuthStateChanged,
 };
