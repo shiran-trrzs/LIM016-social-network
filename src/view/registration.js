@@ -10,34 +10,55 @@ import { addUserInfo } from '../firebase/firebase-data.js';
 export default () => {
     const viewRegistration = `
     <section id="principalView1">
-        <h1 class="nameSocialNetwork">VIAJA PE</h1>
-        <img class="logo1" src="img/airplane.png"/>
-    </section>
+    <h1 class="nameSocialNetwork">VIAJA PE</h1>
+    <img class="logo1" src="img/airplane.png" />
+</section>
 
-    <section id="principalView2">
-        <div class="hidden">
-            <img class="logo2" src="img/airplane.png"/>
-            <h2 class="text slogan">Lo que está pasando ahora ...</h2>
+<section id="principalView2">
+    <div class="hidden">
+        <img class="logo2" src="img/airplane.png" />
+        <h2 class="text slogan">Lo que está pasando ahora ...</h2>
+    </div>
+
+    <form id="formRegistration">
+        <input type="text" class="registerInput" id="signUp-user" placeholder="&#xf007;  Nombre de usuario" required>
+        </input>
+        <span id="signUpUserErrorMessage"></span>
+        <input type="email" class="registerInput" id="signUp-email" placeholder="&#xf0e0;  Correo electrónico"
+            required></input>
+        <span id="emailErrorMessage"></span>
+        <input type="password" class="registerInput" id="signUp-password" placeholder="&#xf084;  Contraseña"
+            required></input>
+        <span id="passwordErrorMessage"></span>
+
+        <div id="termsConditions">
+            <input type="checkbox" class="checkTerms" id="checkTerms" required </input>
+            <label class="textModal">Acepto los <a href="#modal" class="cta"> términos y condicione </a> de las Polìticas de
+                Privacidad.</label>
         </div>
 
-        <form id = "formRegistration">
-            <input type="text" class="registerInput" id="signUp-user" placeholder="&#xf007;  Nombre de usuario" required> </input>
-            <span id="signUpUserErrorMessage"></span>
-            <input type="email" class="registerInput" id="signUp-email" placeholder="&#xf0e0;  Correo electrónico" required></input>
-            <span id="emailErrorMessage"></span>
-            <input type="password" class="registerInput" id="signUp-password" placeholder="&#xf084;  Contraseña" required></input>
-            <span id="passwordErrorMessage"></span>
-            
-            <div id="termsConditions">
-                <input type="checkbox" class="checkTerms" id="checkTerms" required </input>
-                <label class="text">Acepto los <a href="#/terms">términos y condiciones </a> de las Polìticas de Privacidad.</label>
-            </div>
+        <button type="submit" class="btn" id="btnRegister"> Registrarse </button>
+        <p class="text"> ¿Ya tienes una cuenta? </p>
+        <a class="text bold" href="#/login"> Iniciar sesión </a>
+    </form>
+</section>
 
-            <button type="submit" class="btn" id="btnRegister"> Registrarse </button>
-            <p class="text"> ¿Ya tienes una cuenta? </p>
-            <a class="text bold" href="#/login"> Iniciar sesión </a> 
-        </form>
-    </section>`;
+<section id="modal" class="modal">
+    <div class="modal_container">
+        <header>Términos y Condiciones VIAJA PE</header>
+        <a href="#principalView2" class="modal_close">X</a>
+        <div class="contenido">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Non ex optio ipsum nesciunt aperiam quod
+                quisquam illum cupiditate libero, qui illo nihil? Labore molestias minus beatae, necessitatibus
+                incidunt voluptatem. Iusto, esse blanditiis! Perspiciatis explicabo possimus ipsum, ratione
+                doloribus necessitatibus corporis nemo esse! Earum at labore minima? Asperiores laboriosam harum
+                similique dolorum alias quibusdam nobis itaque voluptatem rem labore nulla reprehenderit temporibus
+                cumque, voluptatum eveniet quasi provident tempore, neque ullam ipsum. Nostrum laboriosam iste
+                repellat qui cum molestiae iusto assumenda accusamus.</p>
+        </div>
+
+    </div>
+</section>`;
 
     const viewRegistrationDiv = document.createElement('div');
     viewRegistrationDiv.innerHTML = viewRegistration;
@@ -72,8 +93,6 @@ export default () => {
 
         signUp(email.value, password.value)
             .then((userCredential) => {
-                viewRegistrationDiv.querySelector('#signUp-user').value = '';
-
                 // Signed in
                 const user = userCredential.user;
                 console.log(user);
@@ -95,7 +114,6 @@ export default () => {
                     emailErrorMessage.innerHTML = 'Ingrese un correo válido';
                 }
                 passwordErrorMessage.innerHTML = 'La contraseña debe contener al menos 6 dígitos';
-                // alert(errorMessage);
             });
         // signupForm.reset();// limpiar automáticamente campos del formulario  
     });
