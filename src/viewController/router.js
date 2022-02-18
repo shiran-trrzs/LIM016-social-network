@@ -16,6 +16,7 @@ export const changeView = (route) => {
         case '#/profile': { return main.appendChild(components.profile()); }
         case '#/registration': { return main.appendChild(components.registration()); }
         case '#/password': { return main.appendChild(components.password()); }
+        case '#/terms': { return main.appendChild(components.terms()); }
         default: break;
     }
     console.log(route);

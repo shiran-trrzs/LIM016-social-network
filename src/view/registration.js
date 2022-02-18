@@ -29,7 +29,7 @@ export default () => {
             
             <div id="termsConditions">
                 <input type="checkbox" class="checkTerms" id="checkTerms" required </input>
-                <label class="text">Acepto los términos y condiciones de las Polìticas de Privacidad.</label>
+                <label class="text">Acepto los <a href="#/terms">términos y condiciones </a> de las Polìticas de Privacidad.</label>
             </div>
 
             <button type="submit" class="btn" id="btnRegister"> Registrarse </button>
