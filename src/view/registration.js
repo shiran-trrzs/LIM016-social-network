@@ -72,8 +72,6 @@ export default () => {
 
         signUp(email.value, password.value)
             .then((userCredential) => {
-                viewRegistrationDiv.querySelector('#signUp-user').value = '';
-
                 // Signed in
                 const user = userCredential.user;
                 console.log(user);
