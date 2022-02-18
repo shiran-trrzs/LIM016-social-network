@@ -50,6 +50,10 @@ export const signInWithEmail = (email, password) => signInWithEmailAndPassword(a
             alert('Aún no se encuentra validada tu cuenta, te hemos reenviado el correo :)');
             window.location.hash = '#/login';
         }
+    })
+    .catch((err) => {
+        console.log(err);
+        alert('Correo o contraseña inválidos')
     });
 
 // Modificar contraseña

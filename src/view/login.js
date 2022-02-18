@@ -16,6 +16,7 @@ export default () => {
             <div id="formSection">
                 <input type="email" class="loginBox" id="email" placeholder=" &#xf0e0;  Correo electronico"/>
                 <input type="password" class="loginBox" id="password" placeholder=" &#xf084;  Contraseña" />
+                <span id="signInErrorMessage">blaaaaaaaa</span>
                 <a class="text forgetPasswordLink" href="#/password"> Olvidé mi contraseña </a>
             </div>
 
