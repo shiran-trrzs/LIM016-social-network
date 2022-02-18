@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-useless-escape */
 /* eslint-disable no-trailing-spaces */
 /* eslint-disable no-console */
@@ -67,6 +68,8 @@ export default () => {
 
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault(); // previene que se envíe y borre automaticamente 
+        const signUpUserValue = viewRegistrationDiv.querySelector('#signUp-user').value;
+
         signUp(email.value, password.value)
             .then((userCredential) => {
                 viewRegistrationDiv.querySelector('#signUp-user').value = '';
@@ -81,7 +84,7 @@ export default () => {
                         window.location.hash = '#/';
                         // Email verification sent!
 
-                        addUserInfo(user.uid, signUpUser.value, email.value);
+                        addUserInfo(user.uid, signUpUserValue, email.value); // Añade data a la colección de users al registrarse
                     });
             })
             .catch((error) => {
