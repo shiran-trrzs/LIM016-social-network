@@ -13,6 +13,10 @@ import {
     sendPasswordResetEmail,
 } from './firebase-initializer.js';
 
+// import {
+//     addUserInfoGoogle,
+// } from './firebase-data.js';
+
 // Registrar usuario con correo y contraseña
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
@@ -24,6 +28,7 @@ export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     .then((res) => {
         const user = res.user;
         // window.localStorage.setItem('user', JSON.stringify(user));
+        // addUserInfoGoogle(user);
         window.location.hash = '#/home';
     })
     .catch((rej) => {
@@ -36,10 +41,15 @@ export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
 // Iniciar sesion con correo y contraseña
 export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-        // const user = userCredential.user;
-        window.location.hash = '#/home';
-        console.log('iniciaste sesión con email');
-        // console.log(user);
+        const user = userCredential.user;
+        if (user.emailVerified === true) {
+            window.location.hash = '#/home';
+            console.log('iniciaste sesión con email');
+        } else {
+            emailMessage().then((res) => res);
+            alert('Aún no se encuentra validada tu cuenta, te hemos reenviado el correo :)');
+            window.location.hash = '#/login';
+        }
     });
 
 // Modificar contraseña
