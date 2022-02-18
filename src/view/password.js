@@ -1,4 +1,6 @@
+/* eslint-disable no-return-assign */
 import { changePassword } from '../firebase/firebase-auth.js';
+
 export default () => {
     const viewForgetPassword = `
       <section id="principalView1">
