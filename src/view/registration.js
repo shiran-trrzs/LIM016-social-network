@@ -22,11 +22,11 @@ export default () => {
 
         <form id = "formRegistration">
             <input type="text" class="registerInput" id="signUp-user" placeholder="&#xf007;  Nombre de usuario" required> </input>
-            <span id="signUpUserErrorMessage"></span>
+            <span class="message" id="signUpUserErrorMessage"></span>
             <input type="email" class="registerInput" id="signUp-email" placeholder="&#xf0e0;  Correo electrónico" required></input>
-            <span id="emailErrorMessage"></span>
+            <span class="message" id="emailErrorMessage"></span>
             <input type="password" class="registerInput" id="signUp-password" placeholder="&#xf084;  Contraseña" required></input>
-            <span id="passwordErrorMessage"></span>
+            <span class="message" id="passwordErrorMessage"></span>
             
             <div id="termsConditions">
                 <input type="checkbox" class="checkTerms" id="checkTerms" required </input>
@@ -44,19 +44,22 @@ export default () => {
     viewRegistrationDiv.setAttribute('id', 'viewRegistration');
     const signupForm = viewRegistrationDiv.querySelector('#formRegistration');
 
-    // capturando los campos de entrada
+    // Capturando los campos de entrada
     const signUpUser = viewRegistrationDiv.querySelector('#signUp-user');
     const email = viewRegistrationDiv.querySelector('#signUp-email');
     const password = viewRegistrationDiv.querySelector('#signUp-password');
 
-    // capturando mensajes de error
+    // Capturando mensajes de error
     const signUpUserErrorMessage = viewRegistrationDiv.querySelector('#signUpUserErrorMessage');
     const emailErrorMessage = viewRegistrationDiv.querySelector('#emailErrorMessage');
     const passwordErrorMessage = viewRegistrationDiv.querySelector('#passwordErrorMessage');
-    const userRegex = /^[a-zA-Z0-9\_\-]{2,10}$/;
-    const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;    
 
-    // Mensajes de validación de campo de nombre de usuario
+    // Regex para los campos de formulario
+    const userRegex = /^[a-zA-Z0-9\_\-]{2,10}$/;
+    const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,10}$/;
+
+    // Funcion de validación de campo de nombre de usuario
     function parametersUserInput() {
         if (userRegex.test(signUpUser.value)) {
             signUpUserErrorMessage.innerHTML = '';
@@ -64,8 +67,35 @@ export default () => {
             signUpUserErrorMessage.innerHTML = 'El usuario debe tener de 2 a 10 dígitos y solo puede contener números, letras y guion bajo';
         }
     }
+
+    // Funcion de validación de campo de email
+    function parametersEmailInput() {
+        if (emailRegex.test(email.value)) {
+            emailErrorMessage.innerHTML = '';
+        } else {
+            emailErrorMessage.innerHTML = 'Ingrese un correo válido';
+        }
+    }
+
+    // Funcion de validación de campo de password
+    function parametersPasswordInput() {
+        if (passwordRegex.test(password.value)) {
+            passwordErrorMessage.innerHTML = '';
+        } else {
+            passwordErrorMessage.innerHTML = 'Min. 6 caracteres y max. 10, debe contener al menos una letra mayuscula, una minuscula, un numero y un caracter especial';
+        }
+    }
+
+    // Mensajes de validación de campo de nombre de usuario
     signUpUser.addEventListener('input', parametersUserInput);
 
+    // Mensajes de validación de campo de email
+    email.addEventListener('input', parametersEmailInput);
+
+    // Mensajes de validación de campo de password
+    password.addEventListener('input', parametersPasswordInput);
+
+    // Funcionalidad al boton "Registrarse"
     signupForm.addEventListener('submit', (e) => {
         e.preventDefault(); // previene que se envíe y borre automaticamente 
         const signUpUserValue = viewRegistrationDiv.querySelector('#signUp-user').value;
@@ -88,12 +118,7 @@ export default () => {
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-
-                if (!emailRegex.test(email.value)) {
-                    emailErrorMessage.innerHTML = 'Ingrese un correo válido';
-                }
-                passwordErrorMessage.innerHTML = 'La contraseña debe contener al menos 6 dígitos';
-                // alert(errorMessage);
+                console.log(errorMessage);
             });
         // signupForm.reset();// limpiar automáticamente campos del formulario  
     });
