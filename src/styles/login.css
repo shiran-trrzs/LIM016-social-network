@@ -246,6 +246,7 @@ span {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
+	color: var(--letter-color);
 }
 
 /* Tamaño de checkbox de terminos y condiciones */
@@ -256,6 +257,66 @@ span {
 /* Margen superior al boton registrar */
 #btnRegister {
 	margin-top: 40px;
+}
+
+/*-------------------------------términos y condiciones-------------------------*/
+/* Ocultar términos y condiciones + fondo negro transparente */
+.termsAndConditions-hidden {
+	visibility: hidden;
+	position: fixed;
+}
+
+/* Mostrar términos y condiciones + fondo negro transparente */
+.termsAndConditions-show  {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: var(--black-transparent-background);
+}
+
+/* Modal términos y condiciones */
+.termsAndConditions-modal {
+	width: 90%;
+	height: 500px;
+}
+
+/* Modal Términos y condiciones - Encabezado*/
+.termsAndConditions-modal header {
+	padding: 3px;
+	background: rgb(240, 96, 48);
+	font-size: 18px;
+	text-align: center;
+	color: var(--letter-color);
+}
+
+/* Texto Términos y condiciones*/
+.text-content {
+	overflow: scroll;
+	padding: 1em 2em;
+	font-size: 13px;
+	background-color: white;
+	text-align:justify;
+	color: black;
+	height: inherit;
+}
+
+/* Botón Cerrar Modal Términos y  condiciones*/
+.btn-close {
+	display: inline-flex;
+	color: white;
+	font-size: 20px;
+	position: absolute;
+    top: 2.rem;
+    right: 1.6rem;
+}
+
+.acceptTerms {
+	cursor: pointer;
 }
 
 /* ---------------------------------- Media Query para pantallas a partir de 600px ---------------------------------- */
@@ -411,4 +472,46 @@ span {
 		flex-direction: row;
 		align-items: center;
 	}
+
+	.acceptTerms {
+		cursor: pointer;
+	}
+
+/*-------------------------------términos y condiciones-------------------------*/
+/* Modal Términos y condiciones - Encabezado*/
+.termsAndConditions-modal header {
+	padding: 10px;
+	background: rgb(240, 96, 48);
+	font-size: 23px;
+	text-align: center;
+	color: var(--letter-color);
 }
+
+/* Modal Términos y condiciones*/
+.termsAndConditions-modal {
+	max-width: 1200px;
+	height: 550px;
+	background-color: white;
+	color: black;
+	text-align:justify;
+}
+
+/* Texto Términos y condiciones*/
+.text-content {
+	text-align:justify;
+	overflow: scroll;
+	padding: 1em 2em;
+	font-size: 15px;
+	height: inherit;
+}
+
+/* Botón Cerrar Modal Términos y  condiciones*/
+.btn-close {
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+    top: 6.5rem;
+    right: 13.2rem;
+}
+}
+

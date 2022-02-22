@@ -11,6 +11,7 @@ import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
     sendPasswordResetEmail,
+    // signOut,
 } from './firebase-initializer.js';
 
 // Registrar usuario con correo y contraseña
@@ -23,13 +24,9 @@ export const emailMessage = () => sendEmailVerification(auth.currentUser);
 export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle);
 
 // Iniciar sesion con correo y contraseña
-export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        // const user = userCredential.user;
-        window.location.hash = '#/home';
-        console.log('iniciaste sesión con email');
-        // console.log(user);
-    });
+export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // Modificar contraseña
 export const changePassword = (email) => sendPasswordResetEmail(auth, email);
+
+
