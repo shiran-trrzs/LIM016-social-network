@@ -28,5 +28,3 @@ export const signInWithEmail = (email, password) => signInWithEmailAndPassword(a
 
 // Modificar contraseña
 export const changePassword = (email) => sendPasswordResetEmail(auth, email);
-
-

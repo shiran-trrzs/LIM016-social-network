@@ -1,6 +1,7 @@
-import { signInWithGoogle, signInWithEmail } from '../firebase/firebase-auth.js';
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+import { signInWithGoogle, signInWithEmail, emailMessage } from '../firebase/firebase-auth.js';
 import { addUserInfoGoogle, getUser } from '../firebase/firebase-data.js';
-
 
 export default () => {
     const viewLogin = `
