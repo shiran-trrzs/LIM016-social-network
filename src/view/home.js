@@ -26,7 +26,7 @@ export default () => {
                 <i class="fa-solid fa-paper-plane"></i> <p> Compartir </p>
             </div>
         </form>
-      </section>`;
+    </section>`;
 
     const viewHomeDiv = document.createElement('div');
     viewHomeDiv.innerHTML = viewHome;

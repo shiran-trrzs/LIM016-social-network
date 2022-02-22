@@ -204,26 +204,30 @@ export default () => {
         e.preventDefault(); // previene que se envíe y borre automaticamente 
         const signUpUserValue = viewRegistrationDiv.querySelector('#signUp-user').value;
 
-        signUp(email.value, password.value)
-            .then((userCredential) => {
-            // Signed in
-                const user = userCredential.user;
-                console.log(user);
+        if (userRegex.test(signUpUser.value) && emailRegex.test(email.value) && passwordRegex.test(password.value)) {
+            signUp(email.value, password.value)
+                .then((userCredential) => {
+                    // Signed in
+                    const user = userCredential.user;
+                    console.log(user);
 
-                emailMessage()
-                    .then(() => {
-                        alert('Verifica tu bandeja de entrada para verificar tu cuenta');
-                        window.location.hash = '#/';
-                        // Email verification sent!
+                    emailMessage()
+                        .then(() => {
+                            alert('Verifica tu bandeja de entrada para verificar tu cuenta');
+                            window.location.hash = '#/';
+                            // Email verification sent!
 
-                        addUserInfo(user.uid, signUpUserValue, email.value); // Añade data a la colección de users al registrarse
-                    });
-            })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage);
-            });
+                            addUserInfo(user.uid, signUpUserValue, email.value); // Añade data a la colección de users al registrarse
+                        });
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    console.log(errorMessage);
+                });
+        } else {
+            alert('Debes ingresar los campos correctamente');
+        }        
     // signupForm.reset();// limpiar automáticamente campos del formulario  
     });
 
