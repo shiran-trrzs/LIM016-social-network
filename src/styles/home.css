@@ -1,0 +1,48 @@
+:root {
+	--brown-transparent-background: rgba(113, 58, 42, 0.45);
+	--black-transparent-background: rgba(0, 0, 0, 0.65);
+	--letter-color: rgba(255, 255, 255, 1);
+	--letter-shadow-color: rgba(0, 0, 0, 0.25);
+	--error-message-color: rgba(255, 255, 255, 1);
+	--text-color: rgb(240, 96, 48);
+	--inputs-color: rgba(255, 248, 248, 0.21);
+}
+
+@media (max-width: 600px) {
+    body {
+        margin: 0px;
+        padding: 0%;
+    }
+
+    .home {
+        background-color: rgba(245, 245, 245, 1);
+        width: auto;
+        height: 100vh;
+    }
+
+    .contacts {
+        display: none;
+    }
+
+    .userInfo{
+        display: flex;
+        justify-content: space-between;
+        margin: 0px 25px 0px 25px;
+        padding: 30px;
+    }
+
+    .userName {
+        color: var(--text-color);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+    .photoUser {
+        border-radius: 50%;
+    }
+
+    .items {
+    display: flex;
+    align-content: space-between;
+    }
+
+}
