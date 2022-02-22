@@ -161,7 +161,7 @@ export default () => {
     // Regex para los campos de formulario
     const userRegex = /^[a-zA-Z0-9\_\-]{2,10}$/;
     const emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,10}$/;
+    const passwordRegex = /^(?!.*\s)(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).{6,14}$/;
 
     // Funcion de validación de campo de nombre de usuario
     function parametersUserInput() {
@@ -186,7 +186,7 @@ export default () => {
         if (passwordRegex.test(password.value)) {
             passwordErrorMessage.innerHTML = '';
         } else {
-            passwordErrorMessage.innerHTML = 'Min. 6 caracteres y max. 10, debe contener al menos una letra mayuscula, una minuscula, un numero y un caracter especial';
+            passwordErrorMessage.innerHTML = 'Min. 6 caracteres y max. 14, debe contener al menos una letra mayuscula, una minuscula, un numero y un caracter especial';
         }
     }
 
