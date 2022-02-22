@@ -12,7 +12,6 @@ import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
     sendPasswordResetEmail,
-    //signOut,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
 // import {  } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
@@ -25,6 +24,7 @@ import {
     collection,
     where,
     query,
+    getDoc,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 // La configuración de Firebase de nuestra app web
@@ -70,5 +70,5 @@ export {
     where,
     query,
     sendPasswordResetEmail,
-    // signOut,
+    getDoc,
 };

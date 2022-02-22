@@ -1,4 +1,6 @@
-import { signInWithGoogle, signInWithEmail, emailMessage } from '../firebase/firebase-auth.js';
+import { signInWithGoogle, signInWithEmail } from '../firebase/firebase-auth.js';
+import { addUserInfoGoogle, getUser } from '../firebase/firebase-data.js';
+
 
 export default () => {
     const viewLogin = `
@@ -57,7 +59,26 @@ export default () => {
     viewLoginDiv.innerHTML = viewLogin;
 
     // Funcionalidad al boton de "Continuar con Google"
-    viewLoginDiv.querySelector('#btnGoogle').addEventListener('click', signInWithGoogle);
+    viewLoginDiv.querySelector('#btnGoogle').addEventListener('click', () => signInWithGoogle()
+        .then((res) => {
+            const user = res.user; // Datos del usuario
+            getUser(user.uid)
+                .then((re) => {
+                    if (re.exists()) {
+                        console.log('usuario existe');
+                    } else {
+                        console.log('usuario nuevo');
+                        addUserInfoGoogle(user.uid, user); // Agregando datos de usuario a la db
+                    }
+                    window.location.hash = '#/home';
+                });
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            const email = error.email; // El email está siendo usado
+            console.log(errorMessage);
+        }));
+
     // Funcionalidad al boton de "Iniciar sesion"
     viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', functionLoginIn);
 
