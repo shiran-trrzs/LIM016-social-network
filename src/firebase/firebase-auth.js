@@ -11,6 +11,7 @@ import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
     sendPasswordResetEmail,
+    // signOut,
 } from './firebase-initializer.js';
 
 // import {
@@ -37,20 +38,17 @@ export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
         const email = rej.email; // El email está siendo usado
         console.log(rej);
     });
-
-// Iniciar sesion con correo y contraseña
-export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        const user = userCredential.user;
-        if (user.emailVerified === true) {
-            window.location.hash = '#/home';
-            console.log('iniciaste sesión con email');
-        } else {
-            emailMessage().then((res) => res);
-            alert('Aún no se encuentra validada tu cuenta, te hemos reenviado el correo :)');
-            window.location.hash = '#/login';
-        }
+/*
+// Cerrar sesión
+export const signOutUser = () => signOut(auth)
+    .then(() => {
+    // Sign-out successful.
+    }).catch((error) => {
+    // An error happened.
     });
+*/
+// Iniciar sesion con correo y contraseña
+export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // Modificar contraseña
 export const changePassword = (email) => sendPasswordResetEmail(auth, email);
