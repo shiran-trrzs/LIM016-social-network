@@ -1,14 +1,71 @@
 :root {
 	--brown-transparent-background: rgba(113, 58, 42, 0.45);
 	--black-transparent-background: rgba(0, 0, 0, 0.65);
-	--letter-color: rgba(255, 255, 255, 1);
+	--lettertxt-color: rgba(0, 0, 0, 0.61);
 	--letter-shadow-color: rgba(0, 0, 0, 0.25);
 	--error-message-color: rgba(255, 255, 255, 1);
 	--text-color: rgb(240, 96, 48);
-	--inputs-color: rgba(255, 248, 248, 0.21);
+	--nav-color: rgba(181, 90, 39, 0.16);
 }
 
-@media (max-width: 600px) {
+body {
+    margin: 0px;
+    padding: 0%;
+}
+
+.home {
+    background-color: rgba(245, 245, 245, 1);
+    width: auto;
+    height: 100vh;
+}
+
+.contacts {
+    display: none;
+}
+
+.userInfo{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px 30px 10px;
+    padding: 20px;
+}
+
+.userName {
+    color: var(--text-color);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.photoUser {
+    border-radius: 50%;
+}
+
+::placeholder {
+    color: var(--lettertxt-color);
+}
+.inputPublish {
+    display: flex;
+    width: 250px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 60px 40px 40px;
+    border-radius: 15px 15px 0px 0px;
+}
+
+
+.items {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px 30px 0px 30px;
+    height: 50px;
+    width: 352px;
+    background-color: var(--nav-color);
+    border-radius: 0px 0px 15px 15px;
+}
+
+
+/* @media (min-width: 600px) {
     body {
         margin: 0px;
         padding: 0%;
@@ -21,7 +78,7 @@
     }
 
     .contacts {
-        display: none;
+        display: inline;
     }
 
     .userInfo{
@@ -40,9 +97,9 @@
         border-radius: 50%;
     }
 
-    .items {
-    display: flex;
-    align-content: space-between;
+    .container {
+        display: flex;
+        align-content: space-around;
     }
 
-}
+} */
