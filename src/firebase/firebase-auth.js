@@ -14,10 +14,6 @@ import {
     // signOut,
 } from './firebase-initializer.js';
 
-// import {
-//     addUserInfoGoogle,
-// } from './firebase-data.js';
-
 // Registrar usuario con correo y contraseña
 export const signUp = (email, password) => createUserWithEmailAndPassword(auth, email, password);
 
