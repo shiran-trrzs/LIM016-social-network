@@ -7,7 +7,6 @@ import Profile from './profile.js';
 import Home from './home.js';
 import Registration from './registration.js';
 import Password from './password.js';
-import Terms from './terms.js';
 
 const components = {
     login: Login,
@@ -16,7 +15,6 @@ const components = {
     home: Home,
     registration: Registration,
     password: Password,
-    terms: Terms,
 };
 
 export { components };

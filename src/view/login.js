@@ -1,4 +1,4 @@
-import { signInWithGoogle, signInWithEmail } from '../firebase/firebase-auth.js';
+import { signInWithGoogle, signInWithEmail, emailMessage } from '../firebase/firebase-auth.js';
 
 export default () => {
     const viewLogin = `
@@ -16,7 +16,7 @@ export default () => {
             <div id="formSection">
                 <input type="email" class="loginBox" id="email" placeholder=" &#xf0e0;  Correo electronico"/>
                 <input type="password" class="loginBox" id="password" placeholder=" &#xf084;  Contraseña" />
-                <span id="signInErrorMessage">blaaaaaaaa</span>
+                <span id="signInErrorMessage" class="message"></span>
                 <a class="text forgetPasswordLink" href="#/password"> Olvidé mi contraseña </a>
             </div>
 
@@ -34,7 +34,22 @@ export default () => {
     const functionLoginIn = () => {
         const email = document.querySelector('#email').value;
         const password = document.querySelector('#password').value;
-        signInWithEmail(email, password);
+        signInWithEmail(email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                if (user.emailVerified === true) {
+                    window.location.hash = '#/home';
+                    console.log('iniciaste sesión con email');
+                } else {
+                    emailMessage().then((res) => res);
+                    document.querySelector('#signInErrorMessage').innerHTML = 'Aún no se encuentra validada tu cuenta, te hemos reenviado el correo :)';
+                    window.location.hash = '#/login';
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                document.querySelector('#signInErrorMessage').innerHTML = 'Correo o contraseña inválidos';
+            });
     };
 
     const viewLoginDiv = document.createElement('div');
@@ -43,7 +58,6 @@ export default () => {
 
     // Funcionalidad al boton de "Continuar con Google"
     viewLoginDiv.querySelector('#btnGoogle').addEventListener('click', signInWithGoogle);
-
     // Funcionalidad al boton de "Iniciar sesion"
     viewLoginDiv.querySelector('#btnLogIn').addEventListener('click', functionLoginIn);
 

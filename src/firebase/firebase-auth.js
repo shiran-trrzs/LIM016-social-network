@@ -39,22 +39,7 @@ export const signInWithGoogle = () => signInWithPopup(auth, providerGoogle)
     });
 
 // Iniciar sesion con correo y contraseña
-export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-        const user = userCredential.user;
-        if (user.emailVerified === true) {
-            window.location.hash = '#/home';
-            console.log('iniciaste sesión con email');
-        } else {
-            emailMessage().then((res) => res);
-            alert('Aún no se encuentra validada tu cuenta, te hemos reenviado el correo :)');
-            window.location.hash = '#/login';
-        }
-    })
-    .catch((err) => {
-        console.log(err);
-        alert('Correo o contraseña inválidos')
-    });
+export const signInWithEmail = (email, password) => signInWithEmailAndPassword(auth, email, password);
 
 // Modificar contraseña
 export const changePassword = (email) => sendPasswordResetEmail(auth, email);
