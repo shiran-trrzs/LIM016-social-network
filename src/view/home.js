@@ -5,7 +5,7 @@ export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
     console.log(user);
     const viewHome = `
-    <section>
+    <section class="contacts">
         <p> Agregar contacto </p>
         <img src="../img/dawson.png"> <p> Dawson Leery </p>
         <img src="../img/mimi.png"> <p> Mimi Ortega </p>
@@ -15,20 +15,22 @@ export default () => {
         <img src="../img/airplane_home.png"> <p> VIAJA PE </p>
     </section>
     <section>
-        <h2> ${user.displayName} </h2>
-        <img src= "${user.photoURL}">
-        <p> Me gusta viajar </p>
+        <div class="userInfo">
+            <h2 class="userName"> ${user.displayName} </h2>
+            <img class="photoUser" src= "${user.photoURL}">
+        </div>
         <form class="postTextBox">
             <textarea class="inputPublish" placeholder="¿Qué estás pensando?"> </textarea>
-            <div>
-                <i class="fa-solid fa-image-landscape"></i> <p> Imagen </p>
-                <i class="fa-solid fa-face-smile-beam"></i> <p> Emoji </p>
-                <i class="fa-solid fa-paper-plane"></i> <p> Compartir </p>
+            <div class="items">
+                <i class="fa-solid fa-image"></i> <span> Imagen </span>
+                <i class="fa-solid fa-face-smile-beam"></i> <span> Emoji </span>
+                <i class="fa-solid fa-paper-plane"></i> <span> Compartir </span>
             </div>
         </form>
     </section>`;
 
     const viewHomeDiv = document.createElement('div');
+    viewHomeDiv.setAttribute('class', 'home');
     viewHomeDiv.innerHTML = viewHome;
     return viewHomeDiv;
 };
