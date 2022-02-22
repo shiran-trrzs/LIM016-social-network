@@ -12,6 +12,7 @@ import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
     sendPasswordResetEmail,
+    signOut,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
 // import {  } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
@@ -71,4 +72,5 @@ export {
     query,
     sendPasswordResetEmail,
     getDoc,
+    signOut,
 };

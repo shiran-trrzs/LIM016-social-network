@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
+import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
@@ -18,6 +19,7 @@ export default () => {
         <div class="userInfo">
             <h2 class="userName"> ${user.displayName} </h2>
             <img class="photoUser" src= "${user.photoURL}">
+            <button type="button" class="btn-signOut">Cerrar sesión</button>
         </div>
         <form class="postTextBox">
             <textarea class="inputPublish" placeholder="¿Qué estás pensando?"> </textarea>
@@ -32,5 +34,16 @@ export default () => {
     const viewHomeDiv = document.createElement('div');
     viewHomeDiv.setAttribute('class', 'home');
     viewHomeDiv.innerHTML = viewHome;
+
+    viewHomeDiv.querySelector('.btn-signOut').addEventListener('click', () => signOutUser()
+        .then((res) => {
+        // Sign-out successful.
+            console.log(res);
+            window.location.hash = '#/';
+        })
+        .catch((error) => {
+        // An error happened.
+        }));
+
     return viewHomeDiv;
 };
