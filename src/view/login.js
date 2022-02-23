@@ -65,11 +65,11 @@ export default () => {
             const user = res.user; // Datos del usuario
             getUser(user.uid)
                 .then((re) => {
-                    if (re.exists()) {
-                        console.log('usuario existe');
-                    } else {
+                    if (re === undefined) {
                         console.log('usuario nuevo');
                         addUserInfoGoogle(user.uid, user); // Agregando datos de usuario a la db
+                    } else {
+                        console.log('usuario existe');
                     }
                     window.location.hash = '#/home';
                 });
