@@ -7,15 +7,7 @@ export default () => {
     console.log(user);
 
     const viewHome = `
-    <section class="contacts">
-        <p> Agregar contacto </p>
-        <img src="../img/dawson.png"> <p> Dawson Leery </p>
-        <img src="../img/mimi.png"> <p> Mimi Ortega </p>
-        <img src="../img/katy.png"> <p> Katy Dibiasky </p>
-        <img src="../img/nico.png"> <p> Nico Traveler </p>
-        <img src="../img/leti.png"> <p> Leti Dev </p>
-        <img src="../img/airplane_home.png"> <p> VIAJA PE </p>
-    </section>
+
     <section>
         <div class="userInfo">
             <h2 class="userName"></h2>
@@ -29,15 +21,25 @@ export default () => {
                 <i class="fa-solid fa-paper-plane"></i> <span class="btnShare"> Compartir </span>
             </div>
         </div>
+    </section>
 
-        <nav class="navBar">
+    <section class="contacts">
+        <p> Agregar contacto </p>
+        <img src="../img/dawson.png"> <p> Dawson Leery </p>
+        <img src="../img/mimi.png"> <p> Mimi Ortega </p>
+        <img src="../img/katy.png"> <p> Katy Dibiasky </p>
+        <img src="../img/nico.png"> <p> Nico Traveler </p>
+        <img src="../img/leti.png"> <p> Leti Dev </p>
+        <img src="../img/airplane_home.png"> <p> VIAJA PE </p>
+    </section>
+
+    <nav class="navBar">
             <img src="../img/home_icon.png">
             <img src="../img/profile_icon.png">
             <img src="../img/setting_icon.png">
             <img src="../img/group_icon.png">
             <img src="../img/logout_icon.png"> 
-        </nav>
-    </section>`;
+    </nav>`;
 
     // Creacion de vista home
     const viewHomeDiv = document.createElement('div');
@@ -104,7 +106,6 @@ export default () => {
                 viewPublishDiv.querySelector('.authorName').innerHTML = re.name;
             })
             .catch((err) => err);
-
 
         // Imprimir publicacion
         viewPublishDiv.querySelector('.bodyPublication').innerHTML = textPublication;

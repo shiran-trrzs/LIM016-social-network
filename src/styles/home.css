@@ -37,6 +37,8 @@ body {
 
 .photoUser {
     border-radius: 50%;
+    height: 96px;
+    width: 96px;
 }
 
 .postTextBox {
@@ -47,12 +49,12 @@ body {
 .inputPublish {
     display: flex;
     border: transparent;
-    width: 250px;
-    height: 50px;
+    width: 320px;
+    height: 100px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 0%;
-    padding: 40px 60px 40px 40px;
+    padding: 15px;
     border-radius: 15px 15px 0px 0px;
     background-color: var(--background-color);
 }
@@ -93,14 +95,14 @@ body {
 }
 
 
-/* @media (min-width: 600px) {
+@media (min-width: 600px) {
     body {
         margin-top: 0px
     }
 
     .home {
         background-color: rgba(245, 245, 245, 1);
-        width: auto;
+        width: 0;
         height: 1000vh;
     }
 
@@ -109,9 +111,9 @@ body {
     }
 
     .userInfo{
-        display: flex;
-        justify-content: space-between;
-        margin: 0px 10px 0px 10px;
+        height: 100px;
+        width: 773px;
+        margin: 0px 10px 30px 280px;
         padding: 20px;
     }
 
@@ -124,6 +126,10 @@ body {
         border-radius: 50%;
     }
 
+    .postTextBox {
+        height: 300ox;
+        width: 300px;
+    }
     .container {
         display: flex;
         align-content: space-around;
@@ -138,6 +144,7 @@ body {
         border-radius: 0%;
         margin-top: 0%;
         margin-bottom: auto;
+        margin-left: 0%;
     }
 
-} */
+}
