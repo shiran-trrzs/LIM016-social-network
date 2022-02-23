@@ -85,7 +85,7 @@ export default () => {
         </div>
     </div>`;
 
-    // Funcionalidad al compartir"
+    // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
         // Obtener fecha
         const tiempoTranscurrido = Date.now();
@@ -113,6 +113,8 @@ export default () => {
         viewPublishDiv.querySelector('.date').innerHTML = hoy.toLocaleDateString();
         // Guardando publicacion en db
         savePost(user.uid, textPublication, hoy.toLocaleDateString());
+        // Limpiar caja de texto
+        viewHomeDiv.querySelector('.inputPublish').value = '';
 
         return viewPublishDiv;
     });
@@ -122,7 +124,7 @@ export default () => {
     logoutIcon.addEventListener('click', () => {
         signOutUser()
             .then(() => {
-            // Sign-out successful.
+                // Sign-out successful.
                 window.location.hash = '#/';
             })
             .catch((error) => {
