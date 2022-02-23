@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
 import { savePost, getUser } from '../firebase/firebase-data.js';
+import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
@@ -114,6 +115,19 @@ export default () => {
         savePost(user.uid, textPublication, hoy.toLocaleDateString());
 
         return viewPublishDiv;
+    });
+
+    // Cerrar sesión
+    const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
+    logoutIcon.addEventListener('click', () => {
+        signOutUser()
+            .then(() => {
+            // Sign-out successful.
+                window.location.hash = '#/';
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     });
 
     return viewHomeDiv;

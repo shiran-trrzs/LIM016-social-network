@@ -11,7 +11,7 @@ import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
     sendPasswordResetEmail,
-    // signOut,
+    signOut,
 } from './firebase-initializer.js';
 
 // Registrar usuario con correo y contraseña
@@ -28,3 +28,6 @@ export const signInWithEmail = (email, password) => signInWithEmailAndPassword(a
 
 // Modificar contraseña
 export const changePassword = (email) => sendPasswordResetEmail(auth, email);
+
+// Cerrar sesión
+export const signOutUser = () => signOut(auth);
