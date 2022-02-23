@@ -217,7 +217,7 @@ export default () => {
                             window.location.hash = '#/';
                             // Email verification sent!
 
-                            addUserInfo(user.uid, signUpUserValue, email.value); // Añade data a la colección de users al registrarse
+                            addUserInfo(user.uid, signUpUserValue, email.value, 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png'); // Añade data a la colección de users al registrarse
                         });
                 })
                 .catch((error) => {

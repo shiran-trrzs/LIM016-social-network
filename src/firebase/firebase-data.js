@@ -8,12 +8,13 @@ import {
 } from './firebase-initializer.js';
 
 // Añade data a la colección de users al registrarse
-export const addUserInfo = async (id, userName, emailUser) => {
+export const addUserInfo = async (id, userName, emailUser, photoUser) => {
     const idReference = doc(db, 'users', id);
     await setDoc(idReference, {
         uid: id,
         name: userName,
         email: emailUser,
+        photo: photoUser,
     });
 };
 
