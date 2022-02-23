@@ -1,5 +1,3 @@
-/* eslint-disable import/no-named-as-default-member */
-/* eslint-disable import/no-named-as-default */
 /* eslint-disable import/prefer-default-export */
 // aqui exportaras las funciones que necesites
 

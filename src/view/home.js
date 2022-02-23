@@ -39,7 +39,7 @@ export default () => {
             <img src="../img/profile_icon.png">
             <img src="../img/setting_icon.png">
             <img src="../img/group_icon.png">
-            <img src="../img/logout_icon.png"> 
+            <img  class="iconBar" id="logoutIcon" src="../img/logout_icon.png"> 
     </nav>`;
 
     // Creacion de vista home
