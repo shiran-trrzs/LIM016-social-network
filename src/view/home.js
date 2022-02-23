@@ -24,13 +24,15 @@ export default () => {
         </div>
     </section>
 
-    <nav class="navBar">
-        <img src="../img/home_icon.png">
-        <img src="../img/profile_icon.png">
-        <img src="../img/setting_icon.png">
-        <img src="../img/group_icon.png">
-        <img  class="iconBar" id="logoutIcon" src="../img/logout_icon.png"> 
-    </nav>`;
+    <div class="menuBar">
+        <nav class="navBar">
+            <img src="../img/home_icon.png">
+            <img src="../img/profile_icon.png">
+            <img src="../img/setting_icon.png">
+            <img src="../img/group_icon.png">
+            <img  class="iconBar" id="logoutIcon" src="../img/logout_icon.png"> 
+        </nav>
+    </div>`;
 
     // Creacion de vista home
     const viewHomeDiv = document.createElement('div');
