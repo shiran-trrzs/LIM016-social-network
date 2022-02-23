@@ -5,6 +5,8 @@ import {
     setDoc,
     doc,
     getDoc,
+    addDoc,
+    collection,
 } from './firebase-initializer.js';
 
 // Añade data a la colección de users al registrarse
@@ -30,8 +32,19 @@ export const addUserInfoGoogle = (id, user) => {
 };
 
 // Obtener data un usuario de FireStore
-export const getUser = async (id) => {
-    const docRef = doc(db, 'users', id);
-    const docSnap = await getDoc(docRef);
+export const getUser = (id) => {
+    const docRefUsers = doc(db, 'users', id);
+    const docSnap = getDoc(docRefUsers).then((docc) => docc.data());
     return docSnap;
+};
+
+// Guardar post en FireStore
+export const savePost = async (user, post, datePost) => {
+    const docRefPosts = await addDoc(collection(db, 'posts'), {
+        userId: user,
+        textPost: post,
+        date: datePost,
+        like: '',
+    });
+    console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
 };
