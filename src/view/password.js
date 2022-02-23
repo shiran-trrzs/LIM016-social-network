@@ -25,7 +25,7 @@ export default () => {
             </div>
         </section>`;
 
-    /* Creacion de vista password */
+    // Creacion de vista password
     const viewForgetPasswordDiv = document.createElement('div');
     viewForgetPasswordDiv.innerHTML = viewForgetPassword;
     viewForgetPasswordDiv.setAttribute('id', 'viewForgetPassword');
