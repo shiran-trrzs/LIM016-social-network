@@ -3,7 +3,7 @@
 	--black-transparent-background: rgba(0, 0, 0, 0.65);
 	--lettertxt-color: rgba(0, 0, 0, 0.61);
 	--letter-shadow-color: rgba(0, 0, 0, 0.25);
-	--error-message-color: rgba(255, 255, 255, 1);
+	--background-color: rgba(255, 255, 255, 1);
 	--text-color: rgb(240, 96, 48);
 	--nav-color: rgba(181, 90, 39, 0.16);
 }
@@ -39,42 +39,69 @@ body {
     border-radius: 50%;
 }
 
-::placeholder {
-    color: var(--lettertxt-color);
+.postTextBox {
+    margin-left: auto;
+    margin-right: auto;
 }
+
 .inputPublish {
     display: flex;
+    border: transparent;
     width: 250px;
     height: 50px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0%;
     padding: 40px 60px 40px 40px;
     border-radius: 15px 15px 0px 0px;
+    background-color: var(--background-color);
 }
 
+.inputPublish::placeholder {
+    color: var(--lettertxt-color);
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    font-size: 20px;
+}
 
 .items {
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin: 0px 30px 0px 30px;
-    height: 50px;
+    height: 40px;
     width: 352px;
+    margin-left: auto;
+    margin-right: auto;
     background-color: var(--nav-color);
     border-radius: 0px 0px 15px 15px;
+}
+
+.navBar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--nav-color);
+    border-radius: 15px;
+    height: 40px;
+    width: 352px;
+    bottom: 0;
+    position: fixed;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    padding: 10px;
 }
 
 
 /* @media (min-width: 600px) {
     body {
-        margin: 0px;
-        padding: 0%;
+        margin-top: 0px
     }
 
     .home {
         background-color: rgba(245, 245, 245, 1);
         width: auto;
-        height: 100vh;
+        height: 1000vh;
     }
 
     .contacts {
@@ -100,6 +127,17 @@ body {
     .container {
         display: flex;
         align-content: space-around;
+    }
+
+    .navBar {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--nav-color);
+        height: 1024px;
+        width: 40px;
+        border-radius: 0%;
+        margin-top: 0%;
+        margin-bottom: auto;
     }
 
 } */
