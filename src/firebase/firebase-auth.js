@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable max-len */
 /* eslint-disable import/named */
 /* eslint-disable no-console */
@@ -28,6 +29,8 @@ export const signInWithEmail = (email, password) => signInWithEmailAndPassword(a
 
 // Modificar contraseña
 export const changePassword = (email) => sendPasswordResetEmail(auth, email);
+
+// Obtener usuario con sesión activa
 
 // Cerrar sesión
 export const signOutUser = () => signOut(auth);

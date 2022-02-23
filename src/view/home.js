@@ -114,7 +114,9 @@ export default () => {
     logoutIcon.addEventListener('click', () => {
         signOutUser()
             .then(() => {
-            // Sign-out successful.
+            // Borando datos
+                sessionStorage.clear();
+                // Sign-out successful.
                 window.location.hash = '#/';
             })
             .catch((error) => {
