@@ -315,10 +315,6 @@ span {
     right: 1.6rem;
 }
 
-.acceptTerms {
-	cursor: pointer;
-}
-
 /* ---------------------------------- Media Query para pantallas a partir de 600px ---------------------------------- */
 @media (min-width: 600px) {
 	/* ---------------------------------- Vista login ---------------------------------- */
@@ -382,6 +378,10 @@ span {
 	/* Ancho de los botones */
 	.btn {
 		width: 25vw;
+	}
+
+	.acceptTerms {
+		cursor: pointer;
 	}
 
 	/* ---------------------------------- Vista password ---------------------------------- */
