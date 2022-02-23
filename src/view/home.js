@@ -1,10 +1,6 @@
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
-<<<<<<< HEAD
-import { signOutUser } from '../firebase/firebase-auth.js';
-=======
 import { savePost, getUser } from '../firebase/firebase-data.js';
->>>>>>> a4bf6cce21a72c7e01ca763f744362ae8ffe4c19
 
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
@@ -48,17 +44,6 @@ export default () => {
     viewHomeDiv.setAttribute('class', 'home');
     viewHomeDiv.innerHTML = viewHome;
 
-<<<<<<< HEAD
-    viewHomeDiv.querySelector('.btn-signOut').addEventListener('click', () => signOutUser()
-        .then((res) => {
-        // Sign-out successful.
-            console.log(res);
-            window.location.hash = '#/';
-        })
-        .catch((error) => {
-        // An error happened.
-        }));
-=======
     // Imprimir nombre y foto del usuario que inicio sesion
     getUser(user.uid)
         .then((re) => {
@@ -120,7 +105,6 @@ export default () => {
             })
             .catch((err) => err);
 
-
         // Imprimir publicacion
         viewPublishDiv.querySelector('.bodyPublication').innerHTML = textPublication;
         viewPublishDiv.querySelector('.date').innerHTML = hoy.toLocaleDateString();
@@ -129,7 +113,6 @@ export default () => {
 
         return viewPublishDiv;
     });
->>>>>>> a4bf6cce21a72c7e01ca763f744362ae8ffe4c19
 
     return viewHomeDiv;
 };
