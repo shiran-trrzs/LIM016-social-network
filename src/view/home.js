@@ -21,14 +21,22 @@ export default () => {
             <h2 class="userName"></h2>
             <img class="photoUser" src= "">
         </div>
-        <form class="postTextBox">
-            <textarea class="inputPublish" placeholder="¿Qué estás pensando?"> </textarea>
+        <div class="postTextBox">
+            <textarea class="inputPublish" placeholder="¿Qué estás pensando?"> </textarea> 
             <div class="items">
                 <i class="fa-solid fa-image"></i> <span> Imagen </span>
                 <i class="fa-solid fa-face-smile-beam"></i> <span> Emoji </span>
                 <i class="fa-solid fa-paper-plane"></i> <span class="btnShare"> Compartir </span>
             </div>
-        </form>
+        </div>
+
+        <nav class="navBar">
+            <img src="../img/home_icon.png">
+            <img src="../img/profile_icon.png">
+            <img src="../img/setting_icon.png">
+            <img src="../img/group_icon.png">
+            <img src="../img/logout_icon.png"> 
+        </nav>
     </section>`;
 
     // Creacion de vista home
