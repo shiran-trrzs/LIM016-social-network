@@ -1,3 +1,5 @@
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
 import { savePost, getUser, deletePost } from '../firebase/firebase-data.js';
@@ -59,7 +61,7 @@ export default () => {
             </div>
             <div class="edit" >
                 <i class="fa-solid fa-ellipsis-vertical"></i>
-                <div class="hidden options">
+                <div class="hide options">
                     <ul class="optionDelete">Eliminar</ul>
                     <ul class="optionEdit">Editar</ul>
                 </div>
@@ -112,9 +114,9 @@ export default () => {
                     const divOcul = viewPublishDiv.querySelector('.options');
                     botonEditar.addEventListener('click', () => {
                         const status = divOcul.getAttribute('class');
-                        if (status === 'hidden') {
+                        if (status === 'hide') {
                             divOcul.setAttribute('class', 'show');
-                        } else divOcul.setAttribute('class', 'hidden');
+                        } else divOcul.setAttribute('class', 'hide');
                     });
                 })
                 .catch((err) => err);
@@ -130,6 +132,10 @@ export default () => {
             return viewPublishDiv;
         } alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
     });
+
+    // Dar y quitar like
+    const viewPublishDiv = document.createElement('div');
+    viewPublishDiv.innerHTML = htmlDiv;
 
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
