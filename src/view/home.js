@@ -1,21 +1,22 @@
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
-import { savePost, getUser } from '../firebase/firebase-data.js';
+import { savePost, getUser, deletePost, getPostRealTime } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
     console.log(user);
 
-    const viewHome = `
-
+    const viewHome = /* html */ `
     <section>
         <div class="userInfo">
             <h2 class="userName"></h2>
             <img class="photoUser" src= "">
         </div>
         <div class="postTextBox">
-            <textarea class="inputPublish" placeholder="¿Qué estás pensando?"> </textarea> 
+            <textarea class="inputPublish" placeholder="¿Qué estás pensando?"></textarea> 
             <div class="items">
                 <i class="fa-solid fa-image"></i> <span> Imagen </span>
                 <i class="fa-solid fa-face-smile-beam"></i> <span> Emoji </span>
@@ -48,8 +49,8 @@ export default () => {
         })
         .catch((err) => err);
 
-    // Post
-    const htmlDiv = `<div class="publication">
+    // Template strings del post
+    const htmlDiv = /* html */ `<div class="publication">
         <div class="headPublication">
             <div class="authorP">
                 <img class="authorPhoto" src= "">
@@ -57,6 +58,13 @@ export default () => {
             <div class="authorN">
                 <label for="" class="authorName"></label>
                 <label for="" class="date"></label>
+            </div>
+            <div class="edit" >
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+                <div class="hide options">
+                    <ul class="optionDelete">Eliminar</ul>
+                    <ul class="optionEdit">Editar</ul>
+                </div>
             </div>
         </div>
         <div class="bodyPublication">
@@ -77,8 +85,9 @@ export default () => {
         </div>
     </div>`;
 
-    // Funcionalidad al compartir"
+    // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
+        getPostRealTime();
         // Obtener fecha
         const tiempoTranscurrido = Date.now();
         const hoy = new Date(tiempoTranscurrido);
@@ -86,35 +95,55 @@ export default () => {
         // Obtener texto a publicar
         const textPublication = viewHomeDiv.querySelector('.inputPublish').value;
 
-        // Creacion de post
-        const viewPublishDiv = document.createElement('div');
-        viewPublishDiv.innerHTML = htmlDiv;
-        viewHomeDiv.appendChild(viewPublishDiv);
-        viewPublishDiv.setAttribute('class', 'publish');
+        if (textPublication !== '') {
+            // Creacion de post
+            const viewPublishDiv = document.createElement('div');
+            viewPublishDiv.innerHTML = htmlDiv;
+            viewHomeDiv.appendChild(viewPublishDiv);
+            viewPublishDiv.setAttribute('class', 'publish');
 
-        // Imprimir nombre y foto del usuario que realiza la publicacion
-        getUser(user.uid)
-            .then((re) => {
-                viewPublishDiv.querySelector('.authorPhoto').setAttribute('src', re.photo);
-                viewPublishDiv.querySelector('.authorName').innerHTML = re.name;
-            })
-            .catch((err) => err);
+            // Imprimir nombre y foto del usuario que realiza la publicacion
+            getUser(user.uid)
+                .then((re) => {
+                    console.log(re);
+                    viewPublishDiv.querySelector('.authorPhoto').setAttribute('src', re.photo);
+                    viewPublishDiv.querySelector('.authorName').innerHTML = re.name;
+                    // viewPublishDiv.querySelector('.fa-ellipsis-vertical').setAttribute('name', re.name);
 
-        // Imprimir publicacion
-        viewPublishDiv.querySelector('.bodyPublication').innerHTML = textPublication;
-        viewPublishDiv.querySelector('.date').innerHTML = hoy.toLocaleDateString();
-        // Guardando publicacion en db
-        savePost(user.uid, textPublication, hoy.toLocaleDateString());
+                    // Mostrar y ocultar opcion de editar y eliminar publicacion
+                    const botonEditar = viewPublishDiv.querySelector('.fa-ellipsis-vertical');
+                    const divOcul = viewPublishDiv.querySelector('.options');
+                    botonEditar.addEventListener('click', () => {
+                        const status = divOcul.getAttribute('class');
+                        if (status === 'hide') {
+                            divOcul.setAttribute('class', 'show');
+                        } else divOcul.setAttribute('class', 'hide');
+                    });
+                })
+                .catch((err) => err);
 
-        return viewPublishDiv;
+            // Imprimir publicacion
+            viewPublishDiv.querySelector('.bodyPublication').innerHTML = textPublication;
+            viewPublishDiv.querySelector('.date').innerHTML = hoy.toLocaleDateString();
+            // Guardando publicacion en db
+            savePost(user.uid, textPublication, hoy.toLocaleDateString());
+            // Limpiar caja de texto
+            viewHomeDiv.querySelector('.inputPublish').value = '';
+
+            return viewPublishDiv;
+        } alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
     });
+
+    // Dar y quitar like
+    const viewPublishDiv = document.createElement('div');
+    viewPublishDiv.innerHTML = htmlDiv;
 
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
     logoutIcon.addEventListener('click', () => {
         signOutUser()
             .then(() => {
-            // Sign-out successful.
+                // Sign-out successful.
                 window.location.hash = '#/';
             })
             .catch((error) => {
