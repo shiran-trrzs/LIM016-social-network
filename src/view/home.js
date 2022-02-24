@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
-import { savePost, getUser, deletePost } from '../firebase/firebase-data.js';
+import { savePost, getUser, deletePost, getPostRealTime } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
@@ -87,6 +87,7 @@ export default () => {
 
     // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
+        getPostRealTime();
         // Obtener fecha
         const tiempoTranscurrido = Date.now();
         const hoy = new Date(tiempoTranscurrido);
@@ -142,8 +143,6 @@ export default () => {
     logoutIcon.addEventListener('click', () => {
         signOutUser()
             .then(() => {
-            // Borrando datos
-                sessionStorage.clear();
                 // Sign-out successful.
                 window.location.hash = '#/';
             })
