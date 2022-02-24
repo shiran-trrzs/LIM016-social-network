@@ -9,27 +9,28 @@
 }
 
 body {
-	margin: 0px;
-	padding: 0%;
+    margin: 0px;
+    padding: 0%;
 }
 
 .home {
-	background-color: rgba(245, 245, 245, 1);
-	width: auto;
-	height: 100vh;
+    background-color: rgba(245, 245, 245, 1);
+    width: auto;
+    height: 100vh;
+    display: flex;
+	flex-direction: column;  
 }
 
-.userInfo {
-	display: flex;
-	justify-content: space-between;
-	margin: 0px 10px 30px 10px;
-	padding: 20px;
+.userInfo{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 10px 30px 30px;
+    padding: 20px;
 }
 
 .userName {
-	color: var(--text-color);
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .photoUser {
@@ -46,8 +47,8 @@ body {
 }
 
 .postTextBox {
-	margin-left: auto;
-	margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .inputPublish {
@@ -64,9 +65,9 @@ body {
 }
 
 .inputPublish::placeholder {
-	color: var(--lettertxt-color);
-	font-family: 'IBM Plex Sans Thai', sans-serif;
-	font-size: 20px;
+    color: var(--lettertxt-color);
+    font-family: 'IBM Plex Sans Thai', sans-serif;
+    font-size: 20px;
 }
 
 .items {
@@ -81,11 +82,6 @@ body {
     margin-right: auto;
     background-color: var(--nav-color);
     border-radius: 0px 0px 15px 15px;
-}
-
-.like {
-    width: 50px;
-    height: 50px;
 }
 
 .menuBar {
@@ -111,71 +107,58 @@ body {
 	cursor: pointer;
 }
 
-/* Ocultar opciones de edicion de una publicacion */
-.hide {
-	display: none;
-}
+@media (min-width: 900px) {
+    body {
+        margin-top: 0px
+    }
 
-/* Mostrar opciones de edicion de una publicacion */
-.show {
-	display: flex;
-	flex-direction: column;
-}
+    .home {
+        background-color: rgba(245, 245, 245, 1);
+        width: 0;
+        height: 1000vh;
+    }
 
-@media (min-width: 600px) {
-	body {
-		margin-top: 0px;
-	}
+    .contacts {
+        display: inline;
+    }
 
-	.home {
-		background-color: rgba(245, 245, 245, 1);
-		width: 0;
-		height: 1000vh;
-	}
+    .userInfo{
+        height: 10vh;
+        width: 70vw;
+        margin: 30px 0px 30px 200px;
+        /* margin: 30px 10px 30px 120px; */
+        padding: 20px;
+    }
 
-	.contacts {
-		display: inline;
-	}
+    .userName {
+        color: var(--text-color);
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
 
-	.userInfo {
-		height: 100px;
-		width: 773px;
-		margin: 0px 10px 30px 280px;
-		padding: 20px;
-	}
+    .photoUser {
+        border-radius: 50%;
+    }
 
-	.userName {
-		color: var(--text-color);
-		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-			'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	}
+    .postTextBox {
+        margin: 100px;
+        width: 85vw;
+        height: 20vh;
+    }
+    
+    .navBar {
+        display: flex;
+        flex-direction: column;
+        background-color: var(--nav-color);
+        height: 1024px;
+        width: 40px;
+        border-radius: 0%;
+        margin-top: 0%;
+        margin-bottom: auto;
+        margin-left: 0%;
+    }
 
-	.photoUser {
-		border-radius: 50%;
-	}
+    .iconBar {
+        cursor: pointer;
+    }
 
-	.postTextBox {
-		height: 300ox;
-		width: 300px;
-	}
-	.container {
-		display: flex;
-		align-content: space-around;
-	}
-
-	.navBar {
-		display: flex;
-		flex-direction: column;
-		background-color: var(--nav-color);
-		height: 1024px;
-		width: 40px;
-		border-radius: 0%;
-		margin-top: 0%;
-		margin-bottom: auto;
-		margin-left: 0%;
-	}
-
-	.iconBar {
-		cursor: pointer;
-	}
 }

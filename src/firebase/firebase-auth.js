@@ -1,4 +1,3 @@
-/* eslint-disable arrow-body-style */
 /* eslint-disable max-len */
 /* eslint-disable import/named */
 /* eslint-disable no-console */
