@@ -9,28 +9,27 @@
 }
 
 body {
-    margin: 0px;
-    padding: 0%;
+	margin: 0px;
+	padding: 0%;
 }
 
 .home {
-    background-color: rgba(245, 245, 245, 1);
-    width: auto;
-    height: 100vh;
-    display: flex;
-	flex-direction: column;  
+	background-color: rgba(245, 245, 245, 1);
+	width: auto;
+	height: 100vh;
 }
 
-.userInfo{
-    display: flex;
-    justify-content: space-between;
-    margin: 0px 10px 30px 30px;
-    padding: 20px;
+.userInfo {
+	display: flex;
+	justify-content: space-between;
+	margin: 0px 10px 30px 10px;
+	padding: 20px;
 }
 
 .userName {
-    color: var(--text-color);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	color: var(--text-color);
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .photoUser {
@@ -47,8 +46,8 @@ body {
 }
 
 .postTextBox {
-    margin-left: auto;
-    margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .inputPublish {
@@ -65,9 +64,9 @@ body {
 }
 
 .inputPublish::placeholder {
-    color: var(--lettertxt-color);
-    font-family: 'IBM Plex Sans Thai', sans-serif;
-    font-size: 20px;
+	color: var(--lettertxt-color);
+	font-family: 'IBM Plex Sans Thai', sans-serif;
+	font-size: 20px;
 }
 
 .items {
@@ -112,58 +111,71 @@ body {
 	cursor: pointer;
 }
 
-@media (min-width: 900px) {
-    body {
-        margin-top: 0px
-    }
+/* Ocultar opciones de edicion de una publicacion */
+.hidden {
+	display: none;
+}
 
-    .home {
-        background-color: rgba(245, 245, 245, 1);
-        width: 0;
-        height: 1000vh;
-    }
+/* Mostrar opciones de edicion de una publicacion */
+.show {
+	display: flex;
+	flex-direction: column;
+}
 
-    .contacts {
-        display: inline;
-    }
+@media (min-width: 600px) {
+	body {
+		margin-top: 0px;
+	}
 
-    .userInfo{
-        height: 10vh;
-        width: 70vw;
-        margin: 30px 0px 30px 200px;
-        /* margin: 30px 10px 30px 120px; */
-        padding: 20px;
-    }
+	.home {
+		background-color: rgba(245, 245, 245, 1);
+		width: 0;
+		height: 1000vh;
+	}
 
-    .userName {
-        color: var(--text-color);
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
+	.contacts {
+		display: inline;
+	}
 
-    .photoUser {
-        border-radius: 50%;
-    }
+	.userInfo {
+		height: 100px;
+		width: 773px;
+		margin: 0px 10px 30px 280px;
+		padding: 20px;
+	}
 
-    .postTextBox {
-        margin: 100px;
-        width: 85vw;
-        height: 20vh;
-    }
-    
-    .navBar {
-        display: flex;
-        flex-direction: column;
-        background-color: var(--nav-color);
-        height: 1024px;
-        width: 40px;
-        border-radius: 0%;
-        margin-top: 0%;
-        margin-bottom: auto;
-        margin-left: 0%;
-    }
+	.userName {
+		color: var(--text-color);
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+			'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	}
 
-    .iconBar {
-        cursor: pointer;
-    }
+	.photoUser {
+		border-radius: 50%;
+	}
 
+	.postTextBox {
+		height: 300ox;
+		width: 300px;
+	}
+	.container {
+		display: flex;
+		align-content: space-around;
+	}
+
+	.navBar {
+		display: flex;
+		flex-direction: column;
+		background-color: var(--nav-color);
+		height: 1024px;
+		width: 40px;
+		border-radius: 0%;
+		margin-top: 0%;
+		margin-bottom: auto;
+		margin-left: 0%;
+	}
+
+	.iconBar {
+		cursor: pointer;
+	}
 }

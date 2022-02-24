@@ -8,13 +8,17 @@ import {
     getDoc,
     addDoc,
     collection,
+<<<<<<< HEAD
     arrayUnion,
     arrayRemove,
     updateDoc,
     auth,
+=======
+    deleteDoc,
+>>>>>>> 67ff354ca7e64bfe1568d0e08a61994028c0dee0
 } from './firebase-initializer.js';
 
-// Añade data a la colección de users al registrarse
+//Funcion que añade data a la colección de users al registrarse
 export const addUserInfo = async (id, userName, emailUser, photoUser) => {
     const idReference = doc(db, 'users', id);
     await setDoc(idReference, {
@@ -25,7 +29,7 @@ export const addUserInfo = async (id, userName, emailUser, photoUser) => {
     });
 };
 
-// Añade data a la colección de users al iniciar sesion con Google
+// Funcion que añade data a la colección de users al iniciar sesion con Google
 export const addUserInfoGoogle = (id, user) => {
     const idReference = doc(db, 'users', id);
     return setDoc(idReference, {
@@ -36,14 +40,14 @@ export const addUserInfoGoogle = (id, user) => {
     });
 };
 
-// Obtener data un usuario de FireStore
+// Funcion obtener data un usuario de FireStore
 export const getUser = (id) => {
     const docRefUsers = doc(db, 'users', id);
     const docSnap = getDoc(docRefUsers).then((docc) => docc.data());
     return docSnap;
 };
 
-// Guardar post en FireStore
+// Funcion guardar post en FireStore
 export const savePost = async (user, post, datePost) => {
     const docRefPosts = await addDoc(collection(db, 'posts'), {
         userId: user,
@@ -51,6 +55,8 @@ export const savePost = async (user, post, datePost) => {
         date: datePost,
         like: [],
     });
+    return docRefPosts.id;
+    console.log(docRefPosts);
     console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
 };
 
@@ -73,3 +79,8 @@ export async function manageLikes(postId) {
         });
     }
 }
+// Funcion eliminar post de FireStore
+export const deletePost = async (idPost) => {
+    await deleteDoc(doc(db, 'posts', idPost));
+    console.log('se elemino de la bd');
+};
