@@ -1,13 +1,16 @@
+/* eslint-disable no-alert */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
-import { savePost, getUser, deletePost } from '../firebase/firebase-data.js';
+import {
+    savePost, getUser, deletePost, getPostRealTime,
+} from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
-    console.log(user);
+    // console.log(user);
 
     const viewHome = /* html */ `
     <section>
@@ -43,7 +46,7 @@ export default () => {
     // Imprimir nombre y foto del usuario que inicio sesion
     getUser(user.uid)
         .then((re) => {
-            console.log(re);
+            // console.log(re);
             viewHomeDiv.querySelector('.userName').innerHTML = re.name;
             viewHomeDiv.querySelector('.photoUser').setAttribute('src', re.photo);
         })
@@ -104,7 +107,7 @@ export default () => {
             // Imprimir nombre y foto del usuario que realiza la publicacion
             getUser(user.uid)
                 .then((re) => {
-                    console.log(re);
+                    // console.log(re);
                     viewPublishDiv.querySelector('.authorPhoto').setAttribute('src', re.photo);
                     viewPublishDiv.querySelector('.authorName').innerHTML = re.name;
                     // viewPublishDiv.querySelector('.fa-ellipsis-vertical').setAttribute('name', re.name);
@@ -132,6 +135,17 @@ export default () => {
             return viewPublishDiv;
         } alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
     });
+
+    const fillPost = async () => {
+        await getPostRealTime(((querySnapshot) => {
+            const posts = [];
+            querySnapshot.forEach((documento) => {
+                posts.push(documento.data());
+            });
+            // console.log(posts);
+            return posts;
+        }));
+    };
 
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
