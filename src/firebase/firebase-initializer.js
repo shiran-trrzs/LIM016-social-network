@@ -12,6 +12,7 @@ import {
     createUserWithEmailAndPassword,
     sendEmailVerification,
     sendPasswordResetEmail,
+    onAuthStateChanged,
     signOut,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-auth.js';
 
@@ -73,6 +74,7 @@ export {
     query,
     sendPasswordResetEmail,
     getDoc,
+    onAuthStateChanged,
     signOut,
     deleteDoc,
 };

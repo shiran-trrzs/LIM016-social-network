@@ -19,10 +19,6 @@ body {
 	height: 100vh;
 }
 
-.contacts {
-	display: none;
-}
-
 .userInfo {
 	display: flex;
 	justify-content: space-between;
@@ -37,9 +33,16 @@ body {
 }
 
 .photoUser {
-	border-radius: 50%;
-	height: 96px;
-	width: 96px;
+    border-radius: 50%;
+    height: 96px;
+    width: 96px;
+    margin-right: 10px;
+}
+
+.authorPhoto {
+    border-radius: 50%;
+    height: 45px;
+    width: 45px;
 }
 
 .postTextBox {
@@ -48,16 +51,16 @@ body {
 }
 
 .inputPublish {
-	display: flex;
-	border: transparent;
-	width: 320px;
-	height: 100px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 0%;
-	padding: 15px;
-	border-radius: 15px 15px 0px 0px;
-	background-color: var(--background-color);
+    display: flex;
+    border: transparent;
+    width: 75vw;
+    height: 13vh;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0%;
+    padding: 15px;
+    border-radius: 15px 15px 0px 0px;
+    background-color: var(--background-color);
 }
 
 .inputPublish::placeholder {
@@ -67,32 +70,36 @@ body {
 }
 
 .items {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	margin: 0px 30px 0px 30px;
-	height: 40px;
-	width: 352px;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: var(--nav-color);
-	border-radius: 0px 0px 15px 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0px 30px 0px 30px;
+    width: 75vw;
+    height: 5vh;
+    padding: 0px 15px 0px 15px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--nav-color);
+    border-radius: 0px 0px 15px 15px;
+}
+
+.menuBar {
+    bottom: 0px;
+    position: fixed;
+    margin-left: 20px;
+    margin-bottom: 30px;
+    padding: 10px 0px 5px 12px;
 }
 
 .navBar {
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
-	background-color: var(--nav-color);
-	border-radius: 15px;
-	height: 40px;
-	width: 352px;
-	bottom: 0;
-	position: fixed;
-	margin-left: 20px;
-	margin-right: 10px;
-	margin-bottom: 30px;
-	padding: 10px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--nav-color);
+    border-radius: 15px;
+    height: 4vh;
+    width: 80vw;
+    padding: 10px;
 }
 
 .iconBar {
