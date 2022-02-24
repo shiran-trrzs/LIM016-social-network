@@ -51,17 +51,16 @@ export const savePost = async (user, post, datePost) => {
         like: [],
     });
     return docRefPosts.id;
-    console.log(docRefPosts);
-    console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
+    // console.log(docRefPosts);
+    // console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
 };
 
-// Función para mostrar post en tiempo real
-export const getPostRealTime = () => {
-    const q = query(collection(db, 'post'));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+export const getPostRealTime = async () => {
+    const q = query(collection(db, 'posts'));
+    const unsubscribe = await onSnapshot(q, (querySnapshot) => {
         const posts = [];
+        console.log(querySnapshot);
         querySnapshot.forEach((documento) => {
-            console.log(documento);
             posts.push(documento.data());
         });
         console.log(posts);
@@ -71,5 +70,5 @@ export const getPostRealTime = () => {
 // Funcion eliminar post de FireStore
 export const deletePost = async (idPost) => {
     await deleteDoc(doc(db, 'posts', idPost));
-    console.log('se elemino de la bd');
+    // console.log('se elemino de la bd');
 };
