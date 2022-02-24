@@ -9,149 +9,161 @@
 }
 
 body {
-    margin: 0px;
-    padding: 0%;
+	margin: 0px;
+	padding: 0%;
 }
 
 .home {
-    background-color: rgba(245, 245, 245, 1);
-    width: auto;
-    height: 100vh;
+	background-color: rgba(245, 245, 245, 1);
+	width: auto;
+	height: 100vh;
 }
 
 .contacts {
-    display: none;
+	display: none;
 }
 
-.userInfo{
-    display: flex;
-    justify-content: space-between;
-    margin: 0px 10px 30px 10px;
-    padding: 20px;
+.userInfo {
+	display: flex;
+	justify-content: space-between;
+	margin: 0px 10px 30px 10px;
+	padding: 20px;
 }
 
 .userName {
-    color: var(--text-color);
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	color: var(--text-color);
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .photoUser {
-    border-radius: 50%;
-    height: 96px;
-    width: 96px;
+	border-radius: 50%;
+	height: 96px;
+	width: 96px;
 }
 
 .postTextBox {
-    margin-left: auto;
-    margin-right: auto;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .inputPublish {
-    display: flex;
-    border: transparent;
-    width: 320px;
-    height: 100px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0%;
-    padding: 15px;
-    border-radius: 15px 15px 0px 0px;
-    background-color: var(--background-color);
+	display: flex;
+	border: transparent;
+	width: 320px;
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0%;
+	padding: 15px;
+	border-radius: 15px 15px 0px 0px;
+	background-color: var(--background-color);
 }
 
 .inputPublish::placeholder {
-    color: var(--lettertxt-color);
-    font-family: 'IBM Plex Sans Thai', sans-serif;
-    font-size: 20px;
+	color: var(--lettertxt-color);
+	font-family: 'IBM Plex Sans Thai', sans-serif;
+	font-size: 20px;
 }
 
 .items {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0px 30px 0px 30px;
-    height: 40px;
-    width: 352px;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: var(--nav-color);
-    border-radius: 0px 0px 15px 15px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0px 30px 0px 30px;
+	height: 40px;
+	width: 352px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: var(--nav-color);
+	border-radius: 0px 0px 15px 15px;
 }
 
 .navBar {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--nav-color);
-    border-radius: 15px;
-    height: 40px;
-    width: 352px;
-    bottom: 0;
-    position: fixed;
-    margin-left: 20px;
-    margin-right: 10px;
-    margin-bottom: 30px;
-    padding: 10px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: var(--nav-color);
+	border-radius: 15px;
+	height: 40px;
+	width: 352px;
+	bottom: 0;
+	position: fixed;
+	margin-left: 20px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+	padding: 10px;
 }
 
 .iconBar {
 	cursor: pointer;
 }
 
+/* Ocultar opciones de edicion de una publicacion */
+.hidden {
+	display: none;
+}
+
+/* Mostrar opciones de edicion de una publicacion */
+.show {
+	display: flex;
+	flex-direction: column;
+}
+
 @media (min-width: 600px) {
-    body {
-        margin-top: 0px
-    }
+	body {
+		margin-top: 0px;
+	}
 
-    .home {
-        background-color: rgba(245, 245, 245, 1);
-        width: 0;
-        height: 1000vh;
-    }
+	.home {
+		background-color: rgba(245, 245, 245, 1);
+		width: 0;
+		height: 1000vh;
+	}
 
-    .contacts {
-        display: inline;
-    }
+	.contacts {
+		display: inline;
+	}
 
-    .userInfo{
-        height: 100px;
-        width: 773px;
-        margin: 0px 10px 30px 280px;
-        padding: 20px;
-    }
+	.userInfo {
+		height: 100px;
+		width: 773px;
+		margin: 0px 10px 30px 280px;
+		padding: 20px;
+	}
 
-    .userName {
-        color: var(--text-color);
-        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    }
+	.userName {
+		color: var(--text-color);
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+			'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	}
 
-    .photoUser {
-        border-radius: 50%;
-    }
+	.photoUser {
+		border-radius: 50%;
+	}
 
-    .postTextBox {
-        height: 300ox;
-        width: 300px;
-    }
-    .container {
-        display: flex;
-        align-content: space-around;
-    }
+	.postTextBox {
+		height: 300ox;
+		width: 300px;
+	}
+	.container {
+		display: flex;
+		align-content: space-around;
+	}
 
-    .navBar {
-        display: flex;
-        flex-direction: column;
-        background-color: var(--nav-color);
-        height: 1024px;
-        width: 40px;
-        border-radius: 0%;
-        margin-top: 0%;
-        margin-bottom: auto;
-        margin-left: 0%;
-    }
+	.navBar {
+		display: flex;
+		flex-direction: column;
+		background-color: var(--nav-color);
+		height: 1024px;
+		width: 40px;
+		border-radius: 0%;
+		margin-top: 0%;
+		margin-bottom: auto;
+		margin-left: 0%;
+	}
 
-    .iconBar {
-        cursor: pointer;
-    }
-
+	.iconBar {
+		cursor: pointer;
+	}
 }
