@@ -8,14 +8,9 @@ import {
     getDoc,
     addDoc,
     collection,
-<<<<<<< HEAD
-    arrayUnion,
-    arrayRemove,
-    updateDoc,
-    auth,
-=======
-    deleteDoc,
->>>>>>> 67ff354ca7e64bfe1568d0e08a61994028c0dee0
+    query,
+    where,
+    onSnapshot,
 } from './firebase-initializer.js';
 
 //Funcion que añade data a la colección de users al registrarse
@@ -60,25 +55,19 @@ export const savePost = async (user, post, datePost) => {
     console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
 };
 
-// Manipula interacción de los likes de posteos
-export async function manageLikes(postId) {
-    const userUid = auth.currentUser.uid;
-    const postRef = doc(db, 'posts', postId);
-    const post = await getDoc(postRef);
-    const likes = post.data().like;
-    console.log(likes);
-    const likesUser = likes.find((element) => element === userUid);
+// Función para mostrar post en tiempo real
+export const getPostRealTime = () => {
+    const q = query(collection(db, 'post'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const posts = [];
+        querySnapshot.forEach((documento) => {
+            console.log(documento);
+            posts.push(documento.data());
+        });
+        console.log(posts);
+    });
+};
 
-    if (likesUser) {
-        await updateDoc(postRef, {
-            likes: arrayUnion(userUid),
-        });
-    } else {
-        await updateDoc(postRef, {
-            likes: arrayRemove(userUid),
-        });
-    }
-}
 // Funcion eliminar post de FireStore
 export const deletePost = async (idPost) => {
     await deleteDoc(doc(db, 'posts', idPost));
