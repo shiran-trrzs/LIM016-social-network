@@ -30,7 +30,5 @@ export const signInWithEmail = (email, password) => signInWithEmailAndPassword(a
 // Modificar contraseña
 export const changePassword = (email) => sendPasswordResetEmail(auth, email);
 
-// Obtener usuario con sesión activa
-
 // Cerrar sesión
 export const signOutUser = () => signOut(auth);

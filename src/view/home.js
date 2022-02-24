@@ -133,9 +133,6 @@ export default () => {
         } alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
     });
 
-    // Dar y quitar like
-
-
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
     logoutIcon.addEventListener('click', () => {

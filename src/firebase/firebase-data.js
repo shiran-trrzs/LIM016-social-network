@@ -9,8 +9,10 @@ import {
     getDoc,
     addDoc,
     collection,
-    updateDoc,
     deleteDoc,
+    query,
+    where,
+    onSnapshot,
 } from './firebase-initializer.js';
 
 // Funcion que añade data a la colección de users al registrarse
@@ -53,6 +55,19 @@ export const savePost = async (user, post, datePost) => {
     return docRefPosts.id;
     console.log(docRefPosts);
     console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
+};
+
+// Función para mostrar post en tiempo real
+export const getPostRealTime = () => {
+    const q = query(collection(db, 'post'));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const posts = [];
+        querySnapshot.forEach((documento) => {
+            console.log(documento);
+            posts.push(documento.data());
+        });
+        console.log(posts);
+    });
 };
 
 // Funcion eliminar post de FireStore
