@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-sequences */
 /* eslint-disable no-unused-vars */
 import {
@@ -7,6 +8,10 @@ import {
     getDoc,
     addDoc,
     collection,
+    arrayUnion,
+    arrayRemove,
+    updateDoc,
+    auth,
 } from './firebase-initializer.js';
 
 // Añade data a la colección de users al registrarse
@@ -44,7 +49,27 @@ export const savePost = async (user, post, datePost) => {
         userId: user,
         textPost: post,
         date: datePost,
-        like: '',
+        like: [],
     });
     console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
 };
+
+// Manipula interacción de los likes de posteos
+export async function manageLikes(postId) {
+    const userUid = auth.currentUser.uid;
+    const postRef = doc(db, 'posts', postId);
+    const post = await getDoc(postRef);
+    const likes = post.data().like;
+    console.log(likes);
+    const likesUser = likes.find((element) => element === userUid);
+
+    if (likesUser) {
+        await updateDoc(postRef, {
+            likes: arrayUnion(userUid),
+        });
+    } else {
+        await updateDoc(postRef, {
+            likes: arrayRemove(userUid),
+        });
+    }
+}

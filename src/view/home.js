@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
-import { savePost, getUser } from '../firebase/firebase-data.js';
+import { savePost, getUser, manageLikes } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
@@ -107,6 +107,14 @@ export default () => {
         savePost(user.uid, textPublication, hoy.toLocaleDateString());
 
         return viewPublishDiv;
+    });
+
+    // Dar y quitar like
+    const viewPublishDiv = document.createElement('div');
+    viewPublishDiv.innerHTML = htmlDiv;
+    viewPublishDiv.querySelector('.like').addEventListener('click', () => {
+        manageLikes(user.userId);
+        console.log('Se dio like');
     });
 
     // Cerrar sesión

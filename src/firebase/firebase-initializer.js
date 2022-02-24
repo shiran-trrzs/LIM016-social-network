@@ -27,6 +27,9 @@ import {
     where,
     query,
     getDoc,
+    arrayUnion,
+    arrayRemove,
+    updateDoc,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 // La configuración de Firebase de nuestra app web
@@ -75,4 +78,7 @@ export {
     getDoc,
     onAuthStateChanged,
     signOut,
+    arrayUnion,
+    arrayRemove,
+    updateDoc,
 };
