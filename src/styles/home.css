@@ -112,7 +112,7 @@ body {
 }
 
 /* Ocultar opciones de edicion de una publicacion */
-.hidden {
+.hide {
 	display: none;
 }
 
