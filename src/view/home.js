@@ -134,8 +134,7 @@ export default () => {
     });
 
     // Dar y quitar like
-    const viewPublishDiv = document.createElement('div');
-    viewPublishDiv.innerHTML = htmlDiv;
+
 
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
