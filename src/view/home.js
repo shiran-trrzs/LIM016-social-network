@@ -57,7 +57,7 @@ export default () => {
             <div class="authorN">
                 <label for="" class="authorName"></label>
                 <label for="" class="date"></label>
-            </div>
+            </div>            
         </div>
         <div class="bodyPublication">
         </div>
@@ -77,6 +77,12 @@ export default () => {
         </div>
     </div>`;
 
+    // Creacion de post
+    const viewPublishDiv = document.createElement('div');
+    viewPublishDiv.innerHTML = htmlDiv;
+    viewHomeDiv.appendChild(viewPublishDiv);
+    viewPublishDiv.setAttribute('class', 'publish');
+
     // Funcionalidad al compartir"
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
         // Obtener fecha
@@ -85,12 +91,6 @@ export default () => {
 
         // Obtener texto a publicar
         const textPublication = viewHomeDiv.querySelector('.inputPublish').value;
-
-        // Creacion de post
-        const viewPublishDiv = document.createElement('div');
-        viewPublishDiv.innerHTML = htmlDiv;
-        viewHomeDiv.appendChild(viewPublishDiv);
-        viewPublishDiv.setAttribute('class', 'publish');
 
         // Imprimir nombre y foto del usuario que realiza la publicacion
         getUser(user.uid)
@@ -114,8 +114,6 @@ export default () => {
     logoutIcon.addEventListener('click', () => {
         signOutUser()
             .then(() => {
-            // Borando datos
-                sessionStorage.clear();
                 // Sign-out successful.
                 window.location.hash = '#/';
             })
