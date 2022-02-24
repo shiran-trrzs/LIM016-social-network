@@ -1,11 +1,16 @@
+/* eslint-disable no-alert */
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
-import { savePost, getUser, deletePost } from '../firebase/firebase-data.js';
+import {
+    savePost, getUser, deletePost, getPostRealTime,
+} from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
-    console.log(user);
+    // console.log(user);
 
     const viewHome = /* html */ `
     <section>
@@ -23,23 +28,15 @@ export default () => {
         </div>
     </section>
 
-    <section class="contacts">
-        <p> Agregar contacto </p>
-        <img src="../img/dawson.png"> <p> Dawson Leery </p>
-        <img src="../img/mimi.png"> <p> Mimi Ortega </p>
-        <img src="../img/katy.png"> <p> Katy Dibiasky </p>
-        <img src="../img/nico.png"> <p> Nico Traveler </p>
-        <img src="../img/leti.png"> <p> Leti Dev </p>
-        <img src="../img/airplane_home.png"> <p> VIAJA PE </p>
-    </section>
-
-    <nav class="navBar">
+    <div class="menuBar">
+        <nav class="navBar">
             <img src="../img/home_icon.png">
             <img src="../img/profile_icon.png">
             <img src="../img/setting_icon.png">
             <img src="../img/group_icon.png">
             <img  class="iconBar" id="logoutIcon" src="../img/logout_icon.png"> 
-    </nav>`;
+        </nav>
+    </div>`;
 
     // Creacion de vista home
     const viewHomeDiv = document.createElement('div');
@@ -49,7 +46,7 @@ export default () => {
     // Imprimir nombre y foto del usuario que inicio sesion
     getUser(user.uid)
         .then((re) => {
-            console.log(re);
+            // console.log(re);
             viewHomeDiv.querySelector('.userName').innerHTML = re.name;
             viewHomeDiv.querySelector('.photoUser').setAttribute('src', re.photo);
         })
@@ -107,7 +104,7 @@ export default () => {
             // Imprimir nombre y foto del usuario que realiza la publicacion
             getUser(user.uid)
                 .then((re) => {
-                    console.log(re);
+                    // console.log(re);
                     viewPublishDiv.querySelector('.authorPhoto').setAttribute('src', re.photo);
                     viewPublishDiv.querySelector('.authorName').innerHTML = re.name;
                 });
@@ -127,7 +124,6 @@ export default () => {
             const divPost = viewHomeDiv.querySelector('.publication');
             // divPost.setAttribute('id',);
 
-
             // Mostrar y ocultar opcion de editar y eliminar publicacion
             const botonEditar = viewPublishDiv.querySelector('.fa-ellipsis-vertical');
             const divOcul = viewPublishDiv.querySelector('.options');
@@ -140,11 +136,24 @@ export default () => {
         }
     });
 
+    const fillPost = async () => {
+        await getPostRealTime(((querySnapshot) => {
+            const posts = [];
+            querySnapshot.forEach((documento) => {
+                posts.push(documento.data());
+            });
+            // console.log(posts);
+            return posts;
+        }));
+    };
+
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
     logoutIcon.addEventListener('click', () => {
         signOutUser()
             .then(() => {
+                // Borrando datos
+                sessionStorage.clear();
                 // Sign-out successful.
                 window.location.hash = '#/';
             })
