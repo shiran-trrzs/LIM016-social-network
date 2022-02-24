@@ -67,7 +67,7 @@ export default () => {
             </div>
             <div class="edit" >
                 <i class="fa-solid fa-ellipsis-vertical"></i>
-                <div class="hidden options">
+                <div class="hidde options">
                     <ul class="optionDelete">Eliminar</ul>
                     <ul class="optionEdit">Editar</ul>
                 </div>
@@ -93,14 +93,11 @@ export default () => {
 
     // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
-        // Obtener fecha
-        const tiempoTranscurrido = Date.now();
-        const hoy = new Date(tiempoTranscurrido);
-
         // Obtener texto a publicar
         const textPublication = viewHomeDiv.querySelector('.inputPublish').value;
-
-        if (textPublication !== '') {
+        if (textPublication === '') {
+            alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
+        } else {
             // Creacion de post
             const viewPublishDiv = document.createElement('div');
             viewPublishDiv.innerHTML = htmlDiv;
@@ -113,30 +110,34 @@ export default () => {
                     console.log(re);
                     viewPublishDiv.querySelector('.authorPhoto').setAttribute('src', re.photo);
                     viewPublishDiv.querySelector('.authorName').innerHTML = re.name;
-                    // viewPublishDiv.querySelector('.fa-ellipsis-vertical').setAttribute('name', re.name);
+                });
 
-                    // Mostrar y ocultar opcion de editar y eliminar publicacion
-                    const botonEditar = viewPublishDiv.querySelector('.fa-ellipsis-vertical');
-                    const divOcul = viewPublishDiv.querySelector('.options');
-                    botonEditar.addEventListener('click', () => {
-                        const status = divOcul.getAttribute('class');
-                        if (status === 'hidden') {
-                            divOcul.setAttribute('class', 'show');
-                        } else divOcul.setAttribute('class', 'hidden');
-                    });
-                })
-                .catch((err) => err);
-
-            // Imprimir publicacion
-            viewPublishDiv.querySelector('.bodyPublication').innerHTML = textPublication;
+            // Obtener fecha
+            const tiempoTranscurrido = Date.now();
+            const hoy = new Date(tiempoTranscurrido);
+            // Imprimir fecha
             viewPublishDiv.querySelector('.date').innerHTML = hoy.toLocaleDateString();
+            // Imprimir texto a publicar
+            viewPublishDiv.querySelector('.bodyPublication').innerHTML = textPublication;
             // Guardando publicacion en db
             savePost(user.uid, textPublication, hoy.toLocaleDateString());
             // Limpiar caja de texto
             viewHomeDiv.querySelector('.inputPublish').value = '';
+            // Agregandole id al div de la publicacion
+            const divPost = viewHomeDiv.querySelector('.publication');
+            // divPost.setAttribute('id',);
 
-            return viewPublishDiv;
-        } alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
+
+            // Mostrar y ocultar opcion de editar y eliminar publicacion
+            const botonEditar = viewPublishDiv.querySelector('.fa-ellipsis-vertical');
+            const divOcul = viewPublishDiv.querySelector('.options');
+            botonEditar.addEventListener('click', () => {
+                const status = divOcul.getAttribute('class');
+                if (status === 'hidden') {
+                    divOcul.setAttribute('class', 'show');
+                } else divOcul.setAttribute('class', 'hidden');
+            });
+        }
     });
 
     // Cerrar sesión

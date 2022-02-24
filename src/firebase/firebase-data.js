@@ -47,9 +47,9 @@ export const savePost = async (user, post, datePost) => {
         date: datePost,
         like: '',
     });
-    return docRefPosts.id;
-    console.log(docRefPosts);
+    console.log(docRefPosts.id);
     console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
+    return docRefPosts;
 };
 
 // Funcion eliminar post de FireStore
