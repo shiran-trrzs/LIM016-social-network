@@ -90,6 +90,7 @@ export default () => {
 
     // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
+        getPostRealTime();
         // Obtener fecha
         const tiempoTranscurrido = Date.now();
         const hoy = new Date(tiempoTranscurrido);
@@ -136,16 +137,17 @@ export default () => {
         } alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
     });
 
-    const fillPost = async () => {
-        await getPostRealTime(((querySnapshot) => {
-            const posts = [];
-            querySnapshot.forEach((documento) => {
-                posts.push(documento.data());
-            });
-            // console.log(posts);
-            return posts;
-        }));
-    };
+    // Traer post al timeline
+    // const fillPost = async () => {
+    //     await getPostRealTime(((querySnapshot) => {
+    //         const posts = [];
+    //         querySnapshot.forEach((documento) => {
+    //             posts.push(documento.data());
+    //         });
+    //         // console.log(posts);
+    //         return posts;
+    //     }));
+    // };
 
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');

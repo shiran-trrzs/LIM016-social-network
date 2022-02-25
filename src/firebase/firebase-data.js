@@ -58,9 +58,19 @@ export const savePost = async (user, post, datePost) => {
 };
 
 // Función para mostrar post en tiempo real
-export const getPostRealTime = async (callback) => {
+export const getPostRealTime = async () => {
+    const posts = [];
     const q = query(collection(db, 'posts'));
-    const unsubscribe = await onSnapshot(q, callback);
+    const unsubscribe = await onSnapshot(q, (querySnapshot) => {
+        querySnapshot.forEach((documento) => {
+            posts.push(documento.data());
+        });
+        console.log(posts);
+        console.log(posts[0]);
+    });
+    console.log(posts);
+    console.log(posts[0]);
+    return posts;
 };
 
 // Funcion eliminar post de FireStore
