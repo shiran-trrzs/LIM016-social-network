@@ -52,8 +52,17 @@ export default () => {
         })
         .catch((err) => err);
 
+    // Funcion para limpiar los posts
+    function limpiarPosts() {
+        const nodosEliminar = viewHomeDiv.querySelectorAll('.publish');
+        console.log(nodosEliminar);
+        nodosEliminar.forEach((nodo) => nodo.remove());
+    }
+
     // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
+        // Ejecutando funcion de limpiar posts
+        limpiarPosts();
         // Función para mostrar post en tiempo real
         const getPostRealTime = async () => {
             const q = query(collection(db, 'posts'));
