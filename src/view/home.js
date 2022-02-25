@@ -28,6 +28,8 @@ export default () => {
         </div>
     </section>
 
+    <div id="postContainer" class="postContainer"> </div>
+
     <div class="menuBar">
         <nav class="navBar">
             <img src="../img/home_icon.png">
@@ -143,21 +145,6 @@ export default () => {
         }
     });
 
-<<<<<<< HEAD
-    // Traer post al timeline
-    // const fillPost = async () => {
-    //     await getPostRealTime(((querySnapshot) => {
-    //         const posts = [];
-    //         querySnapshot.forEach((documento) => {
-    //             posts.push(documento.data());
-    //         });
-    //         // console.log(posts);
-    //         return posts;
-    //     }));
-    // };
-
-=======
->>>>>>> 2d4abddd0855a5c01345fc79e4ab7bb4eef981ac
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
     logoutIcon.addEventListener('click', () => {
