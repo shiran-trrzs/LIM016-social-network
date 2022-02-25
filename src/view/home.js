@@ -1,13 +1,16 @@
+/* eslint-disable no-alert */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-import { auth } from '../firebase/firebase-initializer.js';
-import { savePost, getUser, deletePost, getPostRealTime } from '../firebase/firebase-data.js';
+import { auth, db } from '../firebase/firebase-initializer.js';
+import {
+    savePost, getUser, deletePost,
+} from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
-    console.log(user);
+    // console.log(user);
 
     const viewHome = /* html */ `
     <section>
@@ -33,7 +36,9 @@ export default () => {
             <img src="../img/group_icon.png">
             <img  class="iconBar" id="logoutIcon" src="../img/logout_icon.png"> 
         </nav>
-    </div>`;
+    </div>
+    <div class ="cuerpo"></div>
+    `;
 
     // Creacion de vista home
     const viewHomeDiv = document.createElement('div');
@@ -43,7 +48,7 @@ export default () => {
     // Imprimir nombre y foto del usuario que inicio sesion
     getUser(user.uid)
         .then((re) => {
-            console.log(re);
+            // console.log(re);
             viewHomeDiv.querySelector('.userName').innerHTML = re.name;
             viewHomeDiv.querySelector('.photoUser').setAttribute('src', re.photo);
         })
@@ -87,7 +92,6 @@ export default () => {
 
     // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
-        getPostRealTime();
         // Obtener fecha
         const tiempoTranscurrido = Date.now();
         const hoy = new Date(tiempoTranscurrido);
@@ -105,7 +109,7 @@ export default () => {
             // Imprimir nombre y foto del usuario que realiza la publicacion
             getUser(user.uid)
                 .then((re) => {
-                    console.log(re);
+                    // console.log(re);
                     viewPublishDiv.querySelector('.authorPhoto').setAttribute('src', re.photo);
                     viewPublishDiv.querySelector('.authorName').innerHTML = re.name;
                     // viewPublishDiv.querySelector('.fa-ellipsis-vertical').setAttribute('name', re.name);
@@ -134,15 +138,13 @@ export default () => {
         } alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
     });
 
-    // Dar y quitar like
-    const viewPublishDiv = document.createElement('div');
-    viewPublishDiv.innerHTML = htmlDiv;
-
     // Cerrar sesión
     const logoutIcon = viewHomeDiv.querySelector('#logoutIcon');
     logoutIcon.addEventListener('click', () => {
         signOutUser()
             .then(() => {
+            // Borrando datos
+                sessionStorage.clear();
                 // Sign-out successful.
                 window.location.hash = '#/';
             })
