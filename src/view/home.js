@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import {
-    auth, db, onSnapshot, query, collection,
+    auth, db, onSnapshot, query, collection, orderBy,
 } from '../firebase/firebase-initializer.js';
 import { savePost, getUser } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
@@ -27,6 +27,8 @@ export default () => {
             </div>
         </div>
     </section>
+
+    <div id="postContainer" class="postContainer"> </div>
 
     <div class="menuBar">
         <nav class="navBar">
@@ -54,11 +56,19 @@ export default () => {
         })
         .catch((err) => err);
 
+    // Funcion para limpiar los posts
+    function limpiarPosts() {
+        const nodosEliminar = viewHomeDiv.querySelectorAll('.publish');
+        nodosEliminar.forEach((nodo) => nodo.remove());
+    }
+
     // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
+        // Ejecutando funcion de limpiar posts
+        limpiarPosts();
         // Función para mostrar post en tiempo real
         const getPostRealTime = async () => {
-            const q = query(collection(db, 'posts'));
+            const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
             const unsubscribe = await onSnapshot(q, (querySnapshot) => {
                 const posts = [];
                 querySnapshot.forEach((documento) => {
