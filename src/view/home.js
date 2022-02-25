@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import {
-    auth, db, onSnapshot, query, collection,
+    auth, db, onSnapshot, query, collection, orderBy,
 } from '../firebase/firebase-initializer.js';
 import { savePost, getUser } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
@@ -57,7 +57,6 @@ export default () => {
     // Funcion para limpiar los posts
     function limpiarPosts() {
         const nodosEliminar = viewHomeDiv.querySelectorAll('.publish');
-        console.log(nodosEliminar);
         nodosEliminar.forEach((nodo) => nodo.remove());
     }
 
@@ -67,7 +66,7 @@ export default () => {
         limpiarPosts();
         // Función para mostrar post en tiempo real
         const getPostRealTime = async () => {
-            const q = query(collection(db, 'posts'));
+            const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
             const unsubscribe = await onSnapshot(q, (querySnapshot) => {
                 const posts = [];
                 querySnapshot.forEach((documento) => {
