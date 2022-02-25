@@ -45,22 +45,18 @@ export const getUser = (id) => {
 };
 
 // Funcion guardar post en FireStore
-export const savePost = async (user, post, datePost) => {
+export const savePost = async (user, post, datePost, nameU, photoU) => {
     const docRefPosts = await addDoc(collection(db, 'posts'), {
         userId: user,
         textPost: post,
         date: datePost,
+        name: nameU,
+        photo: photoU,
         like: [],
     });
     console.log(docRefPosts.id);
     console.log('Se guardo publicacion en la db con el id: ', docRefPosts.id);
     return docRefPosts;
-};
-
-// Función para mostrar post en tiempo real
-export const getPostRealTime = async (callback) => {
-    const q = query(collection(db, 'posts'));
-    const unsubscribe = await onSnapshot(q, callback);
 };
 
 // Funcion eliminar post de FireStore
