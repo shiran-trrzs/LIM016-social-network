@@ -93,6 +93,16 @@ export default () => {
                         </div>
                 </div>`;
                     postContainer.innerHTML = html;
+
+                    // Mostrar y ocultar opcion de editar y eliminar publicacion
+                    const botonEditar = postContainer.querySelector('.fa-ellipsis-vertical');
+                    const divOcul = postContainer.querySelector('.options');
+                    botonEditar.addEventListener('click', () => {
+                        const status = divOcul.getAttribute('class');
+                        if (status === 'hidden') {
+                            divOcul.setAttribute('class', 'show');
+                        } else divOcul.setAttribute('class', 'hidden');
+                    });
                 });
             });
         }
@@ -126,16 +136,6 @@ export default () => {
 
             // Limpiar caja de texto
             viewHomeDiv.querySelector('.inputPublish').value = '';
-
-            // Mostrar y ocultar opcion de editar y eliminar publicacion
-            /* const botonEditar = viewPublishDiv.querySelector('.fa-ellipsis-vertical');
-            const divOcul = viewPublishDiv.querySelector('.options');
-            botonEditar.addEventListener('click', () => {
-                const status = divOcul.getAttribute('class');
-                if (status === 'hidden') {
-                    divOcul.setAttribute('class', 'show');
-                } else divOcul.setAttribute('class', 'hidden');
-            }); */
         }
     });
 
