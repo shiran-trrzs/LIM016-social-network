@@ -50,7 +50,7 @@ export const savePost = async (user, post, datePost, nameU, photoU) => {
     const docRefPosts = await addDoc(collection(db, 'posts'), {
         userId: user,
         textPost: post,
-        date: datePost,
+        date: new Date().toLocaleString('ES'),
         name: nameU,
         photo: photoU,
         like: [],
