@@ -66,7 +66,9 @@ export default () => {
                                 <i class="fa-solid fa-ellipsis-vertical"></i>
                                 <div class="hidde options">
                                     <ul class="optionDelete">Eliminar</ul>
-                                    <ul class="optionEdit">Editar</ul>
+                                    <button
+                                    class="optionEdit">Editar
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -86,6 +88,8 @@ export default () => {
                                 </div>
                         </div>
                 </div>`;
+
+                    // console.log('line 92', dataPost.textPost);
                     postContainer.innerHTML = html;
 
                     // Mostrar y ocultar opcion de editar y eliminar publicacion
@@ -96,6 +100,20 @@ export default () => {
                         if (status === 'hidden') {
                             divOcul.setAttribute('class', 'show');
                         } else divOcul.setAttribute('class', 'hidden');
+                    });
+
+                    // Editar post
+                    const optionEdit = postContainer.querySelectorAll('.optionEdit');
+                    optionEdit.forEach((btn) => {
+                        btn.addEventListener('click', async (e) => {
+                            const postSeleccionado = await dataPost.textPost;
+                            // console.log(dataPost.textPost);
+                            const textPublication0 = viewHomeDiv.querySelector('.inputPublish');
+                            textPublication0.value = postSeleccionado;
+                            const btnShare0 = viewHomeDiv.querySelector('.btnShare');
+                            btnShare0.innerText = 'Editar';
+                            // postContainer.querySelector('.hide').style.display = 'block';
+                        });
                     });
                 });
             });
