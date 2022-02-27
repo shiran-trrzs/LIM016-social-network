@@ -1,11 +1,11 @@
+/* eslint-disable no-cond-assign */
+/* eslint-disable no-constant-condition */
 /* eslint-disable no-alert */
 /* eslint-disable max-len */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
-import {
-    auth, db, onSnapshot, query, collection, orderBy,
-} from '../firebase/firebase-initializer.js';
-import { savePost, getUser } from '../firebase/firebase-data.js';
+import { auth } from '../firebase/firebase-initializer.js';
+import { savePost, getUser, updatePost } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
 export default () => {
@@ -27,9 +27,7 @@ export default () => {
             </div>
         </div>
     </section>
-
     <div id="postContainer" class="postContainer"> </div>
-
     <div class="menuBar">
         <nav class="navBar">
             <img src="../img/home_icon.png">
@@ -38,14 +36,71 @@ export default () => {
             <img src="../img/group_icon.png">
             <img  class="iconBar" id="logoutIcon" src="../img/logout_icon.png"> 
         </nav>
-    </div>
-    <div class ="cuerpo"></div>
-    `;
+    </div>`;
 
     // Creacion de vista home
     const viewHomeDiv = document.createElement('div');
     viewHomeDiv.setAttribute('class', 'home');
     viewHomeDiv.innerHTML = viewHome;
+
+    // Función para mostrar post en tiempo real
+    const getPostRealTime = async () => {
+        const postContainer = document.getElementById('postContainer');
+        if (window.location.hash = '#/home') {
+            updatePost((querySnapshot) => {
+                let html = '';
+                querySnapshot.forEach((docu) => {
+                    const dataPost = docu.data();
+                    html += `
+                    <div class="publication">
+                        <div class="headPublication">
+                            <div class="authorP">
+                                <img class="authorPhoto" src= "${dataPost.photo}">
+                            </div>
+                            <div class="authorN">
+                                <label for="" class="authorName">${dataPost.name}</label>
+                                <label for="" class="date">${dataPost.date}</label>
+                            </div>
+                            
+                            <div class="edit" >
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <div class="hidde options">
+                                    <ul class="optionDelete">Eliminar</ul>
+                                    <ul class="optionEdit">Editar</ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bodyPublication">${dataPost.textPost}</div>
+                            <div class="footPublication">
+                                <div class="like">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <label for="">0</label>
+                                </div>
+                                <div class="comment">
+                                    <i class="fa-solid fa-comment"></i>
+                                    <label for="">0</label>
+                                </div>
+                                <div class="share">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                    <label for="">0</label>
+                                </div>
+                        </div>
+                </div>`;
+                    postContainer.innerHTML = html;
+
+                    // Mostrar y ocultar opcion de editar y eliminar publicacion
+                    const botonEditar = postContainer.querySelector('.fa-ellipsis-vertical');
+                    const divOcul = postContainer.querySelector('.options');
+                    botonEditar.addEventListener('click', () => {
+                        const status = divOcul.getAttribute('class');
+                        if (status === 'hidden') {
+                            divOcul.setAttribute('class', 'show');
+                        } else divOcul.setAttribute('class', 'hidden');
+                    });
+                });
+            });
+        }
+    };
 
     // Imprimir nombre y foto del usuario que inicio sesion
     getUser(user.uid)
@@ -53,80 +108,12 @@ export default () => {
             // console.log(re);
             viewHomeDiv.querySelector('.userName').innerHTML = re.name;
             viewHomeDiv.querySelector('.photoUser').setAttribute('src', re.photo);
+            getPostRealTime(); // Ejecucion de funcion
         })
         .catch((err) => err);
 
-    // Funcion para limpiar los posts
-    function limpiarPosts() {
-        const nodosEliminar = viewHomeDiv.querySelectorAll('.publish');
-        nodosEliminar.forEach((nodo) => nodo.remove());
-    }
-
-    // Funcionalidad al compartir post
     viewHomeDiv.querySelector('.btnShare').addEventListener('click', () => {
-        // Ejecutando funcion de limpiar posts
-        limpiarPosts();
-        // Función para mostrar post en tiempo real
-        const getPostRealTime = async () => {
-            const q = query(collection(db, 'posts'), orderBy('date', 'desc'));
-            const unsubscribe = await onSnapshot(q, (querySnapshot) => {
-                const posts = [];
-                querySnapshot.forEach((documento) => {
-                    // console.log(documento.data());
-                    posts.push(documento.data());
-                });
-                // Recorrer posts
-                posts.forEach((e) => {
-                    // Template strings de cada post
-                    const htmlDiv = /* html */ `<div class="publication">
-        <div class="headPublication">
-            <div class="authorP">
-                <img class="authorPhoto" src= "${e.photo}">
-            </div>
-            <div class="authorN">
-                <label for="" class="authorName">${e.name}</label>
-                <label for="" class="date">${e.date}</label>
-            </div>
-            <div class="edit" >
-                <i class="fa-solid fa-ellipsis-vertical"></i>
-                <div class="hidde options">
-                    <ul class="optionDelete">Eliminar</ul>
-                    <ul class="optionEdit">Editar</ul>
-                </div>
-            </div>
-        </div>
-        <div class="bodyPublication">${e.textPost}</div>
-        <div class="footPublication">
-            <div class="like">
-                <i class="fa-solid fa-heart"></i>
-                <label for="">0</label>
-            </div>
-            <div class="comment">
-                <i class="fa-solid fa-comment"></i>
-                <label for="">0</label>
-            </div>
-            <div class="share">
-                <i class="fa-solid fa-paper-plane"></i>
-                <label for="">0</label>
-            </div>
-        </div>
-    </div>`;
-                    // Creacion de post
-                    const viewPublishDiv = document.createElement('div');
-                    viewPublishDiv.innerHTML = htmlDiv;
-                    viewHomeDiv.appendChild(viewPublishDiv);
-                    viewPublishDiv.setAttribute('class', 'publish');
-                });
-                // console.log(posts);
-                return posts;
-            });
-        };
-
-        // Ejecucion de funcion
-        getPostRealTime();
-
         // Obtener texto a publicar
-        if (window.location.hash = '#/login') {}
         const textPublication = viewHomeDiv.querySelector('.inputPublish').value;
         if (textPublication === '') {
             alert('Escribe algo para publicar'); // En caso no exista texto aparece un alert
@@ -143,16 +130,6 @@ export default () => {
 
             // Limpiar caja de texto
             viewHomeDiv.querySelector('.inputPublish').value = '';
-
-            // Mostrar y ocultar opcion de editar y eliminar publicacion
-            /* const botonEditar = viewPublishDiv.querySelector('.fa-ellipsis-vertical');
-            const divOcul = viewPublishDiv.querySelector('.options');
-            botonEditar.addEventListener('click', () => {
-                const status = divOcul.getAttribute('class');
-                if (status === 'hidden') {
-                    divOcul.setAttribute('class', 'show');
-                } else divOcul.setAttribute('class', 'hidden');
-            }); */
         }
     });
 
