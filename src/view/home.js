@@ -8,6 +8,21 @@ import { auth } from '../firebase/firebase-initializer.js';
 import { savePost, getUser, updatePost } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
+// Funcion eliminar publicacion
+const functionDeletePost = (optionDelete, evento) => {
+    optionDelete.addEventListener('click', () => {
+        deletePost(evento.target.id);
+        console.log('Se hizo click en eliminar');
+    });
+};
+
+// Funcion para ocultar div de edicion de post
+const showMenuEdit = (idCreator, idUser, divEdit) => {
+    if (idUser === idCreator) {
+        divEdit.setAttribute('class', 'show');
+    } else divEdit.setAttribute('class', 'hidden');
+};
+
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
     // console.log(user);
@@ -59,15 +74,9 @@ export default () => {
                             <div class="authorP">
                                 <img class="authorPhoto" src= "${dataPost.photo}">
                             </div>
-
-                            <div class="authorN">
-                                <label for="" class="authorName">${dataPost.name}</label>
-                                <label for="" class="date">${dataPost.date}</label>
-                            </div>
-                            
-                            <div class="edit" >
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
-                                <div class="hidde options">
+                            <div class="edit show"  id="${dataPost.userId}">
+                                <i class="fa-solid fa-ellipsis-vertical" id=${docu.id}></i>
+                                <div class="hidden options">
                                     <ul class="optionDelete">Eliminar</ul>
                                     <ul class="optionEdit">Editar</ul>
                                 </div>
@@ -94,14 +103,27 @@ export default () => {
                 </div>`;
                     postContainer.innerHTML = html;
 
-                    // Mostrar y ocultar opcion de editar y eliminar publicacion
-                    const botonEditar = postContainer.querySelector('.fa-ellipsis-vertical');
-                    const divOcul = postContainer.querySelector('.options');
-                    botonEditar.addEventListener('click', () => {
-                        const status = divOcul.getAttribute('class');
-                        if (status === 'hidden') {
-                            divOcul.setAttribute('class', 'show');
-                        } else divOcul.setAttribute('class', 'hidden');
+                // Ocultar div de edicion de post para post de otras personas
+                const divEdition = postContainer.querySelectorAll('.edit');
+                divEdition.forEach((div) => {
+                    showMenuEdit(div.getAttribute('id'), user.uid, div);
+                });
+
+                // Mostrar y ocultar opcion de editar y eliminar publicacion
+                const btnsEdit = postContainer.querySelectorAll('.fa-ellipsis-vertical');
+                btnsEdit.forEach((btn) => {
+                    btn.addEventListener('click', (e) => {
+                        console.log(e);
+                        const divHidden = e.target.nextElementSibling;
+                        const status = divHidden.getAttribute('class');
+                        console.log(status);
+                        if (status.includes('hidden')) {
+                            divHidden.setAttribute('class', 'show');
+                            // Opcion a eliminar
+                            const optionDelete = e.target.nextElementSibling.firstElementChild;
+                            // Ejecutando funcion eliminar post
+                            functionDeletePost(optionDelete, e);
+                        } else divHidden.setAttribute('class', 'hidden');
                     });
                 });
             });
