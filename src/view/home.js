@@ -26,6 +26,13 @@ const functionEditPost = (optionEdit, evento, newPost) => {
     });
 };
 
+// Funcion para ocultar div de edicion de post
+const showMenuEdit = (idCreator, idUser, divEdit) => {
+    if (idUser === idCreator) {
+        divEdit.setAttribute('class', 'show');
+    } else divEdit.setAttribute('class', 'hidden');
+};
+
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
     // console.log(user);
@@ -81,9 +88,9 @@ export default () => {
                                     <label for="" class="date">${dataPost.date}</label>
                                 </div>
                             </div>
-                            <div class="edit" >
+                            <div class="edit show"  id="${dataPost.userId}">
                                 <i class="fa-solid fa-ellipsis-vertical" id=${docu.id}></i>
-                                <div class="hidde options">
+                                <div class="hidden options">
                                     <ul class="optionDelete">Eliminar</ul>
                                     <ul class="optionEdit">Editar</ul>
                                 </div>
@@ -95,29 +102,34 @@ export default () => {
                                 <i class="fa-solid fa-heart"></i>
                                 <label class="accountant">0</label>
                             </div>
-
                             <div class="comment">
                                 <i class="fa-solid fa-comment"></i>
                                 <label class="accountant">0</label>
                             </div>
-
                             <div class="share">
                                 <i class="fa-solid fa-paper-plane"></i>
                                 <label class="accountant">0</label>
                             </div>
                         </div>
                 </div>`;
-                    // console.log('line 92', dataPost.textPost);
                     postContainer.innerHTML = html;
+                });
+
+                // Ocultar div de edicion de post para post de otras personas
+                const divEdition = postContainer.querySelectorAll('.edit');
+                divEdition.forEach((div) => {
+                    showMenuEdit(div.getAttribute('id'), user.uid, div);
                 });
 
                 // Mostrar y ocultar opcion de editar y eliminar publicacion
                 const btnsEdit = postContainer.querySelectorAll('.fa-ellipsis-vertical');
                 btnsEdit.forEach((btn) => {
                     btn.addEventListener('click', (e) => {
+                        console.log(e);
                         const divHidden = e.target.nextElementSibling;
                         const status = divHidden.getAttribute('class');
-                        if (status === 'hidden') {
+                        console.log(status);
+                        if (status.includes('hidden')) {
                             divHidden.setAttribute('class', 'show');
                             // Opcion a eliminar
                             const optionDelete = e.target.nextElementSibling.firstElementChild;
@@ -182,19 +194,3 @@ export default () => {
 
     return viewHomeDiv;
 };
-
-/*
-// Editar post
-const optionEdit = postContainer.querySelectorAll('.optionEdit');
-optionEdit.forEach((btnEdit) => {
-    btnEdit.addEventListener('click', async (e) => {
-        const postSeleccionado = await dataPost.textPost;
-        // console.log(dataPost.textPost);
-        const textPublication0 = viewHomeDiv.querySelector('.inputPublish');
-        textPublication0.value = postSeleccionado;
-        const btnShare0 = viewHomeDiv.querySelector('.btnShare');
-        btnShare0.innerText = 'Editar';
-        // postContainer.querySelector('.hide').style.display = 'block';
-    });
-});
-*/

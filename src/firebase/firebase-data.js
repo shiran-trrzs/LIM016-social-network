@@ -70,7 +70,7 @@ export const updatePost = async (callback) => {
 // Funcion eliminar post de FireStore
 export const deletePost = async (idPost) => {
     await deleteDoc(doc(db, 'posts', idPost));
-    console.log('Se elimino de la bd');
+    console.log('se elemino de la bd');
 };
 
 // Función editar post
