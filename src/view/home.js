@@ -5,8 +5,26 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
-import { savePost, getUser, updatePost } from '../firebase/firebase-data.js';
+import {
+    savePost, getUser, updatePost, deletePost, editPost,
+} from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
+
+// Funcion eliminar publicacion
+const functionDeletePost = (optionDelete, evento) => {
+    optionDelete.addEventListener('click', () => {
+        deletePost(evento.target.id);
+        console.log('Se hizo click en eliminar');
+    });
+};
+
+// Editar post
+const functionEditPost = (optionEdit, evento, newPost) => {
+    optionEdit.addEventListener('click', () => {
+        editPost(evento.target.id, newPost);
+        console.log('Se hizo click en editar post');
+    });
+};
 
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
@@ -54,66 +72,62 @@ export default () => {
                     html += `
                     <div class="publication">
                         <div class="headPublication">
-                            <div class="authorP">
-                                <img class="authorPhoto" src= "${dataPost.photo}">
+                            <div class="photoAndName">
+                                <div class="authorP">
+                                    <img class="authorPhoto" src= "${dataPost.photo}">
+                                </div>
+                                <div class="authorN">
+                                    <label for="" class="authorName">${dataPost.name}</label>
+                                    <label for="" class="date">${dataPost.date}</label>
+                                </div>
                             </div>
-                            <div class="authorN">
-                                <label for="" class="authorName">${dataPost.name}</label>
-                                <label for="" class="date">${dataPost.date}</label>
-                            </div>
-                            
                             <div class="edit" >
-                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                                <i class="fa-solid fa-ellipsis-vertical" id=${docu.id}></i>
                                 <div class="hidde options">
                                     <ul class="optionDelete">Eliminar</ul>
-                                    <button
-                                    class="optionEdit">Editar
-                                    </button>
+                                    <ul class="optionEdit">Editar</ul>
                                 </div>
                             </div>
                         </div>
                         <div class="bodyPublication">${dataPost.textPost}</div>
-                            <div class="footPublication">
-                                <div class="like">
-                                    <i class="fa-solid fa-heart"></i>
-                                    <label for="">0</label>
-                                </div>
-                                <div class="comment">
-                                    <i class="fa-solid fa-comment"></i>
-                                    <label for="">0</label>
-                                </div>
-                                <div class="share">
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                    <label for="">0</label>
-                                </div>
+                        <div class="footPublication">
+                            <div class="like">
+                                <i class="fa-solid fa-heart"></i>
+                                <label class="accountant">0</label>
+                            </div>
+
+                            <div class="comment">
+                                <i class="fa-solid fa-comment"></i>
+                                <label class="accountant">0</label>
+                            </div>
+
+                            <div class="share">
+                                <i class="fa-solid fa-paper-plane"></i>
+                                <label class="accountant">0</label>
+                            </div>
                         </div>
                 </div>`;
-
                     // console.log('line 92', dataPost.textPost);
                     postContainer.innerHTML = html;
+                });
 
-                    // Mostrar y ocultar opcion de editar y eliminar publicacion
-                    const botonEditar = postContainer.querySelector('.fa-ellipsis-vertical');
-                    const divOcul = postContainer.querySelector('.options');
-                    botonEditar.addEventListener('click', () => {
-                        const status = divOcul.getAttribute('class');
+                // Mostrar y ocultar opcion de editar y eliminar publicacion
+                const btnsEdit = postContainer.querySelectorAll('.fa-ellipsis-vertical');
+                btnsEdit.forEach((btn) => {
+                    btn.addEventListener('click', (e) => {
+                        const divHidden = e.target.nextElementSibling;
+                        const status = divHidden.getAttribute('class');
                         if (status === 'hidden') {
-                            divOcul.setAttribute('class', 'show');
-                        } else divOcul.setAttribute('class', 'hidden');
-                    });
-
-                    // Editar post
-                    const optionEdit = postContainer.querySelectorAll('.optionEdit');
-                    optionEdit.forEach((btn) => {
-                        btn.addEventListener('click', async (e) => {
-                            const postSeleccionado = await dataPost.textPost;
-                            // console.log(dataPost.textPost);
-                            const textPublication0 = viewHomeDiv.querySelector('.inputPublish');
-                            textPublication0.value = postSeleccionado;
-                            const btnShare0 = viewHomeDiv.querySelector('.btnShare');
-                            btnShare0.innerText = 'Editar';
-                            // postContainer.querySelector('.hide').style.display = 'block';
-                        });
+                            divHidden.setAttribute('class', 'show');
+                            // Opcion a eliminar
+                            const optionDelete = e.target.nextElementSibling.firstElementChild;
+                            // Ejecutando funcion eliminar post
+                            functionDeletePost(optionDelete, e);
+                            // opcion a editar post
+                            const optionEdit = optionDelete.nextElementSibling;
+                            // Ejecutando función de editar post
+                            functionEditPost(optionEdit, e, 'lu');
+                        } else divHidden.setAttribute('class', 'hidden');
                     });
                 });
             });
@@ -168,3 +182,19 @@ export default () => {
 
     return viewHomeDiv;
 };
+
+/*
+// Editar post
+const optionEdit = postContainer.querySelectorAll('.optionEdit');
+optionEdit.forEach((btnEdit) => {
+    btnEdit.addEventListener('click', async (e) => {
+        const postSeleccionado = await dataPost.textPost;
+        // console.log(dataPost.textPost);
+        const textPublication0 = viewHomeDiv.querySelector('.inputPublish');
+        textPublication0.value = postSeleccionado;
+        const btnShare0 = viewHomeDiv.querySelector('.btnShare');
+        btnShare0.innerText = 'Editar';
+        // postContainer.querySelector('.hide').style.display = 'block';
+    });
+});
+*/
