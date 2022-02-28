@@ -68,7 +68,7 @@ export const updatePost = async (callback) => {
 // Funcion eliminar post de FireStore
 export const deletePost = async (idPost) => {
     await deleteDoc(doc(db, 'posts', idPost));
-    console.log('se elemino de la bd');
+    console.log('Se elimino de la bd');
 };
 
 // Manipula interacción de los likes de posteos

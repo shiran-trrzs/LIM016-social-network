@@ -17,6 +17,9 @@ body {
 	background-color: rgba(245, 245, 245, 1);
 	width: auto;
 	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .userInfo {
@@ -41,8 +44,9 @@ body {
 
 .authorPhoto {
 	border-radius: 50%;
-	height: 45px;
-	width: 45px;
+	height: 35px;
+	width: 35px;
+	margin: 6px;
 }
 
 .postTextBox {
@@ -83,11 +87,6 @@ body {
 	border-radius: 0px 0px 15px 15px;
 }
 
-.like {
-	width: 50px;
-	height: 50px;
-}
-
 .menuBar {
 	bottom: 0px;
 	position: fixed;
@@ -120,6 +119,70 @@ body {
 .show {
 	display: flex;
 	flex-direction: column;
+}
+
+/* Post */
+.publication {
+	display: flex;
+	flex-direction: column;
+	border: transparent;
+	width: 80vw;
+	background: var(--background-color);
+	border-radius: 15px;
+	margin-top: 15px;
+}
+
+/* Alinear horizontal cabecera de post */
+.headPublication {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* Alinear horizontal nombre y foto del creador del post */
+.photoAndName {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+/*  Alinear verticalmente nombre de creador del post y fecha del post */
+.authorN {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Alinear icono de editar post */
+.fa-ellipsis-vertical {
+	margin-right: 8px;
+}
+
+/* Estilo a texto del post */
+.bodyPublication {
+	margin-left: 49px;
+	margin-right: 15px;
+	margin-bottom: 12px;
+}
+
+/* Alinear pie del post */
+.footPublication {
+	display: flex;
+	flex-direction: row;
+	margin-left: 49px;
+	margin-bottom: 10px;
+}
+
+/* Iconos de post */
+.fa-heart,
+.fa-comment,
+.fa-paper-plane {
+	padding-right: 4px;
+}
+
+/* Estilo a contadores de likes, comentarios y compartidos */
+.accountant {
+	padding-right: 8px;
 }
 
 @media (min-width: 600px) {
