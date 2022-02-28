@@ -18,6 +18,13 @@ const functionDeletePost = (optionDelete, evento) => {
     });
 };
 
+// Funcion para ocultar div de edicion de post
+const showMenuEdit = (idCreator, idUser, divEdit) => {
+    if (idUser === idCreator) {
+        divEdit.setAttribute('class', 'show');
+    } else divEdit.setAttribute('class', 'hidden');
+};
+
 export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
     // console.log(user);
@@ -75,9 +82,9 @@ export default () => {
                                     <label for="" class="date">${dataPost.date}</label>
                                 </div>
                             </div>
-                            <div class="edit" >
+                            <div class="edit show"  id="${dataPost.userId}">
                                 <i class="fa-solid fa-ellipsis-vertical" id=${docu.id}></i>
-                                <div class="hidde options">
+                                <div class="hidden options">
                                     <ul class="optionDelete">Eliminar</ul>
                                     <ul class="optionEdit">Editar</ul>
                                 </div>
@@ -105,13 +112,21 @@ export default () => {
                     postContainer.innerHTML = html;
                 });
 
+                // Ocultar div de edicion de post para post de otras personas
+                const divEdition = postContainer.querySelectorAll('.edit');
+                divEdition.forEach((div) => {
+                    showMenuEdit(div.getAttribute('id'), user.uid, div);
+                });
+
                 // Mostrar y ocultar opcion de editar y eliminar publicacion
                 const btnsEdit = postContainer.querySelectorAll('.fa-ellipsis-vertical');
                 btnsEdit.forEach((btn) => {
                     btn.addEventListener('click', (e) => {
+                        console.log(e);
                         const divHidden = e.target.nextElementSibling;
                         const status = divHidden.getAttribute('class');
-                        if (status === 'hidden') {
+                        console.log(status);
+                        if (status.includes('hidden')) {
                             divHidden.setAttribute('class', 'show');
                             // Opcion a eliminar
                             const optionDelete = e.target.nextElementSibling.firstElementChild;
