@@ -6,9 +6,12 @@
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
 import {
-    savePost, getUser, updatePost, deletePost, editPost,
+    savePost, getUser, updatePost, deletePost, getPost, editPost,
 } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
+
+let editStatus = false;
+let idPublicaion = '';
 
 // Funcion eliminar publicacion
 const functionDeletePost = (optionDelete, evento) => {
@@ -17,7 +20,7 @@ const functionDeletePost = (optionDelete, evento) => {
         console.log('Se hizo click en eliminar');
     });
 };
-
+/*
 // Editar post
 const functionEditPost = (optionEdit, evento, newPost) => {
     optionEdit.addEventListener('click', () => {
@@ -25,6 +28,7 @@ const functionEditPost = (optionEdit, evento, newPost) => {
         console.log('Se hizo click en editar post');
     });
 };
+*/
 
 // Funcion para ocultar div de edicion de post
 const showMenuEdit = (idCreator, idUser, divEdit) => {
@@ -37,14 +41,14 @@ export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
     // console.log(user);
 
-    const viewHome = /* html */ `
+    const viewHome = `
     <section>
         <div class="userInfo">
             <h2 class="userName"></h2>
             <img class="photoUser" src= "">
         </div>
         <div class="postTextBox">
-            <textarea class="inputPublish" placeholder="¿Qué estás pensando?"></textarea> 
+            <textarea id="task-title" class="inputPublish" placeholder="¿Qué estás pensando?"></textarea> 
             <div class="items">
                 <i class="fa-solid fa-image"></i> <span> Imagen </span>
                 <i class="fa-solid fa-face-smile-beam"></i> <span class="btnPrueba"> Emoji </span>
@@ -92,11 +96,11 @@ export default () => {
                                 <i class="fa-solid fa-ellipsis-vertical" id=${docu.id}></i>
                                 <div class="hidden options">
                                     <ul class="optionDelete">Eliminar</ul>
-                                    <ul class="optionEdit">Editar</ul>
+                                    <ul class="optionEdit" data-id="${docu.id}">Editar</ul>
                                 </div>
                             </div>
                         </div>
-                        <div class="bodyPublication">${dataPost.textPost}</div>
+                        <div class="bodyPublication" id=${docu.id}>${dataPost.textPost}</div>
                         <div class="footPublication">
                             <div class="like">
                                 <i class="fa-solid fa-heart"></i>
@@ -135,11 +139,28 @@ export default () => {
                             const optionDelete = e.target.nextElementSibling.firstElementChild;
                             // Ejecutando funcion eliminar post
                             functionDeletePost(optionDelete, e);
+                            /*
                             // opcion a editar post
                             const optionEdit = optionDelete.nextElementSibling;
                             // Ejecutando función de editar post
                             functionEditPost(optionEdit, e, 'lu');
+                            */
                         } else divHidden.setAttribute('class', 'hidden');
+                    });
+                });
+
+                // Editar post
+                const btnEdit = postContainer.querySelectorAll('.optionEdit');
+                btnEdit.forEach((btn) => {
+                    btn.addEventListener('click', async (e) => {
+                        const docUnit = await getPost(e.target.dataset.id);
+                        const task = docUnit.data();
+                        viewHomeDiv.querySelector('.inputPublish').value = task.textPost;
+
+                        editStatus = true;
+                        idPublicaion = docUnit.id;
+
+                        viewHomeDiv.querySelector('.btnShare').innerText = 'Guardar';
                     });
                 });
             });
@@ -169,7 +190,14 @@ export default () => {
                     const tiempoTranscurrido = Date.now();
                     const hoy = new Date(tiempoTranscurrido);
                     // Guardando publicacion en db
-                    savePost(user.uid, textPublication, hoy.toLocaleDateString(), re.name, re.photo);
+                    if (!editStatus) {
+                        savePost(user.uid, textPublication, hoy.toLocaleDateString(), re.name, re.photo);
+                    } else {
+                        editPost(idPublicaion, {
+                            textPost: textPublication,
+                        });
+                        editStatus = false;
+                    }
                 });
 
             // Limpiar caja de texto

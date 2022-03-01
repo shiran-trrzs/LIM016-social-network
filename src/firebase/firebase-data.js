@@ -74,12 +74,10 @@ export const deletePost = async (idPost) => {
 };
 
 // Función editar post
-export const editPost = async (idPost, newPost) => {
-    await updateDoc(doc(db, 'posts', idPost), {
-        textPost: newPost,
-    });
-    console.log('Se edita post');
-};
+export const editPost = (id, newPost) => updateDoc(doc(db, 'posts', id), newPost);
+
+// obtener un post
+export const getPost = (id) => getDoc(doc(db, 'posts', id));
 
 // Manipula interacción de los likes de posteos
 // export const setLikes = async (postId, dataLikes) => {
