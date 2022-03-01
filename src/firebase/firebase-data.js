@@ -52,7 +52,7 @@ export const savePost = async (user, post, datePost, nameU, photoU) => {
     const docRefPosts = await addDoc(collection(db, 'posts'), {
         userId: user,
         textPost: post,
-        date: serverTimestamp(),
+        date: new Date().toLocaleString('en-ES'),
         name: nameU,
         photo: photoU,
         like: [],
@@ -76,6 +76,7 @@ export const deletePost = async (idPost) => {
 // Función editar post
 export const editPost = async (idPost, newPost) => {
     await updateDoc(doc(db, 'posts', idPost), {
+        date: new Date().toLocaleString('en-ES'),
         textPost: newPost,
     });
     console.log('Se edita post');

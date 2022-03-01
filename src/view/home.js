@@ -138,6 +138,8 @@ export default () => {
                             // opcion a editar post
                             const optionEdit = optionDelete.nextElementSibling;
                             // Ejecutando función de editar post
+                            // console.log(dataPost.textPost);
+                            // const replacePost = postContainer.querySelector('.bodyPublication').value;
                             functionEditPost(optionEdit, e, 'lu');
                         } else divHidden.setAttribute('class', 'hidden');
                     });
