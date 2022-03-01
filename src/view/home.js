@@ -6,7 +6,7 @@
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
 import {
-    savePost, getUser, updatePost, deletePost,
+    savePost, getUser, updatePost, deletePost, editPost,
 } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
 
@@ -15,6 +15,14 @@ const functionDeletePost = (optionDelete, evento) => {
     optionDelete.addEventListener('click', () => {
         deletePost(evento.target.id);
         console.log('Se hizo click en eliminar');
+    });
+};
+
+// Editar post
+const functionEditPost = (optionEdit, evento, newPost) => {
+    optionEdit.addEventListener('click', () => {
+        editPost(evento.target.id, newPost);
+        console.log('Se hizo click en editar post');
     });
 };
 
@@ -127,6 +135,10 @@ export default () => {
                             const optionDelete = e.target.nextElementSibling.firstElementChild;
                             // Ejecutando funcion eliminar post
                             functionDeletePost(optionDelete, e);
+                            // opcion a editar post
+                            const optionEdit = optionDelete.nextElementSibling;
+                            // Ejecutando función de editar post
+                            functionEditPost(optionEdit, e, 'lu');
                         } else divHidden.setAttribute('class', 'hidden');
                     });
                 });
