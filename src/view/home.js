@@ -20,15 +20,6 @@ const functionDeletePost = (optionDelete, evento) => {
         console.log('Se hizo click en eliminar');
     });
 };
-/*
-// Editar post
-const functionEditPost = (optionEdit, evento, newPost) => {
-    optionEdit.addEventListener('click', () => {
-        editPost(evento.target.id, newPost);
-        console.log('Se hizo click en editar post');
-    });
-};
-*/
 
 // Funcion para ocultar div de edicion de post
 const showMenuEdit = (idCreator, idUser, divEdit) => {
@@ -139,12 +130,6 @@ export default () => {
                             const optionDelete = e.target.nextElementSibling.firstElementChild;
                             // Ejecutando funcion eliminar post
                             functionDeletePost(optionDelete, e);
-                            /*
-                            // opcion a editar post
-                            const optionEdit = optionDelete.nextElementSibling;
-                            // Ejecutando función de editar post
-                            functionEditPost(optionEdit, e, 'lu');
-                            */
                         } else divHidden.setAttribute('class', 'hidden');
                     });
                 });
@@ -154,8 +139,8 @@ export default () => {
                 btnEdit.forEach((btn) => {
                     btn.addEventListener('click', async (e) => {
                         const docUnit = await getPost(e.target.dataset.id);
-                        const task = docUnit.data();
-                        viewHomeDiv.querySelector('.inputPublish').value = task.textPost;
+                        const onePost = docUnit.data();
+                        viewHomeDiv.querySelector('.inputPublish').value = onePost.textPost;
 
                         editStatus = true;
                         idPublicaion = docUnit.id;
@@ -202,6 +187,7 @@ export default () => {
 
             // Limpiar caja de texto
             viewHomeDiv.querySelector('.inputPublish').value = '';
+            viewHomeDiv.querySelector('.btnShare').innerText = 'Compartir';
         }
     });
 
