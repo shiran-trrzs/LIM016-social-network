@@ -1,0 +1,518 @@
+/* Variables de colores usados */
+:root {
+	--brown-transparent-background: rgba(113, 58, 42, 0.45);
+	--black-transparent-background: rgba(0, 0, 0, 0.65);
+	--letter-color: rgba(255, 255, 255, 1);
+	--letter-shadow-color: rgba(0, 0, 0, 0.25);
+	--error-message-color: rgba(255, 255, 255, 1);
+	--buttons-color: rgb(240, 96, 48);
+	--inputs-color: rgba(255, 248, 248, 0.21);
+}
+
+/* Quitarle el margen que viene por defecto en el body */
+body {
+	margin: 0px;
+	font-family: 'IBM Plex Sans Thai', sans-serif;
+}
+
+/* ---------------------------------- Vista login ---------------------------------- */
+/* Fondo de login */
+#viewLog {
+	background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1');
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+}
+
+/* Seccion 1 */
+#principalView1 {
+	width: 100vw;
+	height: 40vh;
+	background: var(--brown-transparent-background);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Estilo al nombre */
+.nameSocialNetwork {
+	width: auto;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 13vw;
+	text-align: center;
+	color: var(--letter-color);
+	text-shadow: 0px 4px 4px --letter-shadow-color;
+	margin-top: 70px;
+}
+
+/* Estilo al logo 1 */
+.logo1 {
+	width: 100px;
+	height: 75px;
+}
+
+/* Seccion 2 */
+#principalView2 {
+	width: 100vw;
+	height: 60vh;
+	background: var(--brown-transparent-background);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Division ocultar logo 2 y slogan */
+.hidden {
+	display: none;
+}
+
+/* Division de formulario */
+#formSection {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 30px;
+}
+
+/* Estilo a las cajas de texto */
+input {
+	width: 65vw;
+	height: 5vh;
+	background: var(--inputs-color);
+	backdrop-filter: blur(4px);
+	border-radius: 30px;
+	border-style: none;
+	text-align: center;
+	margin: 5px;
+	color: var(--letter-color);
+	font-size: 18px;
+}
+
+/* Estilo al placeholder de las cajas de texto */
+input::placeholder {
+	font-family: FontAwesome, 'Open Sans', Verdana, sans-serif;
+	font-weight: normal;
+	color: var(--letter-color);
+	font-size: 13px;
+}
+
+/* Quitarle borde al seleccionar una caja de texto */
+input:focus {
+	outline: none;
+}
+
+/* Espacio superior a enlace "Olvide mi contraseña" */
+.forgetPasswordLink {
+	padding-top: 15px;
+}
+
+/* Division de botones */
+#buttons {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 40px;
+}
+
+/* Estilo a todos los botones */
+.btn {
+	width: 65vw;
+	min-height: 5vh;
+	background: var(--buttons-color);
+	border-radius: 30px;
+	border-style: none;
+	text-align: center;
+	color: var(--letter-color);
+	margin: 5px;
+	text-align: center;
+	font-size: 18px;
+}
+
+/* Cambiar de puntero al posicionarse en los botones */
+.btn:hover {
+	cursor: pointer;
+}
+
+/* Alineacion a la imagen de Google */
+.imgGoogle {
+	vertical-align: middle;
+}
+
+/* Alineacion a la frase "Continuar con Google" */
+span {
+	vertical-align: middle;
+}
+
+/* Estilo a todos los textos */
+.text {
+	color: var(--letter-color);
+}
+
+/* Negrita */
+.bold {
+	font-weight: bold;
+}
+
+/* ---------------------------------- Vista password ---------------------------------- */
+/* Fondo de Password */
+#viewForgetPassword {
+	background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1');
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+}
+
+/* Fondo transparente negro a seccion 1 y 2 */
+#viewForgetPassword #principalView1,
+#viewForgetPassword #principalView2 {
+	background: var(--black-transparent-background);
+}
+
+/* Division mensaje de respuesta */
+#replyMessage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 30px;
+}
+
+/* Color al mensaje de respuesta */
+#message {
+	color: var(--error-message-color);
+	font-size: 20px;
+	padding-bottom: 25px;
+	text-align: center;
+	width: 80vw;
+}
+
+/* Estilo a input de correo electronico */
+#emailChangePassword {
+	color: var(--letter-color);
+	font-size: 18px;
+}
+
+/* Estilo al placeholder del input de correo electronico */
+#emailChangePassword::placeholder {
+	color: var(--letter-color);
+	font-size: 13px;
+}
+
+/* ---------------------------------- Vista registro de usuario ---------------------------------- */
+/* Fondo de Password */
+#viewRegistration {
+	background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/e0/ce/85/sunset-beach.jpg?w=1200&h=-1&s=1');
+	background-size: cover;
+	width: 100vw;
+	height: 100vh;
+}
+
+/* Fondo transparente negro a seccion 1 y 2 */
+#viewRegistration #principalView1,
+#viewRegistration #principalView2 {
+	background: var(--black-transparent-background);
+}
+
+/* Alinear en el centro el formulario */
+#formRegistration {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Estilo al input de correo electronico */
+#viewRegistration .registerInput {
+	color: var(--letter-color);
+	font-size: 18px;
+}
+
+/* Estilo al placeholder del input de correo electronico */
+#viewRegistration .registerInput::placeholder {
+	color: var(--letter-color);
+	font-size: 13px;
+}
+
+/* Mensaje de error en los campos ingresados */
+.message {
+	width: 80vw;
+	color: var(--letter-color);
+	font-size: 13px;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+/* Alinear division de terminos y condiciones en fila */
+#termsConditions {
+	width: 70vw;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: var(--letter-color);
+}
+
+/* Tamaño de checkbox de terminos y condiciones */
+.checkTerms {
+	width: 30px;
+}
+
+/* Margen superior al boton registrar */
+#btnRegister {
+	margin-top: 40px;
+}
+
+/*-------------------------------términos y condiciones-------------------------*/
+/* Ocultar términos y condiciones + fondo negro transparente */
+.termsAndConditions-hidden {
+	visibility: hidden;
+	position: fixed;
+}
+
+/* Mostrar términos y condiciones + fondo negro transparente */
+.termsAndConditions-show  {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: var(--black-transparent-background);
+}
+
+/* Modal términos y condiciones */
+.termsAndConditions-modal {
+	width: 90%;
+	height: 500px;
+}
+
+/* Modal Términos y condiciones - Encabezado*/
+.termsAndConditions-modal header {
+	padding: 3px;
+	background: rgb(240, 96, 48);
+	font-size: 18px;
+	text-align: center;
+	color: var(--letter-color);
+}
+
+/* Texto Términos y condiciones*/
+.text-content {
+	overflow: scroll;
+	padding: 1em 2em;
+	font-size: 13px;
+	background-color: white;
+	text-align:justify;
+	color: black;
+	height: inherit;
+}
+
+/* Botón Cerrar Modal Términos y  condiciones*/
+.btn-close {
+	display: inline-flex;
+	color: white;
+	font-size: 20px;
+	position: absolute;
+    top: 2.rem;
+    right: 1.6rem;
+}
+
+/* ---------------------------------- Media Query para pantallas a partir de 600px ---------------------------------- */
+@media (min-width: 600px) {
+	/* ---------------------------------- Vista login ---------------------------------- */
+	/* Tamaño de vista login */
+	#viewLog {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* Seccion 1 */
+	#principalView1 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+	}
+
+	/* Estilo al nombre */
+	.nameSocialNetwork {
+		font-size: 5vw;
+		margin-top: 0px;
+	}
+
+	/* Tamaño al logo 1 */
+	.logo1 {
+		width: 130px;
+		height: 95px;
+	}
+
+	/* Seccion 2 */
+	#principalView2 {
+		width: 50vw;
+		height: 100vh;
+		background: var(--black-transparent-background);
+		justify-content: center;
+	}
+
+	/* Division mostrar logo 2 y Slogan */
+	.hidden {
+		display: block;
+		width: 35vw;
+	}
+
+	/* Tamaño al logo 2 */
+	.logo2 {
+		width: 55px;
+		height: 40px;
+	}
+
+	/* Tamaño de Slogan */
+	.slogan {
+		font-size: 40px;
+	}
+
+	/* Ancho de las cajas de texto */
+	input {
+		width: 25vw;
+	}
+
+	/* Ancho de los botones */
+	.btn {
+		width: 25vw;
+	}
+
+	.acceptTerms {
+		cursor: pointer;
+	}
+
+	/* ---------------------------------- Vista password ---------------------------------- */
+	/* Tamaño de vista Password */
+	#viewForgetPassword {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* Seccion 1 */
+	#viewForgetPassword #principalView1 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+		background: var(--brown-transparent-background);
+	}
+
+	/* Estilo al nombre */
+	.nameSocialNetwork {
+		font-size: 5vw;
+		margin-top: 0px;
+	}
+
+	/* Tamaño al logo 1 */
+	.logo1 {
+		width: 130px;
+		height: 95px;
+	}
+
+	/* Seccion 2 */
+	#principalView2 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+	}
+
+	/* Tamaño al mensaje de respuesta */
+	#message {
+		width: 40vw;
+	}
+
+	/* ---------------------------------- Vista registro de usuario ---------------------------------- */
+	/* Tamaño de vista Password */
+	#viewRegistration {
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: row;
+	}
+
+	/* Seccion 1 */
+	#viewRegistration #principalView1 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+		background: var(--brown-transparent-background);
+	}
+
+	/* Estilo al nombre */
+	.nameSocialNetwork {
+		font-size: 5vw;
+		margin-top: 0px;
+	}
+
+	/* Tamaño al logo 1 */
+	.logo1 {
+		width: 130px;
+		height: 95px;
+	}
+
+	/* Seccion 2 */
+	#principalView2 {
+		width: 50vw;
+		height: 100vh;
+		justify-content: center;
+	}
+
+	/* Mensaje de error en los campos ingresados */
+	.message {
+		width: 25vw;
+	}
+	/* Alinear division de terminos y condiciones en fila */
+	#termsConditions {
+		width: 20vw;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+	}
+
+	.acceptTerms {
+		cursor: pointer;
+	}
+
+/*-------------------------------términos y condiciones-------------------------*/
+/* Modal Términos y condiciones - Encabezado*/
+.termsAndConditions-modal header {
+	padding: 10px;
+	background: rgb(240, 96, 48);
+	font-size: 23px;
+	text-align: center;
+	color: var(--letter-color);
+}
+
+/* Modal Términos y condiciones*/
+.termsAndConditions-modal {
+	max-width: 1200px;
+	height: 550px;
+	background-color: white;
+	color: black;
+	text-align:justify;
+}
+
+/* Texto Términos y condiciones*/
+.text-content {
+	text-align:justify;
+	overflow: scroll;
+	padding: 1em 2em;
+	font-size: 15px;
+	height: inherit;
+}
+
+/* Botón Cerrar Modal Términos y  condiciones*/
+.btn-close {
+	color: white;
+	font-size: 25px;
+	font-weight: bold;
+    top: 6.5rem;
+    right: 13.2rem;
+}
+}
+

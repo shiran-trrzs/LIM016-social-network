@@ -1,0 +1,244 @@
+:root {
+	--brown-transparent-background: rgba(113, 58, 42, 0.45);
+	--black-transparent-background: rgba(0, 0, 0, 0.65);
+	--lettertxt-color: rgba(0, 0, 0, 0.61);
+	--letter-shadow-color: rgba(0, 0, 0, 0.25);
+	--background-color: rgba(255, 255, 255, 1);
+	--text-color: rgb(240, 96, 48);
+	--nav-color: rgba(181, 90, 39, 0.16);
+}
+
+body {
+	margin: 0px;
+	padding: 0%;
+}
+
+.home {
+	background-color: rgba(245, 245, 245, 1);
+	width: auto;
+	height: 1000vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.userInfo {
+	display: flex;
+	justify-content: space-between;
+	margin: 0px 10px 30px 10px;
+	padding: 20px;
+}
+
+.userName {
+	color: var(--text-color);
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.photoUser {
+	border-radius: 50%;
+	height: 96px;
+	width: 96px;
+	margin-right: 10px;
+}
+
+.authorPhoto {
+	border-radius: 50%;
+	height: 35px;
+	width: 35px;
+	margin: 6px;
+}
+
+.postTextBox {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.inputPublish {
+	display: flex;
+	border: transparent;
+	width: 75vw;
+	height: 13vh;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0%;
+	padding: 15px;
+	border-radius: 15px 15px 0px 0px;
+	background-color: var(--background-color);
+}
+
+.inputPublish::placeholder {
+	color: var(--lettertxt-color);
+	font-family: 'IBM Plex Sans Thai', sans-serif;
+	font-size: 20px;
+}
+
+.items {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 0px 30px 0px 30px;
+	width: 75vw;
+	height: 5vh;
+	padding: 0px 15px 0px 15px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: var(--nav-color);
+	border-radius: 0px 0px 15px 15px;
+}
+
+.menuBar {
+	bottom: 0px;
+	position: fixed;
+	margin-left: 20px;
+	margin-bottom: 30px;
+	padding: 10px 0px 5px 12px;
+}
+
+.navBar {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	background-color: var(--nav-color);
+	border-radius: 15px;
+	height: 4vh;
+	width: 80vw;
+	padding: 10px;
+}
+
+.iconBar {
+	cursor: pointer;
+}
+
+/* Ocultar opciones de edicion de una publicacion */
+.hidde {
+	display: none;
+}
+
+/* Mostrar opciones de edicion de una publicacion */
+.show {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Post */
+.publication {
+	display: flex;
+	flex-direction: column;
+	border: transparent;
+	width: 80vw;
+	background: var(--background-color);
+	border-radius: 15px;
+	margin-top: 15px;
+}
+
+/* Alinear horizontal cabecera de post */
+.headPublication {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+/* Alinear horizontal nombre y foto del creador del post */
+.photoAndName {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+/*  Alinear verticalmente nombre de creador del post y fecha del post */
+.authorN {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Alinear icono de editar post */
+.fa-ellipsis-vertical {
+	margin-right: 8px;
+}
+
+/* Estilo a texto del post */
+.bodyPublication {
+	margin-left: 49px;
+	margin-right: 15px;
+	margin-bottom: 12px;
+}
+
+/* Alinear pie del post */
+.footPublication {
+	display: flex;
+	flex-direction: row;
+	margin-left: 49px;
+	margin-bottom: 10px;
+}
+
+/* Iconos de post */
+.fa-heart,
+.fa-comment,
+.fa-paper-plane {
+	padding-right: 4px;
+}
+
+/* Estilo a contadores de likes, comentarios y compartidos */
+.accountant {
+	padding-right: 8px;
+}
+
+@media (min-width: 600px) {
+	body {
+		margin-top: 0px;
+	}
+
+	.home {
+		background-color: rgba(245, 245, 245, 1);
+		width: 0;
+		height: 1000vh;
+	}
+
+	.contacts {
+		display: inline;
+	}
+
+	.userInfo {
+		height: 100px;
+		width: 773px;
+		margin: 0px 10px 30px 280px;
+		padding: 20px;
+	}
+
+	.userName {
+		color: var(--text-color);
+		font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+			'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	}
+
+	.photoUser {
+		border-radius: 50%;
+	}
+
+	.postTextBox {
+		height: 300ox;
+		width: 300px;
+	}
+	.container {
+		display: flex;
+		align-content: space-around;
+	}
+
+	.navBar {
+		display: flex;
+		flex-direction: column;
+		background-color: var(--nav-color);
+		height: 1024px;
+		width: 40px;
+		border-radius: 0%;
+		margin-top: 0%;
+		margin-bottom: auto;
+		margin-left: 0%;
+	}
+
+	.iconBar {
+		cursor: pointer;
+	}
+}
