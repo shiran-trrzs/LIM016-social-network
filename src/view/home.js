@@ -6,9 +6,12 @@
 /* eslint-disable no-console */
 import { auth } from '../firebase/firebase-initializer.js';
 import {
-    savePost, getUser, updatePost, deletePost,
+    savePost, getUser, updatePost, deletePost, getPost, editPost,
 } from '../firebase/firebase-data.js';
 import { signOutUser } from '../firebase/firebase-auth.js';
+
+let editStatus = false;
+let idPublicaion = '';
 
 // Funcion eliminar publicacion
 const functionDeletePost = (optionDelete, evento, modal, btnYes, btnNot) => {
@@ -41,14 +44,13 @@ export default () => {
     // console.log(user);
 
     const viewHome = /* html */ `
-    
     <section>
         <div class="userInfo">
             <h2 class="userName"></h2>
             <img class="photoUser" src= "">
         </div>
         <div class="postTextBox">
-            <textarea class="inputPublish" placeholder="¿Qué estás pensando?"></textarea> 
+            <textarea id="task-title" class="inputPublish" placeholder="¿Qué estás pensando?"></textarea> 
             <div class="items">
                 <i class="fa-solid fa-image"></i> <span> Imagen </span>
                 <i class="fa-solid fa-face-smile-beam"></i> <span class="btnPrueba"> Emoji </span>
@@ -69,7 +71,6 @@ export default () => {
             </div>
         </div>
     </div>
-
     <div class="menuBar">
         <nav class="navBar">
             <img src="../img/home_icon.png">
@@ -109,23 +110,20 @@ export default () => {
                                 <i class="fa-solid fa-ellipsis-vertical" id=${docu.id}></i>
                                 <div class="hidden options">
                                     <ul class="optionDelete">Eliminar</ul>
-                                    <ul class="optionEdit">Editar</ul>
+                                    <ul class="optionEdit" data-id="${docu.id}">Editar</ul>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="bodyPublication">${dataPost.textPost}</div>
+                        <div class="bodyPublication" id=${docu.id}>${dataPost.textPost}</div>
                         <div class="footPublication">
                             <div class="like">
                                 <i class="fa-solid fa-heart"></i>
                                 <label class="accountant">0</label>
                             </div>
-
                             <div class="comment">
                                 <i class="fa-solid fa-comment"></i>
                                 <label class="accountant">0</label>
                             </div>
-
                             <div class="share">
                                 <i class="fa-solid fa-paper-plane"></i>
                                 <label class="accountant">0</label>
@@ -160,6 +158,21 @@ export default () => {
                         } else divHidden.setAttribute('class', 'hidden');
                     });
                 });
+
+                // Editar post
+                const btnEdit = postContainer.querySelectorAll('.optionEdit');
+                btnEdit.forEach((btn) => {
+                    btn.addEventListener('click', async (e) => {
+                        const docUnit = await getPost(e.target.dataset.id);
+                        const onePost = docUnit.data();
+                        viewHomeDiv.querySelector('.inputPublish').value = onePost.textPost;
+
+                        editStatus = true;
+                        idPublicaion = docUnit.id;
+
+                        viewHomeDiv.querySelector('.btnShare').innerText = 'Guardar';
+                    });
+                });
             });
         }
     };
@@ -187,11 +200,19 @@ export default () => {
                     const tiempoTranscurrido = Date.now();
                     const hoy = new Date(tiempoTranscurrido);
                     // Guardando publicacion en db
-                    savePost(user.uid, textPublication, hoy.toLocaleDateString(), re.name, re.photo);
+                    if (!editStatus) {
+                        savePost(user.uid, textPublication, hoy.toLocaleDateString(), re.name, re.photo);
+                    } else {
+                        editPost(idPublicaion, {
+                            textPost: textPublication,
+                        });
+                        editStatus = false;
+                    }
                 });
 
             // Limpiar caja de texto
             viewHomeDiv.querySelector('.inputPublish').value = '';
+            viewHomeDiv.querySelector('.btnShare').innerText = 'Compartir';
         }
     });
 

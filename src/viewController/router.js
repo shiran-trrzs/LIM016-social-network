@@ -7,7 +7,7 @@ import { auth, onAuthStateChanged } from '../firebase/firebase-initializer.js';
 export const changeView = (route) => {
     const main = document.getElementById('main');
     main.innerHTML = '';
-
+    // Estado del usuario
     const authState = () => onAuthStateChanged(auth, (user) => {
         if (user) {
             // User is signed in, see docs for a list of available properties

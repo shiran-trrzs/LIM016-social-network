@@ -31,6 +31,8 @@ import {
     // auth,
     onSnapshot,
     orderBy,
+    updateDoc,
+    serverTimestamp,
 } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-firestore.js';
 
 // La configuración de Firebase de nuestra app web
@@ -82,4 +84,6 @@ export {
     deleteDoc,
     onSnapshot,
     orderBy,
+    updateDoc,
+    serverTimestamp,
 };

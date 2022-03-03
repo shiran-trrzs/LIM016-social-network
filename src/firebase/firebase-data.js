@@ -14,6 +14,8 @@ import {
     where,
     onSnapshot,
     orderBy,
+    serverTimestamp,
+    updateDoc,
 } from './firebase-initializer.js';
 
 // Funcion que añade data a la colección de users al registrarse
@@ -50,7 +52,7 @@ export const savePost = async (user, post, datePost, nameU, photoU) => {
     const docRefPosts = await addDoc(collection(db, 'posts'), {
         userId: user,
         textPost: post,
-        date: new Date().toLocaleString('ES'),
+        date: new Date().toLocaleString('en-ES'),
         name: nameU,
         photo: photoU,
         like: [],
@@ -68,8 +70,15 @@ export const updatePost = async (callback) => {
 // Funcion eliminar post de FireStore
 export const deletePost = async (idPost) => {
     await deleteDoc(doc(db, 'posts', idPost));
-    console.log('Se elimino de la bd');
+    console.log('se elemino de la bd');
 };
+
+// Función editar post
+export const editPost = (id, newPost) => updateDoc(doc(db, 'posts', id), newPost);
+
+// obtener un post
+export const getPost = (id) => getDoc(doc(db, 'posts', id));
+
 
 // Manipula interacción de los likes de posteos
 // export const setLikes = async (postId, dataLikes) => {
