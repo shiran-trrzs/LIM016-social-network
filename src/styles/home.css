@@ -10,20 +10,29 @@
 
 body {
 	margin: 0px;
-	padding: 0%;
 }
 
 .home {
 	background-color: rgba(245, 245, 245, 1);
-	width: auto;
-	height: 100vh;
+	width: 100vw;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.centerPost {
+	width: 100vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
 .userInfo {
+	width: 80vw;
 	display: flex;
+	flex-direction: row;
+	align-items: center;
 	justify-content: space-between;
 	margin: 0px 10px 30px 10px;
 	padding: 20px;
@@ -33,13 +42,13 @@ body {
 	color: var(--text-color);
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
 		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	padding-right: 15px;
 }
 
 .photoUser {
 	border-radius: 50%;
 	height: 96px;
 	width: 96px;
-	margin-right: 10px;
 }
 
 .authorPhoto {
@@ -90,9 +99,7 @@ body {
 .menuBar {
 	bottom: 0px;
 	position: fixed;
-	margin-left: 20px;
 	margin-bottom: 30px;
-	padding: 10px 0px 5px 12px;
 }
 
 .navBar {
@@ -119,6 +126,13 @@ body {
 .show {
 	display: flex;
 	flex-direction: column;
+}
+
+/* Alinear contenedor de posts */
+.postContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* Post */
@@ -185,26 +199,77 @@ body {
 	padding-right: 8px;
 }
 
-@media (min-width: 600px) {
-	body {
-		margin-top: 0px;
-	}
+/* Contenedor el modal */
+.containerModal {
+	background-color: rgba(0, 0, 0, 0.7);
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	pointer-events: none;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	opacity: 0; /* OCULTAR MODAL AL INICIO */
+}
 
+/* Modal */
+.modal {
+	background-color: rgb(255, 255, 255);
+	width: 350px;
+	max-width: 100%;
+	padding: 30px;
+	border-radius: 15px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/* Mostrar modal */
+.showModal {
+	pointer-events: auto;
+	opacity: 1;
+	z-index: 2;
+}
+
+.btnsModal {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+/* Botones del modal */
+#yes,
+#not {
+	background-color: var(--text-color);
+	color: rgb(255, 255, 255);
+	border-radius: 30px;
+	width: 40%;
+	margin-bottom: 10px;
+	font-size: 110%;
+}
+
+/* Mensaje del modal */
+.messageModal {
+	font-size: 150%;
+	text-align: center;
+}
+
+/* ---------------------------------- Media Query para pantallas a partir de 600px ---------------------------------- */
+@media (min-width: 600px) {
 	.home {
 		background-color: rgba(245, 245, 245, 1);
-		width: 0;
-		height: 1000vh;
-	}
-
-	.contacts {
-		display: inline;
+		width: 100vw;
+		flex-direction: row;
 	}
 
 	.userInfo {
-		height: 100px;
-		width: 773px;
-		margin: 0px 10px 30px 280px;
-		padding: 20px;
+		width: 70vw;
+		justify-content: space-around;
 	}
 
 	.userName {
@@ -218,24 +283,26 @@ body {
 	}
 
 	.postTextBox {
-		height: 300ox;
-		width: 300px;
-	}
-	.container {
-		display: flex;
-		align-content: space-around;
+		height: 300px;
+		width: 100vw;
 	}
 
 	.navBar {
 		display: flex;
 		flex-direction: column;
 		background-color: var(--nav-color);
-		height: 1024px;
+		height: 100vh;
 		width: 40px;
 		border-radius: 0%;
 		margin-top: 0%;
 		margin-bottom: auto;
 		margin-left: 0%;
+	}
+
+	.menuBar {
+		height: 100vh;
+		justify-content: flex-start;
+		margin-bottom: 0px;
 	}
 
 	.iconBar {

@@ -14,10 +14,21 @@ let editStatus = false;
 let idPublicaion = '';
 
 // Funcion eliminar publicacion
-const functionDeletePost = (optionDelete, evento) => {
+const functionDeletePost = (optionDelete, evento, modal, btnYes, btnNot) => {
     optionDelete.addEventListener('click', () => {
-        deletePost(evento.target.id);
-        console.log('Se hizo click en eliminar');
+        modal.classList.remove('hidden');
+        modal.classList.add('showModal');
+        btnYes.addEventListener('click', () => {
+            deletePost(evento.target.id);
+            modal.classList.remove('showModal');
+            modal.classList.add('hidden');
+            console.log('boton yes');
+        });
+        btnNot.addEventListener('click', () => {
+            modal.classList.remove('showModal');
+            modal.classList.add('hidden');
+            console.log('boton no');
+        });
     });
 };
 
@@ -32,7 +43,7 @@ export default () => {
     const user = auth.currentUser; // Contiene toda la info del usuario
     // console.log(user);
 
-    const viewHome = `
+    const viewHome = /* html */ `
     <section>
         <div class="userInfo">
             <h2 class="userName"></h2>
@@ -46,8 +57,20 @@ export default () => {
                 <i class="fa-solid fa-paper-plane"></i> <span class="btnShare"> Compartir </span>
             </div>
         </div>
+    
+
+        <div id="postContainer" class="postContainer"> </div>
     </section>
-    <div id="postContainer" class="postContainer"> </div>
+
+    <div class="containerModal hidden" id="containerModal">
+        <div class="modal">
+            <p class="messageModal">¿Está seguro que quiere eliminar el post?</p>
+            <div class="btnsModal">
+               <button type="button" id="yes">Si</button>
+                <button type="button" id="not">No</button>
+            </div>
+        </div>
+    </div>
     <div class="menuBar">
         <nav class="navBar">
             <img src="../img/home_icon.png">
@@ -120,16 +143,18 @@ export default () => {
                 const btnsEdit = postContainer.querySelectorAll('.fa-ellipsis-vertical');
                 btnsEdit.forEach((btn) => {
                     btn.addEventListener('click', (e) => {
-                        console.log(e);
                         const divHidden = e.target.nextElementSibling;
                         const status = divHidden.getAttribute('class');
-                        console.log(status);
                         if (status.includes('hidden')) {
                             divHidden.setAttribute('class', 'show');
                             // Opcion a eliminar
                             const optionDelete = e.target.nextElementSibling.firstElementChild;
+                            const modal = document.querySelector('.containerModal');
+                            const btnYes = document.querySelector('#yes');
+                            const btnNot = document.querySelector('#not');
+                            console.log(modal);
                             // Ejecutando funcion eliminar post
-                            functionDeletePost(optionDelete, e);
+                            functionDeletePost(optionDelete, e, modal, btnYes, btnNot);
                         } else divHidden.setAttribute('class', 'hidden');
                     });
                 });
