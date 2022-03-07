@@ -118,7 +118,7 @@ input:focus {
 /* Estilo a todos los botones */
 .btn {
 	width: 65vw;
-	min-height: 5vh;
+	height: 5vh;
 	background: var(--buttons-color);
 	border-radius: 30px;
 	border-style: none;
